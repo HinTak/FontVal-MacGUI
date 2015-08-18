@@ -114,6 +114,7 @@ namespace OTFontFileVal {
                 bool perform = tablesToTest.Contains( table );
                 v.SetTablePerformTest( table, perform );
             }
+#if !OLD_INTERFACE
             v.SetRastPerformTest( doRastBW, 
                                   doRastGray, 
                                   doRastClearType,
@@ -121,6 +122,9 @@ namespace OTFontFileVal {
                                   doRastCTVert, 
                                   doRastCTBGR, 
                                   doRastCTFractWidth );
+#else
+            v.SetRastPerformTest( doRastBW || doRastGray || doRastClearType );
+#endif
             v.SetRastTestParams( xRes, yRes, sizes.ToArray(), xform );
             
         }

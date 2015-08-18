@@ -155,6 +155,14 @@ bin/FontValidator.exe:
         -target:exe -out:../$@ *.cs \
 	../Compat/Xsl.cs )
 
+$(ELSEWHERE)/FontValidator.exe:
+	( cd FontValidator && \
+        $(MCS) -lib:../$(ELSEWHERE) $(EXTRA_DEV_OPTS) -define:OLD_INTERFACE -r:OTFontFileVal -r:OTFontFile -r:ValCommon \
+        -target:exe -out:../$@ *.cs \
+        ../OTFontFileVal/ValDriver.cs \
+        ../OTFontFileVal/ValidatorParameters.cs \
+	../Compat/Xsl.cs )
+
 bin/FontVal.exe:
 	( cd FontVal && \
         $(MCS) -lib:../bin/ $(EXTRA_DEV_OPTS) \

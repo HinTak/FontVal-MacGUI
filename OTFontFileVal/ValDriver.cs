@@ -7,7 +7,9 @@ using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 using System.ComponentModel;
+#if !OLD_INTERFACE
 using System.Windows.Forms;
+#endif
 using System.Threading;
 
 using Microsoft.Win32.SafeHandles;
@@ -241,6 +243,7 @@ namespace OTFontFileVal {
                 OnBeginTable( ( DirectoryEntry )oParam );
                 break;
 
+#if !OLD_INTERFACE
             case Validator.EventTypes.RastTestBegin_BW:
                 OnRasterTestBegin( "RasterizationTest_BW", "Black and White" );
 
@@ -251,17 +254,30 @@ namespace OTFontFileVal {
             case Validator.EventTypes.RastTestBegin_ClearType:
                 OnRasterTestBegin( "RasterizationTest_ClearType", "ClearType" );
                 break;
+#else
+            case Validator.EventTypes.RastTestBegin:
+                OnRasterTestBegin( "RasterizationTest" , "Generic" );
+                break;
+#endif
 
             case Validator.EventTypes.TableProgress:
+#if !OLD_INTERFACE
             case Validator.EventTypes.RastTestProgress_BW:
             case Validator.EventTypes.RastTestProgress_Grayscale:
             case Validator.EventTypes.RastTestProgress_ClearType:
+#else
+            case Validator.EventTypes.RastTestProgress:
+#endif
                 m_callbacks.OnTestProgress( oParam );
                 break;
 
+#if !OLD_INTERFACE
             case Validator.EventTypes.RastTestEnd_ClearType:
             case Validator.EventTypes.RastTestEnd_Grayscale:
             case Validator.EventTypes.RastTestEnd_BW:
+#else
+            case Validator.EventTypes.RastTestEnd:
+#endif
             case Validator.EventTypes.TableEnd:
             case Validator.EventTypes.FontEnd:
                 OnEndElement();
@@ -344,8 +360,10 @@ namespace OTFontFileVal {
             m_xmlWriter.WriteStartElement("FontValidatorReport");
             string dateAndTime = System.DateTime.Now.ToString("f", null);
             m_xmlWriter.WriteAttributeString("RunDateTime", dateAndTime );
+#if !OLD_INTERFACE
             m_xmlWriter.WriteAttributeString("MachineName", 
                                              SystemInformation.ComputerName);
+#endif
             m_xmlWriter.WriteWhitespace("\r\n");
 
             FileInfo fi = new FileInfo(sFontFile);
@@ -393,7 +411,11 @@ namespace OTFontFileVal {
             m_callbacks.OnOpenReportFile(sReportFile, fpath);
 
             // open the font file and validate it
+#if !OLD_INTERFACE
             bool isvalid = (hFile == null) ? fontFile.open(fpath) : fontFile.open(hFile);
+#else
+            bool isvalid = fontFile.open(fpath);
+#endif
 
             //if the font file is invalid, we just do not go on with validation and output the results
             //this apparently fixed a lot of bugs (1231, 1429, 934, 1335)
@@ -401,10 +423,14 @@ namespace OTFontFileVal {
             if (isvalid)
             {
                 m_callbacks.OnBeginFontTest(fpath, i, n);
+#if !OLD_INTERFACE
                 if (!fontFile.Validate())
                 {
                     ret = 1;
                 }
+#else
+                fontFile.Validate();
+#endif
                 fontFile.close();
             }
             else
