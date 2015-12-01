@@ -41,6 +41,7 @@ namespace Compat
             {
                 { "0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43", "CN=DigiCert Assured ID Root CA, OU=www.digicert.com, O=DigiCert Inc, C=US" },
                 { "18F7C1FCC3090203FD5BAA2F861A754976C8DD25", "OU=\"NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.\", OU=VeriSign Time Stamping Service Root, OU=\"VeriSign, Inc.\", O=VeriSign Trust Network" },
+                { "23E594945195F2414803B4D564D2A3A3F5D88B8C", "C=ZA, S=Western Cape, L=Cape Town, O=Thawte Consulting cc, OU=Certification Services Division, CN=Thawte Server CA, E=server-certs@thawte.com" },
                 { "245C97DF7514E7CF2DF8BE72AE957B9E04741E85", "OU=Copyright (c) 1997 Microsoft Corp., OU=Microsoft Time Stamping Service Root, OU=Microsoft Corporation, O=Microsoft Trust Network" },
                 { "24A40A1F573643A67F0A4B0749F6A22BF28ABB6B", "OU=VeriSign Commercial Software Publishers CA, O=\"VeriSign, Inc.\", L=Internet" },
                 { "3B1EFD3A66EA28B16697394703A72CA340A05BD5", "CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" },
