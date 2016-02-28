@@ -1,14 +1,13 @@
-The "hybrid" build is an inter-rim fork where the 2 missing
+The "hybrid" build is an inter-rim fork where the missing
 functionalities: the rasterization tests,
-the XML report viewer, are provided by scavenged DLLs
+are provided by scavenged DLLs
 from the 2003 binary. As such, it is meant to run on windows only.
 
 To Build
 ========
 
-The hybrid build consists of the following 5 code changes
-(1 addition and 1 revert in Compat/Compat.cs, 1 revert in
-FontVal/ResultsForm.cs,
+The hybrid build consists of the following 4 code changes
+(1 addition and 1 revert in Compat/Compat.cs,
 and 2 adjustments in the Makefile)
 and 3 binary changes. As can be seen the "code change"
 is mainly removing/reverting work that's already done.
@@ -17,16 +16,15 @@ The public hybrid code branch consists of just the "code changes"
 and it is up to the individual to acquire the DLLs from
 the 2003 binary to build in this manner.
 
-============================================================
-commit ac619c90395aad24d14953bcf2da5b06bd63c6ca
+commit 5da69bde616286755d1f896bd4a8b1d80f593afe
 Author: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date:   Sat Oct 10 17:55:27 2015 +0100
 
     update dependency
 
-:100644 100644 0dc3ff9... fcbbbd4... M	Makefile
+:100644 100644 30b4362... 64b63ff... M	Makefile
 
-commit 3e5f55366155ae8fed2598b3fa8b7636d79dc075
+commit 33ab2ccb588e8aee0ff03ca149aca1318b1f1f6f
 Author: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date:   Sat Oct 10 17:49:21 2015 +0100
 
@@ -34,30 +32,15 @@ Date:   Sat Oct 10 17:49:21 2015 +0100
 
 :100644 100644 027bde3... e753c44... M	Compat/Compat.cs
 
-commit 2b9a39d9257434cbeaf534f9b19a3ec0ea52e6e6
+commit 209afd47d3765ac3fa391d644f95df4411846074
 Author: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date:   Sat Oct 10 17:35:48 2015 +0100
 
     dlls from 2003 binary
 
-:000000 100644 0000000... 2142469... A	bin/AxInterop.SHDocVw.dll
-:000000 100644 0000000... eb75127... A	bin/Interop.SHDocVw.dll
-:000000 100644 0000000... c62119f... A	bin/Microsoft.mshtml.dll
 :000000 100644 0000000... af9a486... A	bin/truetype.dll
 
-commit c2930443be0c3cfa839ea0782e8a2d67b059c2c5
-Author: Hin-Tak Leung <htl10@users.sourceforge.net>
-Date:   Sat Oct 10 17:28:36 2015 +0100
-
-    Re-enable the XML viewer.
-    
-    Revert "ifdef out all axWebBrowser1 stuff with __MonoCS__"
-    
-    This reverts commit 4526b11f8fc52fd77f7ee99924b5c5a832bb7a53.
-
-:100644 100644 ef161fd... d8ecbd5... M	FontVal/ResultsForm.cs
-
-commit 7b12513cd398c0b147b29e5c79e276847c004ec6
+commit 7cc422890a0a306184664a627a2ca27aa8f011ff
 Author: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date:   Sat Oct 10 17:22:33 2015 +0100
 
@@ -86,7 +69,7 @@ Date:   Sat Oct 10 17:22:33 2015 +0100
 :000000 100755 0000000... 035aece... A	bin/libwinpthread-1.dll
 :000000 100644 0000000... b39de53... A	bin/zlib1.dll
 
-commit efd849e12c87fd6668820e562458a6ec6c7ad8fe
+commit 8fcff725edd2099f48c3c34ed00bfcc113bf2481
 Author: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date:   Sat Oct 10 17:21:54 2015 +0100
 
@@ -104,7 +87,7 @@ Date:   Sat Oct 10 17:21:54 2015 +0100
 :100755 000000 7331ae6... 0000000... D	bin/Win64/libwinpthread-1.dll
 :100644 000000 19ff8bf... 0000000... D	bin/Win64/zlib1.dll
 
-commit d20f6315c81dbe7a0f185a757064ea91cb740671
+commit f603f7ac4905a709725f4456fe8a1280552bed05
 Author: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date:   Sat Oct 10 17:19:17 2015 +0100
 
@@ -112,11 +95,11 @@ Date:   Sat Oct 10 17:19:17 2015 +0100
 
 :100644 100644 990daca... 027bde3... M	Compat/Compat.cs
 
-commit 29d6e15706d15b9c17cf6e67e6f50a85c5392846
+commit 91919872a18cede305c3d447dcf3d2ced531f1f8
 Author: Hin-Tak Leung <htl10@users.sourceforge.net>
 Date:   Sat Oct 10 17:16:10 2015 +0100
 
     build for x86 only
 
-:100644 100644 81a0f1c... 0dc3ff9... M	Makefile
+:100644 100644 0f92645... 30b4362... M	Makefile
 ============================================================
