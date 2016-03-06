@@ -452,8 +452,8 @@ namespace Compat
                     hexLine.AppendFormat ("{0} ", cdigest [i].ToString ("X2"));
                 }
                 hexLine.AppendFormat (Environment.NewLine);
-                Console.WriteLine("{0} Signed Digest: {1}", algoname.ToUpper(), hexLine_sig);
-                Console.WriteLine("Calculated Digest: {0}", hexLine);
+                Console.WriteLine("{0} Signed Digest:\t{1}", algoname.ToUpper(), hexLine_sig);
+                Console.WriteLine("Calculated Digest:\t{0}", hexLine);
                 string root_thumb = "";
 #if HAVE_MONO_X509
                 root_thumb =
