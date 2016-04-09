@@ -986,7 +986,7 @@ This error indicates a structural problem with the font. Structural errors may b
     shortDesc="The version number is not valid"
     fwLinkID="10346"
     tableName="gasp">
-    <problem>Version 0 is the only version of the gasp table currently defined. Correct this field using a table editing tool.</problem>
+    <problem>Version 0 and 1 are the only versions of the gasp table currently defined. Correct this field using a table editing tool.</problem>
 </item>
 
 <item
