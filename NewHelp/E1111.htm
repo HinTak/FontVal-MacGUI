@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+<LINK REL=STYLESHEET HREF="fv.css" TYPE="text/css">
+<TITLE>E1111</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+        <param name="Keyword" value="E1111">
+        <param name="Keyword" value="glyf">
+</OBJECT>
+<H1><A NAME="E1111"></A>Message: E1111</H1></div>
+<HR>
+<P><B><I>glyf</I>: Intersecting contours</B></P>
+<P>The glyph indicated in the validation log contains contours that intersect with themselves (overlap) or other contours of the glyph shape. These intersections may cause the rasterizer to unpredictably fill the glyph shape. The different type of intersections are discussed below.<BR><BR><I>Self-intersecting contours</I><BR>This type of intersection may take the form of a tiny loop on one of the contours of the glyph and results from a poorly controlled Bezier curve becoming undesirably deformed. This self-intersection can be very hard to see, even at high magnification. Other types of self-intersection occur when a straight line doubles back on itself, and when a single contour loops around and touches itself. To fix these problems, use an outline editing tool to shift the problematic control points or alter the type of curve used.<BR><BR><IMG ALIGN=TOP BORDER=1 SRC="intersection_self_loop_whole_scaled.jpg">&#160;<IMG ALIGN=TOP BORDER=1 SRC="intersection_self_loop_detail_scaled.jpg"><BR><BR><IMG ALIGN=TOP BORDER=1 SRC="intersection_self_whole_scaled.jpg">&#160;<IMG ALIGN=TOP BORDER=1 SRC="intersection_self_detail_scaled.jpg"><BR><BR><IMG ALIGN=TOP BORDER=1 SRC="intersection_self_segment_scaled.jpg">&#160;<IMG ALIGN=TOP BORDER=1 SRC="intersection_self_segment_detail_scaled.jpg"><BR><BR><IMG ALIGN=TOP BORDER=1 SRC="intersection_singleseg_detail_scaled.jpg"><BR><BR><I>Multi-contour intersection</I><BR>Contours located very near each other may be separate at some sizes but may intersect at other sizes due to scaling and gridfitting. This problem may be fixed by using an outline editing tool to move control points and make the contours more distant.<BR><BR><IMG ALIGN=TOP BORDER=1 SRC="intersection_multi_whole_scaled.jpg">&#160;<IMG ALIGN=TOP BORDER=1 SRC="intersection_multi_detail_scaled.jpg"></P>
+<P>For more information, see the <A TARGET="top" HREF="http://go.microsoft.com/fwlink?LinkID=10348">glyf table specification</A>.
+</BODY>
+</HTML>
+

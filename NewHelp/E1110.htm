@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+<LINK REL=STYLESHEET HREF="fv.css" TYPE="text/css">
+<TITLE>E1110</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+        <param name="Keyword" value="E1110">
+        <param name="Keyword" value="glyf">
+</OBJECT>
+<H1><A NAME="E1110"></A>Message: E1110</H1></div>
+<HR>
+<P><B><I>glyf</I>: Misoriented contour</B></P>
+<P>Contours of OpenType fonts should alternate in orientation between clockwise (for the outermost contour) and counter-clockwise (for the next innermost contour), as illustrated below.<BR><BR><IMG ALIGN="TOP" BORDER=1 SRC="orient.jpg"><BR><BR>The glyph below is oriented incorrectly, as seen in the counter-clockwise numbering of the control points.<BR><BR><IMG ALIGN="TOP" BORDER=1 SRC="misorient_detail_scaled.jpg"><BR><BR>Note that if there is a self-intersecting contour in the glyph, the test for misoriented contours may fail.<BR><BR>Correct the misoriented contours carefully, and if possible, prior to hinting. When contour orientation is reversed, control points will be renumbered and hinting information will be lost or altered. In addition to rendering problems, such a change may also cause component glyphs to attach incorrectly.</P>
+<P>For more information, see the <A TARGET="top" HREF="http://go.microsoft.com/fwlink?LinkID=10348">glyf table specification</A>.
+</BODY>
+</HTML>
+
