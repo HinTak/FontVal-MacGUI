@@ -6269,7 +6269,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     specLink="WARNING: field missing"
     shortDesc="There are no DeviceRecord padding bytes"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="hdmx">
     <problem/>
 </item>
 
@@ -9064,7 +9064,7 @@ All tables should be recorded in the table directory with their actual length. T
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="hdmx">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
@@ -9328,7 +9328,7 @@ All tables should be recorded in the table directory with their actual length. T
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="LTSH">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
@@ -9801,7 +9801,7 @@ All tables should be recorded in the table directory with their actual length. T
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="Rasterization Test">
     <problem>Place holder - We most likely need to enhance Freetype and do a minimum version check.</problem>
 </item>
 
@@ -9919,7 +9919,7 @@ by either method may indicate some other problem in the font.
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="VDMX">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
