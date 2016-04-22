@@ -283,6 +283,15 @@ namespace Compat
                     case "sha1":
                         hash = HashAlgorithm.Create ("SHA1");
                         break;
+                    case "sha256":
+                        hash = HashAlgorithm.Create ("SHA256");
+                        break;
+                    case "sha384":
+                        hash = HashAlgorithm.Create ("SHA384");
+                        break;
+                    case "sha512":
+                        hash = HashAlgorithm.Create ("SHA512");
+                        break;
                     default:
                         throw new NotImplementedException("Unknown HashAlgorithm: " + algoname );
                 }
