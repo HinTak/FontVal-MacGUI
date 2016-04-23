@@ -200,7 +200,7 @@ namespace OTFontFile
             {
             }
 
-            // NOTE: SubTableFormat2 is not suppported under windows
+            // NOTE: SubTableFormat2 is not supported under windows
         }
 
         /************************

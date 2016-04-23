@@ -255,7 +255,7 @@ namespace NS_GMath
         public bool AdvanceByPoz(int poz, out int advance)
         {
             /*
-             *        Returnes FALSE if:
+             *        Returns FALSE if:
              *        -    (poz) is not valid for the contour OR
              *        -    (poz) is not start of a curve
              */
