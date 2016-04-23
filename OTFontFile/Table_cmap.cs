@@ -1943,7 +1943,7 @@ namespace OTFontFile
                 if (index == -1)
                 {
                     throw new ApplicationException( "attempted to remove " + 
-                                                    "nonexistant subtable");
+                                                    "nonexistent subtable");
                 }
 
                 m_arrSubtables.RemoveAt(index);

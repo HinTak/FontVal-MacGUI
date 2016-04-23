@@ -8878,7 +8878,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     fwLinkID="10363"
     tableName="Table Directory">
     <problem>All tables should be aligned to begin at offsets which are multiples of four bytes. While this is not required by the TrueType rasterizer, it does prevent ambiguous checksum calculations and greatly speeds table access on some processors.&lt;BR&gt;
-All tables should be recorded in the table directory with their actual length. To ensure that checksums are calculated correctly, it is suggested that tables begin on LONG word boundries. Any extra space after a table (and before the next LONG word boundry) should be padded with zeros.</problem>
+All tables should be recorded in the table directory with their actual length. To ensure that checksums are calculated correctly, it is suggested that tables begin on LONG word boundries. Any extra space after a table (and before the next LONG word boundary) should be padded with zeros.</problem>
 </item>
 
 <item
@@ -10099,7 +10099,7 @@ reserve 30-35 for CBDT/CBLC/COLR/CPAL/MATH/SVG
     shortDesc="The SVGDocIndex field has some fatal errors"
     fwLinkID="0"
     tableName="SVG">
-    <problem>Fatal errors are, for example, overlapping entries, where futher processing is impossible.</problem>
+    <problem>Fatal errors are, for example, overlapping entries, where further processing is impossible.</problem>
 </item>
 
 <item

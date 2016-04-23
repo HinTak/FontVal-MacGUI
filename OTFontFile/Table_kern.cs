@@ -328,7 +328,7 @@ namespace OTFontFile
                 }
             }
 
-            // Cant set number of tables this is done by adding or removing tables
+            // Can't set number of tables this is done by adding or removing tables
             public ushort nTables
             {
                 get

@@ -117,7 +117,7 @@ namespace OTFontFileVal
 
         /*===============================================================
          * 
-         *            I_IOGlyphsFont:    IMPLEMENTATION & AUXILLIARY FUNCTIONS
+         *            I_IOGlyphsFont:    IMPLEMENTATION & AUXILIARY FUNCTIONS
          * 
          *==============================================================*/
 

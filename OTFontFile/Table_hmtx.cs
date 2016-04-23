@@ -92,7 +92,7 @@ namespace OTFontFile
         }
 
         // This method is for the data cache but should be used later once the 
-        // the construtor that sets the number of glyphs is used
+        // the constructor that sets the number of glyphs is used
         public longHorMetric GetOrMakeHMetric( uint i )
         {
             if( m_nGlyphsInTheFont == 0 )
