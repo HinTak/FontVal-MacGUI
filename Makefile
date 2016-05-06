@@ -152,7 +152,9 @@ bin/OTFontFileVal.dll:
 bin/FontValidator.exe:
 	( cd FontValidator && \
         $(MCS) -lib:../bin/ $(EXTRA_DEV_OPTS) -r:OTFontFileVal -r:OTFontFile -r:ValCommon \
-        -target:exe -out:../$@ *.cs )
+        -r:IronPython.dll -r:Microsoft.Scripting.dll \
+        -target:exe -out:../$@ *.cs \
+	../Compat.3rd/EmbeddedIronPython.cs )
 
 bin/FontVal.exe:
 	( cd FontVal && \

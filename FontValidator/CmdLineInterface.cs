@@ -10,6 +10,8 @@ using OTFontFile;
 using NS_ValCommon;
 using OTFontFileVal;
 
+using Compat;
+
 namespace FontValidator
 {
     public class CmdLineInterface : Driver.DriverCallbacks
@@ -167,6 +169,10 @@ namespace FontValidator
         {
             Console.WriteLine( "Usage: FontValidator [options]" );
             Console.WriteLine( "" );
+            Console.WriteLine( "Usage: FontValidator script.py args1 args2 ..." );
+            Console.WriteLine( "    ( Python mode when first arg ends with \".py\" )" );
+            Console.WriteLine( "" );
+
             Console.WriteLine( "Options:" );
             Console.WriteLine( "-file          <fontfile>      (multiple allowed)" );
             Console.WriteLine( "+table         <table-include> (multible allowed)" );
@@ -191,6 +197,7 @@ namespace FontValidator
 
             Console.WriteLine( "Example:" );
             Console.WriteLine( "  FontValidator -file arial.ttf -file times.ttf -table 'OS/2' -table DSIG -report-dir ~/Desktop");
+            Console.WriteLine( "  FontValidator ttx-l-example.py arial.ttf");
         }
 
         static int Main( string[] args )
@@ -204,6 +211,11 @@ namespace FontValidator
             
             if (args.Length == 0) {
                 Usage();
+                return 0;
+            }
+
+            if ( args[0].EndsWith(".py") ) {
+                EmbeddedIronPython.RunScriptWithArgs(args);
                 return 0;
             }
 
