@@ -19,6 +19,16 @@ class validation_parameters:
         ###############################################################
         # below are just the default values and can be deleted as is. #
         ###############################################################
+        # SetAllTables() is the default, but an explicit list also works.
+        vp.SetAllTables()
+        vp.ClearTables()
+        vp.tablesToTest = List[str](['BASE', 'CBDT', 'CBLC', 'CFF ', 'cmap', 'COLR',
+                                     'CPAL', 'cvt ', 'DSIG', 'EBDT', 'EBLC', 'EBSC',
+                                     'fpgm', 'gasp', 'GDEF', 'glyf', 'GPOS', 'GSUB',
+                                     'hdmx', 'head', 'hhea', 'hmtx', 'JSTF', 'kern',
+                                     'loca', 'LTSH', 'MATH', 'maxp', 'name', 'OS/2',
+                                     'PCLT', 'post', 'prep', 'SVG ', 'VDMX', 'vhea',
+                                     'vmtx', 'VORG'])
         vp.doRastBW = False
         vp.doRastBW = False
         vp.doRastGray = False
@@ -64,4 +74,7 @@ class validation_parameters:
 if __name__ == '__main__':
     obj = validation_parameters()
     vp = obj.GetValue()
+    # Just to confirm expected type and content:
     print "object type %s, xRes = %d" % ( vp.GetType(), vp.xRes)
+    # and tables within
+    print "Tables to test:", vp.tablesToTest
