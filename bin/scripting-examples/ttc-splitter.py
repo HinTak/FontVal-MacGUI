@@ -9,7 +9,7 @@ import sys
 
 clr.AddReference("OTFontFile.dll")
 
-from OTFontFile import *
+from OTFontFile import OTFile
 
 from System import Array
 

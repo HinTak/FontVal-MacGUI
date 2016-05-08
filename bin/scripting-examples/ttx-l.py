@@ -16,7 +16,7 @@ from System import String
 
 clr.AddReference("OTFontFile.dll")
 
-from OTFontFile import *
+from OTFontFile import OTFile
 
 class ttxl:
     def __init__(self, filename):

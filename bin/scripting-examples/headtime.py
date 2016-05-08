@@ -10,7 +10,7 @@ import sys
 
 clr.AddReference("OTFontFile.dll")
 
-from OTFontFile import *
+from OTFontFile import OTFile
 
 class headtime:
     def __init__(self, filename):
