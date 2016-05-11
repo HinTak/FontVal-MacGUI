@@ -61,7 +61,9 @@ ifeq "$(BUILD)" ".net2"
 EXTRA_DEV_OPTS=/nostdlib /platform:AnyCPU /reference:/usr/lib/mono/2.0-api/System.dll \
 /reference:/usr/lib/mono/2.0-api/mscorlib.dll \
 -lib:/usr/lib/mono/2.0-api
+EXTRA_IP_NET2_OPTS=-r:Microsoft.Scripting.Core.dll
 else
+EXTRA_IP_NET2_OPTS=
 ifeq "$(USE_MONO_SECURITY)" "true"
 EXTRA_DEV_OPTS=-define:HAVE_MONO_X509 -r:Mono.Security
 else
@@ -152,7 +154,7 @@ bin/OTFontFileVal.dll:
 bin/FontValidator.exe:
 	( cd FontValidator && \
         $(MCS) -lib:../bin/ $(EXTRA_DEV_OPTS) -r:OTFontFileVal -r:OTFontFile -r:ValCommon \
-        -r:IronPython.dll -r:Microsoft.Scripting.dll \
+        -r:IronPython.dll -r:Microsoft.Scripting.dll $(EXTRA_IP_NET2_OPTS) \
         -target:exe -out:../$@ *.cs \
 	../Compat.3rd/EmbeddedIronPython.cs \
 	../Compat/Xsl.cs )
