@@ -30,7 +30,6 @@ class validation_parameters:
                                      'PCLT', 'post', 'prep', 'SVG ', 'VDMX', 'vhea',
                                      'vmtx', 'VORG'])
         vp.doRastBW = False
-        vp.doRastBW = False
         vp.doRastGray = False
         vp.doRastClearType = False
         vp.doRastCTCompWidth = False
