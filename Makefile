@@ -152,7 +152,8 @@ bin/OTFontFileVal.dll:
 bin/FontValidator.exe:
 	( cd FontValidator && \
         $(MCS) -lib:../bin/ $(EXTRA_DEV_OPTS) -r:OTFontFileVal -r:OTFontFile -r:ValCommon \
-        -target:exe -out:../$@ *.cs )
+        -target:exe -out:../$@ *.cs \
+	../Compat/Xsl.cs )
 
 bin/FontVal.exe:
 	( cd FontVal && \

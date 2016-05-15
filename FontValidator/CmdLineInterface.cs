@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Xml.Xsl;
 
 using OTFontFile;
 using NS_ValCommon;
@@ -23,6 +24,7 @@ namespace FontValidator
         List<string>          m_reportFiles = new List<string>();
         List<string>          m_captions = new List<string>();
         bool m_verbose;
+        bool m_report2stdout;
 
         static void ErrOut( string s ) 
         {
@@ -79,6 +81,32 @@ namespace FontValidator
             // putting the report on the font's directory, there may
             // be a different directory for each font.
             Driver.CopyXslFile( sReportFile );
+
+            if ( m_report2stdout == true && m_ReportFileDestination == ReportFileDestination.TempFiles )
+            {
+                // build the dest filename
+                FileInfo fi = new FileInfo(sReportFile);
+                string sDestDir  = fi.DirectoryName;
+                string sDestFile = sDestDir + Path.DirectorySeparatorChar + "fval2txt.xsl";
+
+                if ( !File.Exists( sDestFile ) )
+                    File.WriteAllBytes(sDestFile, Compat.Xsl.fval2txt);
+
+                var xslTrans = new XslCompiledTransform();
+                xslTrans.Load(sDestFile);
+                string sTXTFile = sReportFile.Replace(".report.xml", ".report.txt");
+                if ( sTXTFile != sReportFile )
+                    xslTrans.Transform(sReportFile, sTXTFile);
+
+                using (StreamReader sr = new StreamReader(sTXTFile))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(line);
+                    }
+                }
+            }
         }
 
         public void OnOpenReportFile( string sReportFile, string fpath )
@@ -153,7 +181,8 @@ namespace FontValidator
                                  ReportFileDestination rfd, 
                                  bool bOpenReportFiles, 
                                  string sReportFixedDir,
-                                 bool verbose)
+                                 bool verbose,
+                                 bool report2stdout)
         {
             m_vp = vp;
             m_sFiles = sFilenames;
@@ -161,6 +190,7 @@ namespace FontValidator
             m_bOpenReportFiles = bOpenReportFiles;
             m_sReportFixedDir = sReportFixedDir;
             m_verbose = verbose;
+            m_report2stdout = report2stdout;
         }
 
         static void Usage()
@@ -176,6 +206,7 @@ namespace FontValidator
             Console.WriteLine( "-quiet" );
             Console.WriteLine( "+raster-tests" );
             Console.WriteLine( "-report-dir    <reportDir>" );
+            Console.WriteLine( "-report-stdout                 (=\"-stdout\", implies -quiet)" );
             Console.WriteLine( "-temporary-reports" );
             Console.WriteLine( "-report-in-font-dir" );
 
@@ -197,6 +228,7 @@ namespace FontValidator
         {
             bool err = false;
             bool verbose = true;
+            bool report2stdout = false;
             string reportDir = null;
             ReportFileDestination rfd = ReportFileDestination.UserDesktop;
             List<string> sFileList = new List<string>();
@@ -248,6 +280,11 @@ namespace FontValidator
                 else if ( "-quiet" == args[i] ) {
                     verbose = false;
                 }
+                else if ( "-stdout" == args[i] || "-report-stdout" == args[i] ) {
+                    verbose = false;
+                    report2stdout = true;
+                    rfd = ReportFileDestination.TempFiles;
+                }
                 else if ( "+raster-tests" == args[i] ) {
                     vp.SetRasterTesting();
                 }
@@ -291,7 +328,7 @@ namespace FontValidator
 
             CmdLineInterface cmd = new 
                 CmdLineInterface( vp, sFileList.ToArray(), rfd, false, 
-                                  reportDir , verbose);
+                                  reportDir , verbose, report2stdout);
             return cmd.DoIt();
         }
     }
