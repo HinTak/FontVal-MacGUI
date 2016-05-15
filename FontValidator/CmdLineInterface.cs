@@ -210,6 +210,7 @@ namespace FontValidator
             Console.WriteLine( "-all-tables" );
             Console.WriteLine( "-only-tables" );
             Console.WriteLine( "-quiet" );
+            Console.WriteLine( "-test-parms    <test-parms>.py" );
             Console.WriteLine( "+raster-tests" );
             Console.WriteLine( "-report-dir    <reportDir>" );
             Console.WriteLine( "-report-stdout                 (=\"-stdout\", implies -quiet)" );
@@ -296,6 +297,17 @@ namespace FontValidator
                     verbose = false;
                     report2stdout = true;
                     rfd = ReportFileDestination.TempFiles;
+                }
+                else if ( "-test-parms" == args[i] ) {
+                    i++;
+                    try
+                    {
+                        vp = (ValidatorParameters) EmbeddedIronPython.RunPythonMethod( args[i], "validation_parameters", "GetValue" );
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Setting -test-parms failure: " + e.Message);
+                    }
                 }
                 else if ( "+raster-tests" == args[i] ) {
                     vp.SetRasterTesting();
