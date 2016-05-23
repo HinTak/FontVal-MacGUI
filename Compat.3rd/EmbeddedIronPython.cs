@@ -47,6 +47,8 @@ namespace Compat
             var paths = engine.GetSearchPaths();
             string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             paths.Add(path);
+            var dir = Path.GetDirectoryName(my_script);
+            paths.Add(dir);
             engine.SetSearchPaths(paths);
 
             source.Execute(scope);
@@ -72,6 +74,8 @@ namespace Compat
             var paths = engine.GetSearchPaths();
             string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             paths.Add(path);
+            var dir = Path.GetDirectoryName(args[0]);
+            paths.Add(dir);
             engine.SetSearchPaths(paths);
 
             source.ExecuteProgram();
