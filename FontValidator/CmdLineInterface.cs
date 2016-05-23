@@ -248,6 +248,7 @@ namespace FontValidator
             }
 
             if ( args[0].EndsWith(".py") ) {
+                // Not try/catch.
                 EmbeddedIronPython.RunScriptWithArgs(args);
                 return 0;
             }
@@ -306,7 +307,8 @@ namespace FontValidator
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Setting -test-parms failure: " + e.Message);
+                        ErrOut( "Setting -test-parms failure: " + e.Message );
+                        err = true;
                     }
                 }
                 else if ( "+raster-tests" == args[i] ) {
