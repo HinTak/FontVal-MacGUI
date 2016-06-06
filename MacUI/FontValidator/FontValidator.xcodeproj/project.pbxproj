@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		56477C511C67D67E007332DA /* FontValidator in Resources */ = {isa = PBXBuildFile; fileRef = 56477C501C67D67E007332DA /* FontValidator */; };
+		565A9E971D05F3C800F420BA /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 565A9E961D05F3C800F420BA /* Credits.html */; };
 		565FFDDD1C67CC4E00E203FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 565FFDDC1C67CC4E00E203FB /* AppDelegate.m */; };
 		565FFDE01C67CC4E00E203FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 565FFDDF1C67CC4E00E203FB /* main.m */; };
 		565FFDE31C67CC4E00E203FB /* FVDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 565FFDE21C67CC4E00E203FB /* FVDocument.m */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		56477C501C67D67E007332DA /* FontValidator */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = FontValidator; sourceTree = "<group>"; };
+		565A9E961D05F3C800F420BA /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		565FFDD81C67CC4E00E203FB /* FontValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FontValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565FFDDB1C67CC4E00E203FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		565FFDDC1C67CC4E00E203FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				565FFDE71C67CC4E00E203FB /* Assets.xcassets */,
 				565FFDE91C67CC4E00E203FB /* MainMenu.xib */,
 				565FFDEC1C67CC4E00E203FB /* Info.plist */,
+				565A9E961D05F3C800F420BA /* Credits.html */,
 				565FFDDE1C67CC4E00E203FB /* Supporting Files */,
 			);
 			path = FontValidator;
@@ -181,6 +184,7 @@
 				565FFDE61C67CC4E00E203FB /* Document.xib in Resources */,
 				56477C511C67D67E007332DA /* FontValidator in Resources */,
 				565FFDEB1C67CC4E00E203FB /* MainMenu.xib in Resources */,
+				565A9E971D05F3C800F420BA /* Credits.html in Resources */,
 				56E138F81C69EB69004C7072 /* libpng16.16.dylib in Resources */,
 				56E138F71C69EB68004C7072 /* libfreetype.6.dylib in Resources */,
 			);
