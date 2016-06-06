@@ -53,7 +53,7 @@ LIBRARIES_2=ValCommon GMath Glyph OTFontFileVal
 COMPAT_LIBRARIES=$(COMPAT_LIBRARIES_1)
 LIBRARIES=$(LIBRARIES_1) $(LIBRARIES_2)
 GENDOC_EXE=GenerateFValData
-MAIN_EXE=FontVal FontValidator DSIGInfo SVGInfo
+MAIN_EXE=FontVal FontValidator DSIGInfo SVGInfo CFFInfo
 
 MCS=mcs -debug- -optimize+
 
@@ -128,7 +128,7 @@ bin/Glyph.dll:
 
 # running just xbuild (from monodevelop) plain also work for GenerateFValData.
 # but it's implementation of PostBuildEvent is lacking.
-GenerateFValData/bin/Debug/GenerateFValData.exe:
+GenerateFValData/bin/Debug/GenerateFValData.exe: GenerateFValData/ValTests.cs
 	( cd GenerateFValData && \
         mkdir -p bin/Debug && \
         $(MCS) -r:System.Web  -target:exe \
@@ -152,7 +152,8 @@ bin/OTFontFileVal.dll:
 bin/FontValidator.exe:
 	( cd FontValidator && \
         $(MCS) -lib:../bin/ $(EXTRA_DEV_OPTS) -r:OTFontFileVal -r:OTFontFile -r:ValCommon \
-        -target:exe -out:../$@ *.cs )
+        -target:exe -out:../$@ *.cs \
+	../Compat/Xsl.cs )
 
 bin/FontVal.exe:
 	( cd FontVal && \
@@ -179,4 +180,11 @@ bin/SVGInfo.exe: SVGInfo/SVGInfo.cs
 	( cd SVGInfo && \
         $(MCS) -lib:../bin/ $(EXTRA_DEV_OPTS) \
         -target:exe -out:../$@ *.cs \
+        ../OTFontFile/*.cs )
+
+bin/CFFInfo.exe: CFFInfo/CFFInfo.cs
+	( cd CFFInfo && \
+        $(MCS) -lib:../bin/ $(EXTRA_DEV_OPTS) \
+        -target:exe -out:../$@ *.cs \
+        ../OTFontFileVal/Overlap.cs \
         ../OTFontFile/*.cs )

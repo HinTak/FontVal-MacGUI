@@ -378,14 +378,14 @@ namespace OTFontFile
             string sName = null;
             try
             {
-                sName = GetString(3, 0xffff, 0x0409, 4);  // MS, any encoding, english, name
+                sName = GetString(3, 0xffff, 0x0409, 4);  // MS, any encoding, English, name
                 if (sName == null)
                 {
                     sName = GetString(3, 0xffff, 0xffff, 4); // MS, any encoding, any language, name
                 }
                 if (sName == null)
                 {
-                    sName = GetString(1, 0, 0, 4); // mac, roman, english, name
+                    sName = GetString(1, 0, 0, 4); // mac, roman, English, name
                 }
 
                 // validate surrogate content
@@ -414,14 +414,14 @@ namespace OTFontFile
 
             try
             {
-                sVersion = GetString(3, 0xffff, 0x0409, 5);  // MS, any encoding, english, version
+                sVersion = GetString(3, 0xffff, 0x0409, 5);  // MS, any encoding, English, version
                 if (sVersion == null)
                 {
                     sVersion = GetString(3, 0xffff, 0xffff, 5); // MS, any encoding, any language, version
                 }
                 if (sVersion == null)
                 {
-                    sVersion = GetString(1, 0, 0, 5); // mac, roman, english, version
+                    sVersion = GetString(1, 0, 0, 5); // mac, roman, English, version
                 }
 
                 // validate surrogate content
@@ -450,14 +450,14 @@ namespace OTFontFile
 
             try
             {
-                sStyle = GetString(3, 0xffff, 0x0409, 2);  // MS, any encoding, english, subfamily (style)
+                sStyle = GetString(3, 0xffff, 0x0409, 2);  // MS, any encoding, English, subfamily (style)
                 if (sStyle == null)
                 {
                     sStyle = GetString(3, 0xffff, 0xffff, 2); // MS, any encoding, any language, subfamily (style)
                 }
                 if (sStyle == null)
                 {
-                    sStyle = GetString(1, 0, 0, 2); // mac, roman, english, subfamily (style)
+                    sStyle = GetString(1, 0, 0, 2); // mac, roman, English, subfamily (style)
                 }
             }
             catch

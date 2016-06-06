@@ -817,16 +817,16 @@ namespace OTFontFileVal
             {
                 bool bCopyrightOk = true;
 
-                // get mac roman english Copyright string if present
+                // get mac roman English Copyright string if present
                 string sMac = GetString(1, 0, 0, 0);
 
-                // get windows 3,0 english Copyright string if present
+                // get windows 3,0 English Copyright string if present
                 string sWin3_0 = GetString(3, 0, 1033, 0);
 
-                // get windows 3,1 english Copyright string if present
+                // get windows 3,1 English Copyright string if present
                 string sWin3_1 = GetString(3, 1, 1033, 0);
 
-                // get windows 3,10 english Copyright string if present
+                // get windows 3,10 English Copyright string if present
                 string sWin3_10 = GetString(3, 10, 1033, 0);
 
                 // compare strings
@@ -916,16 +916,16 @@ namespace OTFontFileVal
             {
                 bool bTrademarkOk = true;
 
-                // get mac roman english Trademark string if present
+                // get mac roman English Trademark string if present
                 string sMac = GetString(1, 0, 0, 7);
 
-                // get windows 3,0 english Trademark string if present
+                // get windows 3,0 English Trademark string if present
                 string sWin3_0 = GetString(3, 0, 1033, 7);
 
-                // get windows 3,1 english Trademark string if present
+                // get windows 3,1 English Trademark string if present
                 string sWin3_1 = GetString(3, 1, 1033, 7);
 
-                // get windows 3,10 english Trademark string if present
+                // get windows 3,10 English Trademark string if present
                 string sWin3_10 = GetString(3, 10, 1033, 7);
 
                 // compare strings
@@ -1013,16 +1013,16 @@ namespace OTFontFileVal
             {
                 bool bDescriptionOk = true;
 
-                // get mac roman english Description string if present
+                // get mac roman English Description string if present
                 string sMac = GetString(1, 0, 0, 10);
 
-                // get windows 3,0 english Description string if present
+                // get windows 3,0 English Description string if present
                 string sWin3_0 = GetString(3, 0, 1033, 10);
 
-                // get windows 3,1 english Description string if present
+                // get windows 3,1 English Description string if present
                 string sWin3_1 = GetString(3, 1, 1033, 10);
 
-                // get windows 3,10 english Description string if present
+                // get windows 3,10 English Description string if present
                 string sWin3_10 = GetString(3, 10, 1033, 10);
 
                 // compare strings

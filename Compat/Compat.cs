@@ -242,7 +242,7 @@ namespace OTFontFile.Rasterizer
         }
 
         // These structures largely have their OTSPEC meanings,
-        // except there is no need to store array lengths seperately
+        // except there is no need to store array lengths separately
         // as .NET arrays know their own lengths.
 
         public class HDMX

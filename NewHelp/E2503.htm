@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+<LINK REL=STYLESHEET HREF="fv.css" TYPE="text/css">
+<TITLE>E2503</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+        <param name="Keyword" value="E2503">
+        <param name="Keyword" value="VDMX">
+</OBJECT>
+<H1><A NAME="E2503"></A>Message: E2503</H1></div>
+<HR>
+<P><B><I>VDMX</I>: The VDMX data can't be validated due to an error while rasterizing the glyphs, likely a hinting instruction error</B></P>
+<P>Metrics affected by hints can only be validated at runtime. Therefore, this error is typically generated when the Font Validator uses the rasterizer to execute the hinting instructions contained in the font. The detail of this error message may or may not refer to the glyph that is associated with the bad hinting code, depending on how the overflow or other rasterizing error was encountered. For example, in the case of a stack overflow, the problem may be due to hinting instructions for a previous glyph not having been properly removed from the stack. To perform detailed checks of hinting instructions, select rasterization testing in the Font Validator, or use a tool such as Microsoft's Flint or VTT.</P>
+<P>For more information, see the <A TARGET="top" HREF="http://go.microsoft.com/fwlink?LinkID=10371">VDMX table specification</A>.
+</BODY>
+</HTML>
+

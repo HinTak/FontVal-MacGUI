@@ -117,7 +117,7 @@ namespace NS_GMath
              *    from the control points specification
              */
             
-            double rootToAdd=-1.0;                  // asign an invalid parametric value
+            double rootToAdd=-1.0;                  // assign an invalid parametric value
             int numRootRed=-1, numRootRealRed=-1; // roots after reduction
             CNum[] rootRed=null;
             if (Equation.Evaluate(0.0,a,b,c,d)==0.0)
@@ -356,7 +356,7 @@ namespace NS_GMath
              *    from the control points specification
              */ 
             
-            double rootToAdd=-1.0; // asign an invalid parametric value
+            double rootToAdd=-1.0; // assign an invalid parametric value
             int numRootRealRed=-1; // roots after reduction
             double[] rootRed=null;
             if (Equation.Evaluate(0.0,a,b,c,d,e)==0.0)

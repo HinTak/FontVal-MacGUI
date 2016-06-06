@@ -200,7 +200,7 @@ namespace OTFontFile
             {
             }
 
-            // NOTE: SubTableFormat2 is not suppported under windows
+            // NOTE: SubTableFormat2 is not supported under windows
         }
 
         /************************
@@ -328,7 +328,7 @@ namespace OTFontFile
                 }
             }
 
-            // Cant set number of tables this is done by adding or removing tables
+            // Can't set number of tables this is done by adding or removing tables
             public ushort nTables
             {
                 get

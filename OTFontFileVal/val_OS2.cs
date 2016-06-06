@@ -235,7 +235,7 @@ namespace OTFontFileVal
                     bool bWeightClassOk = true;
 
                     // compare to the PANOSE weight value
-                    if (panose_byte1 == 2 || panose_byte1 == 3 || panose_byte1 == 4) // latin text, hand writing, or decorative
+                    if (panose_byte1 == 2 || panose_byte1 == 3 || panose_byte1 == 4) // Latin text, hand writing, or decorative
                     {
                         if (panose_byte3 > 1)
                         {
@@ -481,7 +481,7 @@ namespace OTFontFileVal
             {
                 bool bPanoseOk = true;
 
-                if (panose_byte1 < 5) // panose kind valid, but not latin symbol
+                if (panose_byte1 < 5) // panose kind valid, but not Latin symbol
                 {
                     if (fontOwner.ContainsSymbolsOnly())
                     {
@@ -490,7 +490,7 @@ namespace OTFontFileVal
                         bRet = false;
                     }
                 }
-                else if (panose_byte1 == 5) // panose family kind == latin symbol
+                else if (panose_byte1 == 5) // panose family kind == Latin symbol
                 {
                     if (!fontOwner.ContainsSymbolsOnly())
                     {
@@ -509,7 +509,7 @@ namespace OTFontFileVal
 
 
 
-                if (panose_byte1 == 2) // family kind == latin text
+                if (panose_byte1 == 2) // family kind == Latin text
                 {
                     if ( panose_byte2 > 15 )
                     {
@@ -526,7 +526,7 @@ namespace OTFontFileVal
                     bRet = false;
                 }
 
-                if (panose_byte1 == 5) // panose family kind == latin symbol
+                if (panose_byte1 == 5) // panose family kind == Latin symbol
                 {
                     if (panose_byte3 != 1) // weight must be 1 for symbols
                     {
@@ -544,9 +544,9 @@ namespace OTFontFileVal
                 }
 
 
-                if (panose_byte1 == 2) // family kind == latin text
+                if (panose_byte1 == 2) // family kind == Latin text
                 {
-                    // the following tests are only valid when family kind is latin text
+                    // the following tests are only valid when family kind is Latin text
 
                     if ( panose_byte4 > 9 )
                     {

@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+<LINK REL=STYLESHEET HREF="fv.css" TYPE="text/css">
+<TITLE>E1117</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+        <param name="Keyword" value="E1117">
+        <param name="Keyword" value="glyf">
+</OBJECT>
+<H1><A NAME="E1117"></A>Message: E1117</H1></div>
+<HR>
+<P><B><I>glyf</I>: Shift of component either undefined or ambigously defined</B></P>
+<P>There is contradictory or insufficient information in the bitfield that defines the component shift. The placement of a component is specified in the glyf table as either: (1) x and y offsets, or (2) as two point numbers. To interpret the placement values, the rasterizer relies on the settings of bits 0 and 1 in the component flag. Bits 0 and 1 should be set as follows:<BR><BR>Bit 0 - If this is set, the placement values are words; otherwise they are bytes.<BR>Bit 1 - If this is set, the placement values are xy offsets (in FUnits); otherwise they are point numbers.</P>
+<P>For more information, see the <A TARGET="top" HREF="http://go.microsoft.com/fwlink?LinkID=10348">glyf table specification</A>.
+</BODY>
+</HTML>
+

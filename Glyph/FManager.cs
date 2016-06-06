@@ -108,7 +108,7 @@ namespace NS_Glyph
             // interfaces
             this.i_IOGlyphs=null;
             
-            // flags - which tests shoud be performed
+            // flags - which tests should be performed
             this.f_performGV=new FlagsGV();
             this.f_performGC=new Flags(typeof(DefsGM.TypeGM));
             this.FlagsSetDefault();
