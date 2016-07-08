@@ -38,7 +38,7 @@ namespace OTFontFile.Rasterizer
         private static Library _lib;
         private static Face _face;
         private DevMetricsData m_DevMetricsData;
-        private bool m_UserCancelledCalcDevMetrics = false;
+        private bool m_UserCancelledTest = false;
 
         public delegate void RastTestErrorDelegate (string sStringName, string sDetails);
 
@@ -120,7 +120,7 @@ namespace OTFontFile.Rasterizer
                 this.m_DevMetricsData.hdmxData.Records = new HDMX_DeviceRecord[requestedPixelSize.Count];
 
                 for (int i = 0; i < requestedPixelSize.Count; i++) {
-                    if ( m_UserCancelledCalcDevMetrics ) return null;
+                    if ( m_UserCancelledTest ) return null;
                     trySetPixelSizes(0, requestedPixelSize[i]);
                     this.m_DevMetricsData.hdmxData.Records[i] = new HDMX_DeviceRecord();
                     this.m_DevMetricsData.hdmxData.Records[i].Widths = new byte[_face.GlyphCount];
@@ -144,7 +144,7 @@ namespace OTFontFile.Rasterizer
                 for (uint j = 254; j > 0; j--) {
                     if ( remaining == 0 )
                         break;
-                    if ( m_UserCancelledCalcDevMetrics ) return null;
+                    if ( m_UserCancelledTest ) return null;
                     trySetPixelSizes(0, j);
                     for (uint i = 0; i < this.m_DevMetricsData.ltshData.yPels.Length; i++) {
                         if ( this.m_DevMetricsData.ltshData.yPels[i] > 1 )
@@ -189,7 +189,7 @@ namespace OTFontFile.Rasterizer
 
                         uint x_pixelSize = (uint) ( (pVDMXyResolution[i] == 0) ?
                                                     0 : (pVDMXxResolution[i] * j + pVDMXyResolution[i]/2 ) / pVDMXyResolution[i] );
-                        if ( m_UserCancelledCalcDevMetrics ) return null;
+                        if ( m_UserCancelledTest ) return null;
                         trySetPixelSizes(x_pixelSize, j);
                         short yMax = 0;
                         short yMin = 0;
@@ -215,7 +215,7 @@ namespace OTFontFile.Rasterizer
         public ushort RasterNewSfnt (FileStream fontFileStream, uint faceIndex)
         {
             _face = _lib.NewFace(fontFileStream.Name, (int)faceIndex);
-            m_UserCancelledCalcDevMetrics = false;
+            m_UserCancelledTest = false;
 
             return 1; //Not used by caller
         }
@@ -226,7 +226,7 @@ namespace OTFontFile.Rasterizer
 
         public void CancelCalcDevMetrics ()
         {
-            m_UserCancelledCalcDevMetrics = true;
+            m_UserCancelledTest = true;
         }
 
         public int GetRastErrorCount ()
