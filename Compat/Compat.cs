@@ -39,6 +39,7 @@ namespace OTFontFile.Rasterizer
         private static Face _face;
         private DevMetricsData m_DevMetricsData;
         private bool m_UserCancelledTest = false;
+        private int m_RastErrorCount;
 
         public delegate void RastTestErrorDelegate (string sStringName, string sDetails);
 
@@ -92,7 +93,44 @@ namespace OTFontFile.Rasterizer
                              UpdateProgressDelegate pUpdateProgressDelegate,
                              int numGlyphs)
         {
+            int count_sets = 0;
+            LoadFlags lf = LoadFlags.Default;
+            LoadTarget lt = LoadTarget.Normal;
+            if ( setBW )
+            {
+                lf = LoadFlags.Default|LoadFlags.NoAutohint|LoadFlags.Monochrome|LoadFlags.ComputeMetrics;
+                lt = LoadTarget.Mono;
+
+                count_sets++;
+            }
+            if ( setGrayscale )
+            {
+                lf = LoadFlags.Default|LoadFlags.NoAutohint|LoadFlags.ComputeMetrics;
+                lt = LoadTarget.Normal;
+
+                count_sets++;
+            }
+            if ( setCleartype )
+            {
+                lf = LoadFlags.Default|LoadFlags.NoAutohint|LoadFlags.ComputeMetrics;
+                lt = LoadTarget.Lcd;
+
+                count_sets++;
+            }
+            if ( count_sets != 1 )
+                throw new ArgumentOutOfRangeException("Only one of BW/Grayscale/Cleartype should be set");
+
             throw new NotImplementedException("UnImplemented OTFontFile.Rasterizer:RastTest");
+            for (int i = 0; i < arrPointSizes.Length ; i++)
+            {
+                if ( m_UserCancelledTest ) return true;
+                _face.SetCharSize(new Fixed26Dot6(arrPointSizes[i]),
+                                  new Fixed26Dot6(arrPointSizes[i]),
+                                  (uint) resX, (uint) resY);
+                for (uint ig = 0; ig < numGlyphs; ig++) {
+                    _face.LoadGlyph(ig, lf, lt);
+                }
+            }
         }
 
         public DevMetricsData CalcDevMetrics (int Huge_calcHDMX, int Huge_calcLTSH, int Huge_calcVDMX,
@@ -216,12 +254,14 @@ namespace OTFontFile.Rasterizer
         {
             _face = _lib.NewFace(fontFileStream.Name, (int)faceIndex);
             m_UserCancelledTest = false;
+            m_RastErrorCount = 0;
 
             return 1; //Not used by caller
         }
 
         public void CancelRastTest ()
         {
+            m_UserCancelledTest = true;
         }
 
         public void CancelCalcDevMetrics ()
@@ -231,7 +271,7 @@ namespace OTFontFile.Rasterizer
 
         public int GetRastErrorCount ()
         {
-            return 0;
+            return m_RastErrorCount;
         }
 
         public class DevMetricsData
