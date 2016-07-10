@@ -48,6 +48,17 @@ namespace OTFontFile.Rasterizer
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool SetDllDirectory(string path);
 
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int diagnostics_Function(string message, string opcode,
+                                                 int range_base, int is_composite,
+                                                 int IP, int callTop, int opc, int start);
+
+        [DllImport("freetype6.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void TT_Diagnostics_Set([MarshalAs(UnmanagedType.FunctionPtr)] diagnostics_Function diagnostics);
+
+        [DllImport("freetype6.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void TT_Diagnostics_Unset();
+
         private RasterInterf ()
         {
             PlatformID pid = Environment.OSVersion.Platform;
@@ -100,6 +111,7 @@ namespace OTFontFile.Rasterizer
             {
                 lf = LoadFlags.Default|LoadFlags.NoAutohint|LoadFlags.Monochrome|LoadFlags.ComputeMetrics;
                 lt = LoadTarget.Mono;
+                _lib.PropertySet("truetype", "interpreter-version", 35);
 
                 count_sets++;
             }
@@ -107,6 +119,7 @@ namespace OTFontFile.Rasterizer
             {
                 lf = LoadFlags.Default|LoadFlags.NoAutohint|LoadFlags.ComputeMetrics;
                 lt = LoadTarget.Normal;
+                _lib.PropertySet("truetype", "interpreter-version", 35);
 
                 count_sets++;
             }
@@ -114,23 +127,85 @@ namespace OTFontFile.Rasterizer
             {
                 lf = LoadFlags.Default|LoadFlags.NoAutohint|LoadFlags.ComputeMetrics;
                 lt = LoadTarget.Lcd;
+                _lib.PropertySet("truetype", "interpreter-version", 40);
 
                 count_sets++;
             }
             if ( count_sets != 1 )
                 throw new ArgumentOutOfRangeException("Only one of BW/Grayscale/Cleartype should be set");
 
-            throw new NotImplementedException("UnImplemented OTFontFile.Rasterizer:RastTest");
+            try
+            {
+                TT_Diagnostics_Unset();
+            }
+            catch (Exception e)
+            {
+                throw new NotImplementedException("UnImplemented in this version of Freetype: " + FTVersion);
+            };
+
+            FTMatrix fmatrix = new FTMatrix(new Fixed16Dot16( matrix[0,0] * stretchX ), new Fixed16Dot16( matrix[0,1] * stretchX ),
+                                            new Fixed16Dot16( matrix[1,0] * stretchY ), new Fixed16Dot16( matrix[1,1] * stretchY ));
+            FTVector fdelta = new FTVector(new Fixed16Dot16( matrix[0,2] * stretchX ), new Fixed16Dot16( matrix[1,2] * stretchY ));
+            /* matrix[2,0] = matrix[2,1] = 0, matrix[2,2] =1, not used */
+
+            FTMatrix mskew = new FTMatrix(new Fixed16Dot16( 1 ), new Fixed16Dot16( 0 ),
+                                          (new Fixed16Dot16(skew)).Tan(), new Fixed16Dot16( 1 ));
+            FTMatrix.Multiply(mskew, fmatrix);
+            fdelta.Transform(mskew);
+
+            FTVector rot_row1 = new FTVector(new Fixed16Dot16( 1 ), new Fixed16Dot16( 0 ));
+            FTVector rot_row2 = new FTVector(new Fixed16Dot16( 1 ), new Fixed16Dot16( 0 ));
+            rot_row1.Rotate(new Fixed16Dot16(rotation));
+            rot_row2.Rotate(new Fixed16Dot16(rotation + 90));
+            FTMatrix mrot = new FTMatrix(rot_row1, rot_row2);
+            FTMatrix.Multiply(mrot, fmatrix);
+            fdelta.Rotate(new Fixed16Dot16(-rotation));
+
             for (int i = 0; i < arrPointSizes.Length ; i++)
             {
                 if ( m_UserCancelledTest ) return true;
+                pUpdateProgressDelegate("Processing Size " + arrPointSizes[i]);
                 _face.SetCharSize(new Fixed26Dot6(arrPointSizes[i]),
                                   new Fixed26Dot6(arrPointSizes[i]),
                                   (uint) resX, (uint) resY);
+                _face.SetTransform(fmatrix, fdelta);
                 for (uint ig = 0; ig < numGlyphs; ig++) {
+                    diagnostics_Function diagnostics =
+                        (message, opcode, range_base, is_composite, IP, callTop, opc, start) =>
+                        {
+                            string sDetails = "Size " + arrPointSizes[i] + ", " + opcode;
+                            switch ( range_base )
+                            {
+                                case 3:
+                                    if (is_composite != 0)
+                                        sDetails += ", Composite Glyph ID " + ig;
+                                    else
+                                        sDetails += ", Glyph ID " + ig;
+                                    break;
+                                case 1: /* font */
+                                case 2: /* cvt */ // ?
+                                    sDetails += ", Pre-Program";
+                                    break;
+                                default: /* none */
+                                    sDetails += ", Unknown?"; // ?
+                                    break;
+                            }
+
+                            sDetails += ", At ByteOffset " + IP;
+
+                            if (callTop > 0)
+                                sDetails += ", In function " + opc + " offsetted by " + (IP - start);
+
+                            pRastTestErrorDelegate(message, sDetails);
+                            m_RastErrorCount += 1;
+                            return 0; // Not used currently.
+                        };
+                    TT_Diagnostics_Set(diagnostics);
                     _face.LoadGlyph(ig, lf, lt);
+                    TT_Diagnostics_Unset();
                 }
             }
+            return true;
         }
 
         public DevMetricsData CalcDevMetrics (int Huge_calcHDMX, int Huge_calcLTSH, int Huge_calcVDMX,
@@ -140,6 +215,7 @@ namespace OTFontFile.Rasterizer
                                               ushort[] pVDMXxResolution, ushort[] pVDMXyResolution,
                                               ushort cVDMXResolutions, UpdateProgressDelegate pUpdateProgressDelegate)
         {
+            _lib.PropertySet("truetype", "interpreter-version", 35);
             if ( Huge_calcHDMX == 0 && Huge_calcLTSH == 0 && Huge_calcVDMX == 0 )
                 return null;
 
