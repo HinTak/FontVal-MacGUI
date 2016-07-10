@@ -236,7 +236,7 @@ namespace OTFontFileVal
                     }
                     catch (Exception e)
                     {
-                        v.ApplicationError(T.T_NULL, E._rast_A_ExceptionUnhandled, null, e.StackTrace);
+                        v.ApplicationError(T.T_NULL, E._rast_A_ExceptionUnhandled, null, e.Message + e.StackTrace);
                     }
                 }
                 else if (canrast == 0)
@@ -289,7 +289,7 @@ namespace OTFontFileVal
                     }
                     catch (Exception e)
                     {
-                        v.ApplicationError(T.T_NULL, E._rast_A_ExceptionUnhandled, null, e.StackTrace);
+                        v.ApplicationError(T.T_NULL, E._rast_A_ExceptionUnhandled, null, e.Message + e.StackTrace);
                     }
                 }
                 else if (canrast == 0)
@@ -345,7 +345,7 @@ namespace OTFontFileVal
                     }
                     catch (Exception e)
                     {
-                        v.ApplicationError(T.T_NULL, E._rast_A_ExceptionUnhandled, null, e.StackTrace);
+                        v.ApplicationError(T.T_NULL, E._rast_A_ExceptionUnhandled, null, e.Message + e.StackTrace);
                     }
                 }
                 else if (canrast == 0)
