@@ -150,7 +150,7 @@ namespace OTFontFile.Rasterizer
 
             FTMatrix mskew = new FTMatrix(new Fixed16Dot16( 1 ), new Fixed16Dot16( 0 ),
                                           (new Fixed16Dot16(skew)).Tan(), new Fixed16Dot16( 1 ));
-            FTMatrix.Multiply(mskew, fmatrix);
+            FTMatrix.Multiply(ref mskew, ref fmatrix);
             fdelta.Transform(mskew);
 
             FTVector rot_row1 = new FTVector(new Fixed16Dot16( 1 ), new Fixed16Dot16( 0 ));
@@ -158,7 +158,7 @@ namespace OTFontFile.Rasterizer
             rot_row1.Rotate(new Fixed16Dot16(rotation));
             rot_row2.Rotate(new Fixed16Dot16(rotation + 90));
             FTMatrix mrot = new FTMatrix(rot_row1, rot_row2);
-            FTMatrix.Multiply(mrot, fmatrix);
+            FTMatrix.Multiply(ref mrot, ref fmatrix);
             fdelta.Rotate(new Fixed16Dot16(-rotation));
 
             for (int i = 0; i < arrPointSizes.Length ; i++)
