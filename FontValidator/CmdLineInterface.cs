@@ -140,6 +140,11 @@ namespace FontValidator
                 case ReportFileDestination.TempFiles:
                     string sTemp = Path.GetTempFileName();
                     sReportFile = sTemp + ".report.xml";
+                    while ( File.Exists( sReportFile ) )
+                    {
+                        sTemp = Path.GetTempFileName();
+                        sReportFile = sTemp + ".report.xml";
+                    }
                     File.Move(sTemp, sReportFile);
                     break;
                 case ReportFileDestination.FixedDir:
