@@ -96,7 +96,14 @@ namespace FontValidator
                 xslTrans.Load(sDestFile);
                 string sTXTFile = sReportFile.Replace(".report.xml", ".report.txt");
                 if ( sTXTFile != sReportFile )
-                    xslTrans.Transform(sReportFile, sTXTFile);
+                    try
+                    {
+                        xslTrans.Transform(sReportFile, sTXTFile);
+                    }
+                    catch (Exception e)
+                    {
+                        ErrOut( "xslTrans.Transform failure: " + e.Message );
+                    }
 
                 using (StreamReader sr = new StreamReader(sTXTFile))
                 {
