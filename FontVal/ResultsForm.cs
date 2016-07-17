@@ -134,7 +134,13 @@ namespace FontVal
                         File.WriteAllBytes(sXSL, Compat.Xsl.fval);
                         var xslTrans = new XslCompiledTransform();
                         xslTrans.Load(sXSL);
-                        xslTrans.Transform(sFilename, sFileToShow);
+                        try
+                        {
+                            xslTrans.Transform(sFilename, sFileToShow);
+                        }
+                        catch(Exception e)
+                        {
+                        }
                     }
                 }
                 axWebBrowser1.Navigate(sFileToShow, false); // false=No new window

@@ -83,7 +83,13 @@ namespace OTFontFileVal {
                     xslTrans.Load(sDestFile);
                     string sHTMLFile = sReportFile.Replace(".report.xml", ".report.html");
                     if ( sHTMLFile != sReportFile )
-                        xslTrans.Transform(sReportFile, sHTMLFile);
+                        try
+                        {
+                            xslTrans.Transform(sReportFile, sHTMLFile);
+                        }
+                        catch(Exception e)
+                        {
+                        }
                 }
             }
             catch (Exception)
