@@ -925,7 +925,10 @@ namespace OTFontFileVal
                                     bRet = false;
                                 }
                         
-                                if (usLastCharIndex != charLast)
+                                if ( (usLastCharIndex != charLast) &&
+                                     ( (cmapTable.GetEncodingTableEntry(3,10) == null) || (usLastCharIndex != 0xFFFF) )
+                                     )
+
                                 {
                                     String sDetails = "actual = 0x" + usLastCharIndex.ToString("x4") + ", calculated = 0x" + charLast.ToString("x4");
                                     v.Error(T.OS_2_CharIndexes, E.OS_2_E_usLastCharIndex, m_tag, sDetails);
