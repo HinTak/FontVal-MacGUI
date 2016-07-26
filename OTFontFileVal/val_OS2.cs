@@ -934,6 +934,11 @@ namespace OTFontFileVal
                                     v.Error(T.OS_2_CharIndexes, E.OS_2_E_usLastCharIndex, m_tag, sDetails);
                                     bRet = false;
                                 }
+                                else
+                                {
+                                    // (3.10) present, and usLastCharIndex == 0xFF
+                                    v.Info(T.OS_2_CharIndexes, I.OS_2_I_usLastCharIndex, m_tag);
+                                }
                             }
                         }
                         else
