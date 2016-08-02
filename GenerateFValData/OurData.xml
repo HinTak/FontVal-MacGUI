@@ -9656,10 +9656,25 @@ All tables should be recorded in the table directory with their actual length. T
     atom="_rast_W_APPLE_ONLY_INSTR"
     linkTitle="TrueType instruction set"
     specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
-    shortDesc="Instruction is only valid on the Apple platform"
+    shortDesc="GETVARIATION, GETDATA (Apple-specific) or IDEFs at opcode 0x91,0x92"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>This warning indicates that the instruction used is not valid under Windows. The instruction is only valid on Apple platforms. Please consult Apple documentation to find out for which versions of the Mac OS the instruction is valid.</problem>
+  <problem>This warning indicates that opcode 0x91 or 0x92 is detected.
+
+&lt;P&gt;Apple uses opcode 0x91 and 0x92 for their Quick Draw GX-specific instructions GETVARIATION and GETDATA.
+The GETVARIATION and GETDATA instructions are not valid under Windows. These instructions are only valid on Apple platforms. Please consult Apple documentation to find out for which versions of the Mac OS the instruction is valid.
+
+&lt;P&gt;Microsoft removed support for GETVARIATION and GETDATA in its
+bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
+
+&lt;P&gt;The specification says that IDEFs work for undefined opcodes only.
+
+&lt;P&gt;IDEFs for bytecodes 0x91 and 0x92 are not possible with the Apple bytecode engine since those instructions are undocumented but still in use for backwards compatibility.
+
+&lt;P&gt;Microsoft ships two fonts, LaoUIb.ttf and LaoUI.ttf, which use IDEFs at opcode 0x91 and 0x92 (and therefore do not work correctly on Mac OS). Apple ships Skia.ttf which uses GETVARIATION (and therefore do not work correctly on MS Windows).
+
+&lt;P&gt;To support multiple platforms, font designers are advised to avoid either usage of opcode 0x91 and 0x92 in new fonts.
+  </problem>
 </item>
 
 <item
