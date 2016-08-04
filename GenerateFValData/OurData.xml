@@ -1,5 +1,16 @@
 <helpitems xmlns="urn:helpgen">
 <item
+    helpID="A1113"
+    atom="GERR_VAL_FAILURE"
+    linkTitle="glyf table specification"
+    specLink="http://www.microsoft.com/typography/otspec/glyf.htm"
+    shortDesc="Test failed because of unhandeled exception"
+    fwLinkID="10348"
+    tableName="glyf">
+    <problem>Unused in either 1.0.1286.23890 or 1.1.3359.19055</problem>
+</item>
+
+<item
     helpID="A2100"
     atom="OS_2_A_CodePageNotInstalled"
     linkTitle="OS/2 table specification"
