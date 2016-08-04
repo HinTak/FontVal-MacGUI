@@ -88,7 +88,7 @@
 		<value>A1110: Application error</value>
 	</data>
 	<data name="GERR_VAL_UNABLE_TO_PERFORM_TEST">
-		<value>A1111: Unable to perform test due to previously detected errors</value>
+		<value>I1111: Unable to perform test due to previously detected errors</value>
 	</data>
 	<data name="GERR_VAL_ABORTED">
 		<value>A1112: Test aborted</value>
