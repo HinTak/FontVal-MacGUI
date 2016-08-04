@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GSPreferencesController">
+            <connections>
+                <outlet property="prefsPanel" destination="1922" id="1924"/>
+                <outlet property="window" destination="742" id="1925"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="GSApplication"/>
+        <userDefaultsController representsSharedInstance="YES" id="359" userLabel="Shared User Defaults Controller"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MainPreferenceWindow" animationBehavior="default" id="742" userLabel="MainPreferences">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <rect key="contentRect" x="489" y="344" width="440" height="155"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="743">
+                <rect key="frame" x="0.0" y="5" width="440" height="155"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view translatesAutoresizingMaskIntoConstraints="NO" id="cOg-gw-WH7">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="155"/>
+                        <subviews>
+                            <button verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="E8C-nj-esp">
+                                <rect key="frame" x="132" y="119" width="225" height="18"/>
+                                <buttonCell key="cell" type="check" title="Automatically check for updates." bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="9B2-SK-7fk">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="359" name="value" keyPath="values.SUEnableAutomaticChecks" id="afQ-3r-fpi">
+                                        <dictionary key="options">
+                                            <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JnK-xg-1D6">
+                                <rect key="frame" x="132" y="92" width="193" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show cutting edge versions" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="0My-hC-kvW">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="359" name="value" keyPath="values.SUShowCuttingEdgeVersion" id="6Fu-2g-YAs">
+                                        <dictionary key="options">
+                                            <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AjJ-RE-aDg">
+                                <rect key="frame" x="74" y="64" width="75" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Last check:" id="Hmq-Nq-hhb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cg8-TO-Dpp">
+                                <rect key="frame" x="146" y="23" width="112" height="32"/>
+                                <buttonCell key="cell" type="push" title="Check Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Ws-Gb-ORg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="-3" id="fAg-8r-lH9"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aIn-oT-tKm">
+                                <rect key="frame" x="150" y="64" width="38" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="1eS-NW-c80">
+                                    <dateFormatter key="formatter" dateStyle="long" timeStyle="short" doesRelativeDateFormatting="YES" id="nTS-Wj-HZP"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="359" name="value" keyPath="values.SULastCheckTime" id="NYW-xt-m4b">
+                                        <dictionary key="options">
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="aIn-oT-tKm" firstAttribute="leading" secondItem="AjJ-RE-aDg" secondAttribute="trailing" constant="5" id="0hq-Nb-f4e"/>
+                            <constraint firstItem="Cg8-TO-Dpp" firstAttribute="leading" secondItem="aIn-oT-tKm" secondAttribute="leading" id="10Q-zX-zGk"/>
+                            <constraint firstAttribute="bottom" secondItem="Cg8-TO-Dpp" secondAttribute="bottom" constant="30" id="1kg-ta-YOx"/>
+                            <constraint firstItem="AjJ-RE-aDg" firstAttribute="leading" secondItem="cOg-gw-WH7" secondAttribute="leading" constant="76" id="CTT-ff-Ca8"/>
+                            <constraint firstItem="E8C-nj-esp" firstAttribute="top" secondItem="cOg-gw-WH7" secondAttribute="top" constant="20" symbolic="YES" id="RQg-Og-D9B"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E8C-nj-esp" secondAttribute="trailing" constant="40" id="RaL-5f-aQO"/>
+                            <constraint firstItem="aIn-oT-tKm" firstAttribute="top" secondItem="JnK-xg-1D6" secondAttribute="bottom" constant="13" id="RhM-me-1Rh"/>
+                            <constraint firstItem="E8C-nj-esp" firstAttribute="leading" secondItem="JnK-xg-1D6" secondAttribute="leading" id="lFV-Ii-teC"/>
+                            <constraint firstItem="Cg8-TO-Dpp" firstAttribute="top" secondItem="aIn-oT-tKm" secondAttribute="bottom" constant="13" id="loo-pd-eMr"/>
+                            <constraint firstItem="aIn-oT-tKm" firstAttribute="leading" secondItem="JnK-xg-1D6" secondAttribute="leading" constant="18" id="wHp-Th-Eg3"/>
+                            <constraint firstItem="JnK-xg-1D6" firstAttribute="top" secondItem="E8C-nj-esp" secondAttribute="bottom" constant="13" id="zCN-e7-znc"/>
+                            <constraint firstItem="AjJ-RE-aDg" firstAttribute="baseline" secondItem="aIn-oT-tKm" secondAttribute="baseline" id="zVH-BT-Lwb"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cOg-gw-WH7" firstAttribute="top" secondItem="743" secondAttribute="top" id="7AY-gd-yhY"/>
+                    <constraint firstAttribute="bottom" secondItem="cOg-gw-WH7" secondAttribute="bottom" id="dIT-WZ-mlK"/>
+                    <constraint firstItem="cOg-gw-WH7" firstAttribute="leading" secondItem="743" secondAttribute="leading" id="eR3-0l-zD6"/>
+                    <constraint firstAttribute="trailing" secondItem="cOg-gw-WH7" secondAttribute="trailing" id="upW-3c-OCL"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="1917"/>
+            </connections>
+            <point key="canvasLocation" x="468" y="596.5"/>
+        </window>
+        <customObject id="1922" customClass="GSPrefsPanel"/>
+    </objects>
+</document>
