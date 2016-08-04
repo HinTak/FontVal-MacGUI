@@ -574,6 +574,7 @@ namespace OTFontFileVal {
         name_I_Preferred_subfamily_present,
         name_I_Preferred_subfamily_not_present,
         OS_2_I_RangeBitNotSet,
+        OS_2_I_usLastCharIndex,
         post_I_names_noAdobe,
         post_I_names_nomatch,
         post_I_v2_glyphNameIndex_notv2,

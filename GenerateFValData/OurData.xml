@@ -2731,6 +2731,17 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
 </item>
 
 <item
+    helpID="I2131"
+    atom="OS_2_I_usLastCharIndex"
+    linkTitle="OS/2 table specification"
+    specLink="http://www.microsoft.com/typography/otspec/os2.htm#lci"
+    shortDesc="The usLastCharIndex is 0xFFFF and a (3.10) cmap is present"
+    fwLinkID="10386"
+    tableName="OS/2">
+    <problem>The maximum Unicode index (character code) in this font, according to the cmap subtable for platform ID 3 and encoding ID 0 or 1. This value depends on which character sets the font supports. This field cannot represent supplementary character values (codepoints greater than 0xFFFF). Fonts that support supplementary characters should set the value in this field to 0xFFFF.</problem>
+</item>
+
+<item
     helpID="E2132"
     atom="OS_2_E_Version"
     linkTitle="OS/2 table specification"
