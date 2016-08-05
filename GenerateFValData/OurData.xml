@@ -18,7 +18,10 @@
     shortDesc="A range in the ulCodePageRange field cannot be validated because a code page is not installed"
     fwLinkID="10381"
     tableName="OS/2">
-    <problem>This message does not indicate there is an error in the font. To validate the codepage compliance of a font, all codepages covered by the font must be installed on the testing system.&lt;BR&gt;&lt;BR&gt;To install additional codepages in Windows, do the following:&lt;OL&gt;&lt;LI&gt;Go to Control Panel.&lt;/LI&gt;&lt;LI&gt;Choose Regional and Language Options.&lt;/LI&gt;&lt;LI&gt;Click the Advanced tab.&lt;/LI&gt;&lt;LI&gt;In the Codepage Conversion Tables list, select the codepages you wish to install. You will need to have your Windows installation disk available.&lt;/LI&gt;&lt;/OL&gt;</problem>
+    <problem>This message does not indicate there is an error in the font. To validate the codepage compliance of a font, all codepages covered by the font must be installed on the testing system.&lt;BR&gt;&lt;BR&gt;To install additional codepages in Windows, do the following:&lt;OL&gt;&lt;LI&gt;Go to Control Panel.&lt;/LI&gt;&lt;LI&gt;Choose Regional and Language Options.&lt;/LI&gt;&lt;LI&gt;Click the Advanced tab.&lt;/LI&gt;&lt;LI&gt;In the Codepage Conversion Tables list, select the codepages you wish to install. You will need to have your Windows installation disk available.&lt;/LI&gt;&lt;/OL&gt;
+
+    &lt;p&gt;This message is not used and should not be seen from 2015 onwards with FontVal 2.0 .
+  </problem>
 </item>
 
 <item
