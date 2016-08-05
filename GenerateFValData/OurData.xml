@@ -152,6 +152,10 @@
     tableName="General">
     <problem>A minimum of eight tables are required in a valid TrueType font: cmap, head, hhea, hmtx, maxp, name, OS/2, and post.&lt;BR&gt;&lt;BR&gt;If TrueType data is present in the font, then the following tables are also required: cvt, fpgm, glyf, loca, and prep. If CFF data is in the font, then both the CFF and VORG tables need to be present.&lt;BR&gt;&lt;BR&gt;Microsoft also requires that the DSIG table be present in fonts delivered by vendors to Microsoft.&lt;BR&gt;&lt;BR&gt;Microsoft further recommends that the gasp table be present in all fonts.To learn more about these recommendations, see the &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=10456&quot;&gt;Hinting and Production Guidelines Specification&lt;/A&gt;.</problem>
 </item>
+<!--
+    A commented out stale entry "W7003 / _FONT_W_MissingRequiredTable"
+    was removed in c2f1f1e7fda7d79e3e16dba682545e0c727c140d
+-->
 
 <item
     helpID="E0030"
