@@ -32,7 +32,23 @@
     shortDesc="An exception occurred during rasterization testing"
     fwLinkID="10368"
     tableName="Application">
-    <problem>The rasterization testing cannot be continued due to an error in the font. Before completing rasterization testing, you will need to identify and fix this error, using details provided.&lt;BR&gt;&lt;BR&gt;If exception errors continue after you have changed the font data, please contact the Microsoft Typography group.</problem>
+    <problem>The rasterization testing cannot be continued due to an error in the font. Before completing rasterization testing, you will need to identify and fix this error, using details provided.&lt;BR&gt;&lt;BR&gt;If exception errors continue after you have changed the font data, please contact the Microsoft Typography group.
+
+&lt;p&gt;
+This message can happen on MS Windows with FontVal 2.0 when testing fonts within non-English file names,
+with the detail &quot; Cannot marshal: Encountered unmappable character. &quot;
+This is a known limitation of SharpFont on Windows ( https://github.com/Robmaister/SharpFont/issues/89 ).
+Try renaming or copy the file with an English name and re-test.
+
+&lt;p&gt;
+Bitmap-only fonts, such as Apple Color Emoji.ttf, which are designed for only some specific pixel sizes,
+may result in
+&quot; FreeType error: Invalid pixel size. &quot;
+when testing for sizes which they are not designed for.
+The older FontVal 1.0 and 1.1 shows &quot; Secure Rasterizer error: Function out of range &quot; .
+Under this circumstance, this message is harmless and can be ignored.
+
+</problem>
 </item>
 
 <item
