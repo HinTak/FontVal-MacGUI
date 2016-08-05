@@ -10011,6 +10011,16 @@ Pre-2015 assigned values:
 reserve 30-35 for CBDT/CBLC/COLR/CPAL/MATH/SVG
 -->
 
+<!--
+    As part of the re-organization,
+    a few 1.1 codes were re-assigned:
+
+    loca_W_GlyfEntryEmpty      : W7001 -> W1703
+    maxp_I_Calculation_Method1 : I9001 -> I1900
+    maxp_I_Calculation_Method2 : I9002 -> I1901
+    maxp_W_Calculation_Unclear : W7002 -> W1900
+-->
+
 <item
     helpID="P3500"
     atom="SVG_P_version"
