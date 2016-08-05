@@ -492,7 +492,7 @@ namespace NS_Glyph
                     base.Severity=GErr.TypeGErrSeverity.High;
                     break;
                 case StatusGV.TypeStatusExec.UnableToExec:
-                    base.m_Type=ValInfoBasic.ValInfoType.AppError;
+                    base.m_Type=ValInfoBasic.ValInfoType.Info;
                     base.Name="GERR_VAL_UNABLE_TO_PERFORM_TEST";
                     base.Severity=GErr.TypeGErrSeverity.Low;
                     break;

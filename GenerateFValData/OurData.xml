@@ -1,5 +1,16 @@
 <helpitems xmlns="urn:helpgen">
 <item
+    helpID="A1113"
+    atom="GERR_VAL_FAILURE"
+    linkTitle="glyf table specification"
+    specLink="http://www.microsoft.com/typography/otspec/glyf.htm"
+    shortDesc="Test failed because of unhandeled exception"
+    fwLinkID="10348"
+    tableName="glyf">
+    <problem>Unused in either 1.0.1286.23890 or 1.1.3359.19055</problem>
+</item>
+
+<item
     helpID="A2100"
     atom="OS_2_A_CodePageNotInstalled"
     linkTitle="OS/2 table specification"
@@ -7,7 +18,10 @@
     shortDesc="A range in the ulCodePageRange field cannot be validated because a code page is not installed"
     fwLinkID="10381"
     tableName="OS/2">
-    <problem>This message does not indicate there is an error in the font. To validate the codepage compliance of a font, all codepages covered by the font must be installed on the testing system.&lt;BR&gt;&lt;BR&gt;To install additional codepages in Windows, do the following:&lt;OL&gt;&lt;LI&gt;Go to Control Panel.&lt;/LI&gt;&lt;LI&gt;Choose Regional and Language Options.&lt;/LI&gt;&lt;LI&gt;Click the Advanced tab.&lt;/LI&gt;&lt;LI&gt;In the Codepage Conversion Tables list, select the codepages you wish to install. You will need to have your Windows installation disk available.&lt;/LI&gt;&lt;/OL&gt;</problem>
+    <problem>This message does not indicate there is an error in the font. To validate the codepage compliance of a font, all codepages covered by the font must be installed on the testing system.&lt;BR&gt;&lt;BR&gt;To install additional codepages in Windows, do the following:&lt;OL&gt;&lt;LI&gt;Go to Control Panel.&lt;/LI&gt;&lt;LI&gt;Choose Regional and Language Options.&lt;/LI&gt;&lt;LI&gt;Click the Advanced tab.&lt;/LI&gt;&lt;LI&gt;In the Codepage Conversion Tables list, select the codepages you wish to install. You will need to have your Windows installation disk available.&lt;/LI&gt;&lt;/OL&gt;
+
+    &lt;p&gt;This message is not used and should not be seen from 2015 onwards with FontVal 2.0 .
+  </problem>
 </item>
 
 <item
@@ -141,6 +155,10 @@
     tableName="General">
     <problem>A minimum of eight tables are required in a valid TrueType font: cmap, head, hhea, hmtx, maxp, name, OS/2, and post.&lt;BR&gt;&lt;BR&gt;If TrueType data is present in the font, then the following tables are also required: cvt, fpgm, glyf, loca, and prep. If CFF data is in the font, then both the CFF and VORG tables need to be present.&lt;BR&gt;&lt;BR&gt;Microsoft also requires that the DSIG table be present in fonts delivered by vendors to Microsoft.&lt;BR&gt;&lt;BR&gt;Microsoft further recommends that the gasp table be present in all fonts.To learn more about these recommendations, see the &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=10456&quot;&gt;Hinting and Production Guidelines Specification&lt;/A&gt;.</problem>
 </item>
+<!--
+    A commented out stale entry "W7003 / _FONT_W_MissingRequiredTable"
+    was removed in c2f1f1e7fda7d79e3e16dba682545e0c727c140d
+-->
 
 <item
     helpID="E0030"
@@ -986,7 +1004,7 @@ This error indicates a structural problem with the font. Structural errors may b
     shortDesc="The version number is not valid"
     fwLinkID="10346"
     tableName="gasp">
-    <problem>Version 0 is the only version of the gasp table currently defined. Correct this field using a table editing tool.</problem>
+    <problem>Version 0 and 1 are the only versions of the gasp table currently defined. Correct this field using a table editing tool.</problem>
 </item>
 
 <item
@@ -6269,7 +6287,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     specLink="WARNING: field missing"
     shortDesc="There are no DeviceRecord padding bytes"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="hdmx">
     <problem/>
 </item>
 
@@ -9064,7 +9082,7 @@ All tables should be recorded in the table directory with their actual length. T
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="hdmx">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
@@ -9328,7 +9346,7 @@ All tables should be recorded in the table directory with their actual length. T
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="LTSH">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
@@ -9656,10 +9674,25 @@ All tables should be recorded in the table directory with their actual length. T
     atom="_rast_W_APPLE_ONLY_INSTR"
     linkTitle="TrueType instruction set"
     specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
-    shortDesc="Instruction is only valid on the Apple platform"
+    shortDesc="GETVARIATION, GETDATA (Apple-specific) or IDEFs at opcode 0x91,0x92"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>This warning indicates that the instruction used is not valid under Windows. The instruction is only valid on Apple platforms. Please consult Apple documentation to find out for which versions of the Mac OS the instruction is valid.</problem>
+  <problem>This warning indicates that opcode 0x91 or 0x92 is detected.
+
+&lt;P&gt;Apple uses opcode 0x91 and 0x92 for their Quick Draw GX-specific instructions GETVARIATION and GETDATA.
+The GETVARIATION and GETDATA instructions are not valid under Windows. These instructions are only valid on Apple platforms. Please consult Apple documentation to find out for which versions of the Mac OS the instruction is valid.
+
+&lt;P&gt;Microsoft removed support for GETVARIATION and GETDATA in its
+bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
+
+&lt;P&gt;The specification says that IDEFs work for undefined opcodes only.
+
+&lt;P&gt;IDEFs for bytecodes 0x91 and 0x92 are not possible with the Apple bytecode engine since those instructions are undocumented but still in use for backwards compatibility.
+
+&lt;P&gt;Microsoft ships two fonts, LaoUIb.ttf and LaoUI.ttf, which use IDEFs at opcode 0x91 and 0x92 (and therefore do not work correctly on Mac OS). Apple ships Skia.ttf which uses GETVARIATION (and therefore do not work correctly on MS Windows).
+
+&lt;P&gt;To support multiple platforms, font designers are advised to avoid either usage of opcode 0x91 and 0x92 in new fonts.
+  </problem>
 </item>
 
 <item
@@ -9801,7 +9834,7 @@ All tables should be recorded in the table directory with their actual length. T
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="Rasterization Test">
     <problem>Place holder - We most likely need to enhance Freetype and do a minimum version check.</problem>
 </item>
 
@@ -9919,7 +9952,7 @@ by either method may indicate some other problem in the font.
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="VDMX">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
@@ -9979,6 +10012,16 @@ Pre-2015 assigned values:
 <!--
 2015:
 reserve 30-35 for CBDT/CBLC/COLR/CPAL/MATH/SVG
+-->
+
+<!--
+    As part of the re-organization,
+    a few 1.1 codes were re-assigned:
+
+    loca_W_GlyfEntryEmpty      : W7001 -> W1703
+    maxp_I_Calculation_Method1 : I9001 -> I1900
+    maxp_I_Calculation_Method2 : I9002 -> I1901
+    maxp_W_Calculation_Unclear : W7002 -> W1900
 -->
 
 <item
