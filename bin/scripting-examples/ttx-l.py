@@ -34,6 +34,10 @@ class ttxl:
                 print "%s\t0x%s\t%d\t%d" % (clr.Convert(de.tag, String),
                                             de.checkSum.ToString("X8"), de.length, de.offset)
             print
+        if (self.f.IsCollection()):
+            ttch = self.f.GetTTCHeader()
+            if ((clr.Convert(ttch.DsigTag, String) == "DSIG") and (ttch.DsigOffset > 0)):
+                print "DSIG (offset,length):\t%d,%d" % (ttch.DsigOffset, ttch.DsigLength)
 
 if __name__ == '__main__':
     if not sys.argv[1:]:
