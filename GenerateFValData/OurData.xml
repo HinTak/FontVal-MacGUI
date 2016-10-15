@@ -4972,7 +4972,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Invalid zone"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Valid values for zone are: 0 or 1 if maxZones in maxp is 2; 1 if maxZones in maxp1 is 1.</problem>
+    <problem>Valid values for zone are: 0 or 1 if maxZones in maxp is 2; 1 if maxZones in maxp is 1.</problem>
 </item>
 
 <item
@@ -5170,7 +5170,11 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Twilight zone point not set"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>A twilight zone point has not been set and is not valid. Make sure it is set with an instruction like MDAP before it is used.</problem>
+    <problem>A twilight zone point has not been set and is not valid. Make sure it is set with an instructions like MDAP, MIAP, MIRP, MSIRP, or SCFS before it is used.
+
+&lt;p&gt;A few instructions use more than one reference points or contain a loop, and can therefore emit this error message more than
+once at the same location, one per reference point. This is seen with IP and MSIRP in the wild.
+</problem>
 </item>
 
 <item
@@ -9785,7 +9789,10 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
     shortDesc="Loop variable not 1 at end of program. This means it was set but not used"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>At the end of the execution of the instructions for a glyph, the loop variable was not 1, which means that it was set and not used by any other instructions. In this case, the SLOOP instruction is wasted.</problem>
+    <problem>At the end of the execution of the instructions for a glyph, the loop variable was not 1, which means that it was set and not used by any other instructions. In this case, a previous SLOOP instruction is wasted.
+
+&lt;P&gt;Note that the Details part of the diagnostic message is essentially meaningless: it contains information about the last instruction executed. To rectify this issue, the font designer should examine the last SLOOP instruction, by searching backwards from the end.
+</problem>
 </item>
 
 <item
