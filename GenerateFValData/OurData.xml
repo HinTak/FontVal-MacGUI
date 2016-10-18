@@ -45,9 +45,14 @@ Bitmap-only fonts, such as Apple Color Emoji.ttf, which are designed for only so
 may result in
 &quot; FreeType error: Invalid pixel size. &quot;
 when testing for sizes which they are not designed for.
-The older FontVal 1.0 and 1.1 shows &quot; Secure Rasterizer error: Function out of range &quot; .
 Under this circumstance, this message is harmless and can be ignored.
+The older FontVal 1.0 and 1.1 shows &quot; Secure Rasterizer error: Function out of range &quot; as well as E6016 &quot;FDEF out of range&quot;
+for Apple Color Emoji.ttf.
+That may or may not be related.
 
+&lt;p&gt;
+In the old FontVal 1.0, error A6000, &quot;Secure Rasterizer error: Function out of range&quot; can accompany E6016 &quot;FDEF out of range&quot;,
+and A6000 &quot;Secure Rasterizer error: TrueType stack overflow&quot; can accompany E6045 &quot;Stack Overflow&quot;, depending on where the E6016 and E6045 errors happen. Font designers should address these other errors first.
 </problem>
 </item>
 
