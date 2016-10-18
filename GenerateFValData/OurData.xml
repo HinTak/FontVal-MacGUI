@@ -32,7 +32,23 @@
     shortDesc="An exception occurred during rasterization testing"
     fwLinkID="10368"
     tableName="Application">
-    <problem>The rasterization testing cannot be continued due to an error in the font. Before completing rasterization testing, you will need to identify and fix this error, using details provided.&lt;BR&gt;&lt;BR&gt;If exception errors continue after you have changed the font data, please contact the Microsoft Typography group.</problem>
+    <problem>The rasterization testing cannot be continued due to an error in the font. Before completing rasterization testing, you will need to identify and fix this error, using details provided.&lt;BR&gt;&lt;BR&gt;If exception errors continue after you have changed the font data, please contact the Microsoft Typography group.
+
+&lt;p&gt;
+This message can happen on MS Windows with FontVal 2.0 when testing fonts within non-English file names,
+with the detail &quot; Cannot marshal: Encountered unmappable character. &quot;
+This is a known limitation of SharpFont on Windows ( https://github.com/Robmaister/SharpFont/issues/89 ).
+Try renaming or copy the file with an English name and re-test.
+
+&lt;p&gt;
+Bitmap-only fonts, such as Apple Color Emoji.ttf, which are designed for only some specific pixel sizes,
+may result in
+&quot; FreeType error: Invalid pixel size. &quot;
+when testing for sizes which they are not designed for.
+The older FontVal 1.0 and 1.1 shows &quot; Secure Rasterizer error: Function out of range &quot; .
+Under this circumstance, this message is harmless and can be ignored.
+
+</problem>
 </item>
 
 <item
@@ -2435,7 +2451,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 7, ArmStyle &gt; 11"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that want to substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2446,7 +2462,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 5, Contrast &gt; 9"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2457,7 +2473,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 1, FamilyType &gt; 5"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2468,7 +2484,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 8, Letterform &gt; 15"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2479,7 +2495,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 9, Midline &gt; 13"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2490,7 +2506,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 4, Proportion &gt; 9"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2501,7 +2517,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 2, SerifStyle &gt; 15"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2512,7 +2528,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 6, StrokeVariation &gt; 10"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2523,7 +2539,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 3, Weight &gt; 11"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping.  PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2534,7 +2550,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 10, XHeight &gt; 7"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2849,7 +2865,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="Font is a symbol font, but PANOSE(tm) byte 1, FamilyType, is not set to Latin Symbol"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2860,7 +2876,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="Font is a not a symbol font, but PANOSE(tm) byte 1, FamilyType, is set to Latin Symbol"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2871,7 +2887,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE family kind is Latin Symbol, but byte 5, Aspect Ratio and Contrast, does not equal 1"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2882,7 +2898,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE family kind is Latin Symbol, but byte 3, Weight, does not equal 1"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -4956,7 +4972,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Invalid zone"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Valid values for zone are: 0 or 1 if maxZones in maxp is 2; 1 if maxZones in maxp1 is 1.</problem>
+    <problem>Valid values for zone are: 0 or 1 if maxZones in maxp is 2; 1 if maxZones in maxp is 1.</problem>
 </item>
 
 <item
@@ -5154,7 +5170,11 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Twilight zone point not set"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>A twilight zone point has not been set and is not valid. Make sure it is set with an instruction like MDAP before it is used.</problem>
+    <problem>A twilight zone point has not been set and is not valid. Make sure it is set with an instructions like MDAP, MIAP, MIRP, MSIRP, or SCFS before it is used.
+
+&lt;p&gt;A few instructions use more than one reference points or contain a loop, and can therefore emit this error message more than
+once at the same location, one per reference point. This is seen with IP and MSIRP in the wild.
+</problem>
 </item>
 
 <item
@@ -5694,7 +5714,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="The post name isn't in uniXXXX or uXXXXX format and there is no Adobe Glyph List entry"
     fwLinkID="10365"
     tableName="post">
-    <problem>PostScript character set glyph names should match those in the PostScript Reference Manual. Glyphs outside the PostScript character set may use a character string in the format of uniXXXX as their PostScript name. To learn more about PostScript names, see &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=10682&quot;&gt;Adobe Glyph List&lt;/A&gt;.</problem>
+    <problem>PostScript character set glyph names should match those in the PostScript Reference Manual. Glyphs outside the PostScript character set may use a character string in the format of uniXXXX as their PostScript name. To learn more about PostScript names, see &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=0&quot;&gt;Adobe Glyph List&lt;/A&gt;.</problem>
 </item>
 
 <item
@@ -5705,7 +5725,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="The post name does not match the name in the Adobe Glyph List"
     fwLinkID="10365"
     tableName="post">
-    <problem>PostScript character set glyph names should match those in the PostScript Reference Manual. Glyphs outside the PostScript character set may use a character string in the format of uniXXXX as their PostScript name. To learn more about PostScript names, see &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=10682&quot;&gt;Adobe Glyph List&lt;/A&gt;.</problem>
+    <problem>PostScript character set glyph names should match those in the PostScript Reference Manual. Glyphs outside the PostScript character set may use a character string in the format of uniXXXX as their PostScript name. To learn more about PostScript names, see &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=0&quot;&gt;Adobe Glyph List&lt;/A&gt;.</problem>
 </item>
 
 <item
@@ -9180,7 +9200,7 @@ All tables should be recorded in the table directory with their actual length. T
     linkTitle="Apple TrueType Reference Manual"
     specLink="http://developer.apple.com/fonts/TTRefMan/RM06/Chap6head.html"
     shortDesc="The unitsPerEm is less than 64 which is in violation of the Apple spec"
-    fwLinkID="10402"
+    fwLinkID="0"
     tableName="head">
     <problem>The Apple specification for TrueType fonts specifies that the range of possible values for unitsPerEm is 64-16384, and should be a power of 2.</problem>
 </item>
@@ -9466,7 +9486,7 @@ All tables should be recorded in the table directory with their actual length. T
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) is undefined. Font mapping may not work properly"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -9769,7 +9789,10 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
     shortDesc="Loop variable not 1 at end of program. This means it was set but not used"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>At the end of the execution of the instructions for a glyph, the loop variable was not 1, which means that it was set and not used by any other instructions. In this case, the SLOOP instruction is wasted.</problem>
+    <problem>At the end of the execution of the instructions for a glyph, the loop variable was not 1, which means that it was set and not used by any other instructions. In this case, a previous SLOOP instruction is wasted.
+
+&lt;P&gt;Note that the Details part of the diagnostic message is essentially meaningless: it contains information about the last instruction executed. To rectify this issue, the font designer should examine the last SLOOP instruction, by searching backwards from the end.
+</problem>
 </item>
 
 <item
