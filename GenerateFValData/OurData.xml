@@ -64,6 +64,9 @@ That may or may not be related.
 &lt;p&gt;
 In the old FontVal 1.0, error A6000, &quot;Secure Rasterizer error: Function out of range&quot; can accompany E6016 &quot;FDEF out of range&quot;,
 and A6000 &quot;Secure Rasterizer error: TrueType stack overflow&quot; can accompany E6045 &quot;Stack Overflow&quot;, depending on where the E6016 and E6045 errors happen. Font designers should address these other errors first.
+
+&lt;p&gt;
+Running FontVal 1.0 (and perhaps 2.0 too) under wine can occasionally result in error A6000, &quot;Attempted to read or write protected memory. This is often an indication that other memory is corrupt.&quot; . This is intermittent and a problem with wine. Users should simply re-run.
 </problem>
 </item>
 
