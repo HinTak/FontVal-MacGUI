@@ -5151,7 +5151,13 @@ states that INSTCTRL[ ] with selector 3 is used in glyph programs for ClearType.
     shortDesc="Stack Overflow"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>There is an attempt to PUSH more data on the stack than space will accommodate. Adjust maxStackElements field in the maxp table.</problem>
+    <problem>There is an attempt to PUSH more data on the stack than space will accommodate. Adjust maxStackElements field in the maxp table.
+
+&lt;p&gt;
+Note that the FreeType backend of FontVal 2.0+ behaves differently after this error, compared to FontVal 1.0.
+Instead of aborting, it continues processing the rest of the instruction stream. Users can therefore see further problems
+beyond the point of this error. This is expected.
+</problem>
 </item>
 
 <item
@@ -5162,7 +5168,13 @@ states that INSTCTRL[ ] with selector 3 is used in glyph programs for ClearType.
     shortDesc="Stack Underflow"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>There is an attempt to POP a value from below the bottom of the stack. Make sure the data you are popping from the stack has been pushed onto the stack.</problem>
+    <problem>There is an attempt to POP a value from below the bottom of the stack. Make sure the data you are popping from the stack has been pushed onto the stack.
+
+&lt;p&gt;
+Note that the FreeType backend of FontVal 2.0+ behaves differently after this error, compared to FontVal 1.0.
+Instead of aborting, it continues processing the rest of the instruction stream. Users can therefore see further problems
+beyond the point of this error. This is expected.
+</problem>
 </item>
 
 <item
