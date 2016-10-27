@@ -165,9 +165,21 @@ namespace OTFontFile.Rasterizer
             {
                 if ( m_UserCancelledTest ) return true;
                 pUpdateProgressDelegate("Processing Size " + arrPointSizes[i]);
-                _face.SetCharSize(new Fixed26Dot6(arrPointSizes[i]),
-                                  new Fixed26Dot6(arrPointSizes[i]),
-                                  (uint) resX, (uint) resY);
+                try{
+                    _face.SetCharSize(new Fixed26Dot6(arrPointSizes[i]),
+                                      new Fixed26Dot6(arrPointSizes[i]),
+                                      (uint) resX, (uint) resY);
+                } catch (FreeTypeException e) {
+                    if (e.Error == Error.InvalidPixelSize)
+                    {
+                        pRastTestErrorDelegate("_rast_W_FT_InvalidPixelSize", "Setting unsupported size "
+                                               + arrPointSizes[i] + " for fixed-size font.");
+                        m_RastErrorCount += 1;
+                        continue;
+                    }
+                    else
+                        throw;
+                }
                 _face.SetTransform(fmatrix, fdelta);
                 for (uint ig = 0; ig < numGlyphs; ig++) {
                     diagnostics_Function diagnostics =
