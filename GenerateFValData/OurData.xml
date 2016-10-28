@@ -10055,6 +10055,17 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
 </item>
 
 <item
+    helpID="W6025"
+    atom="_rast_W_FT_InvalidPixelSize"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid PixelSize"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid PixelSize&quot; error. This is likely a user error, trying to set an unsupported size for a fixed-size font.</problem>
+</item>
+
+<item
     helpID="W1703"
     atom="loca_W_GlyfEntryEmpty"
     linkTitle="loca table specification"
