@@ -135,7 +135,7 @@ namespace helpgen {
             G.CO( "-tmpdir            <tmpDir>" );
             G.CO( "-inputdir          <inputDir>" );
             G.CO( "-gendir            <genDir>" );
-            G.CO( "-verbose" );
+            G.CO( "-v/-verbose" );
             G.CO( "-u/-usage/-h/-help/--help" );
             G.CO( "" );
             G.CO( "All the options are optional." );
@@ -541,7 +541,8 @@ namespace helpgen {
                     iarg++;
                     ps.genDir = args[iarg];
                 }
-                else if ( G.StrMatch( "-verbose", args[iarg] ) ) {
+                else if ( G.StrMatch( "-verbose", args[iarg] ) ||
+                          G.StrMatch( "-v", args[iarg] ) ) {
                     verbose = true;
                 }
                 else if ( G.StrMatch( "-u", args[iarg] ) ||
