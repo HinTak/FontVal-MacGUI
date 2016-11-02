@@ -9989,7 +9989,7 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
 </item>
 
 <item
-    helpID="W6013"
+    helpID="W6019"
     atom="_rast_W_Need_Newer_FreeType"
     linkTitle="WARNING: field missing"
     specLink="WARNING: field missing"
