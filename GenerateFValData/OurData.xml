@@ -10088,6 +10088,17 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
 </item>
 
 <item
+    helpID="W6028"
+    atom="_rast_W_FT_MAX_NUM_TWILIGHT_POINTS_CLAMP"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="number of twilight points unreasonably large"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Number of twilight points seems unreasonably large. Consider resetting to a more reasonable heuristic value.</problem>
+</item>
+
+<item
     helpID="W1703"
     atom="loca_W_GlyfEntryEmpty"
     linkTitle="loca table specification"
