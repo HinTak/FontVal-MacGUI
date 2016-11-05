@@ -94,7 +94,7 @@
 		<value>A1112: Test aborted</value>
 	</data>
 	<data name="GERR_VAL_FAILURE">
-		<value>A1113: Test failed because of unhandeled exception</value>
+		<value>A1113: Test failed because of unhandled exception</value>
 	</data>
 	<data name="GERR_COMPONENT_EMPTY">
 		<value>E1123: An empty component of the composite glyph</value>
