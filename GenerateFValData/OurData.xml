@@ -4856,7 +4856,11 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Funit coordinate out of range must be -16384 .. 16383"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Font Unit values must be in the range of -16384 to 16383.</problem>
+    <problem>Font Unit values must be in the range of -16384 to 16383.
+
+&lt;p&gt;
+FontVal 1.0 mis-implemented the check as F26.6 and thus for [-1048576, 1048512] instead.
+</problem>
 </item>
 
 <item
