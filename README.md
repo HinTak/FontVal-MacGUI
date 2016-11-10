@@ -14,6 +14,11 @@ The GUI's built-in help requires a CHM viewer, which defaults to [chmsee](https:
 
 The GUI on X11/mono needs the env variable `MONO_WINFORMS_XIM_STYLE=disabled` set to work around [Bug 28047 - Forms on separare threads -- Fatal errors/crashes](https://bugzilla.xamarin.com/show_bug.cgi?id=28047)
 
+## Binary Downloads
+
+Since Release 2.0, binaries (`*.dmg` for Mac OS X, `*-bin-net2.zip` or `*-bin-net4.zip` for MS .NET/mono) are available from
+[Binary Downloads](https://sourceforge.net/projects/hp-pxl-jetready/files/Microsoft%20Font%20Validator/).
+
 ## Build Instructions
 
 Font Validator was developed with Visual Studio C# by Microsoft; when it was released under MIT license in autumn 2015, VC# project files were not released. Instead, building with Mono's mcs C# compiler (http://www.mono-project.com/) was added.
@@ -37,8 +42,7 @@ As of Feb 2016, building with Microsoft Visual C# was partially re-implemented. 
 
 The rasterer-dependent tests (HDMX/LTSH/VDMX) requires an enhancement which first appears in FreeType 2.6.1. 
 Linux users can use `LD_LIBRARY_PATH` env to load newer library than system's.
-Mac OS users should edit `bin/SharpFont.dll.config`.
-The bundled `SharpFont.dll` is patched with an equivalent `0001-adding-ComputeMetrics.patch`.
+
 The bundled win64 FreeType dll was built with an additional win64-specific patch, `freetype-win64.patch`.
 
 Currently the CHM Help file requires MS Help Workshop to build, so is bundled in the bin/ directory.
@@ -51,13 +55,13 @@ SharpFont requires xbuild from monodevelop to build.
 
 ### Missing/broken Parts
 
-Summary: 194 table tests, all work!
-
-* The 3 Rasterization Tests (BW, Grayscale, ClearType) requires a font scaler, and are not yet implemented via FreeType. See [README-hybrid.txt](README-hybrid.txt) for a work-around that uses Windows libraries to perform these tests.
+As of Release 2.0 (July 18 2016), all the withheld parts not released by Microsoft were re-implemented.
+Release 2.0 run well on non-windows, and is substantially faster also.
+Existing users of the increasingly dated 1.0 release from 2003 are encouraged to upgrade.
+There are a number of known disagreements and issues which are gradually being filed and addressed.
+[README-hybrid.txt](README-hybrid.txt) is now of historical interests only.
 
 * The DSIG test (DSIG_VerifySignature) does not validate trusted certificate chain yet.
-
-* Viewing XML reports (and print, text search/select/copy therein) requires MSIE and Active X.
 
 * Many "Required field missing" in GenerateFValData/OurData.xml
 
