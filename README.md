@@ -19,6 +19,8 @@ The GUI on X11/mono needs the env variable `MONO_WINFORMS_XIM_STYLE=disabled` se
 Since Release 2.0, binaries (`*.dmg` for Mac OS X, `*-bin-net2.zip` or `*-bin-net4.zip` for MS .NET/mono) are available from
 [Binary Downloads](https://sourceforge.net/projects/hp-pxl-jetready/files/Microsoft%20Font%20Validator/).
 
+Please consider [donating to the effort](https://sourceforge.net/p/hp-pxl-jetready/donate/), if you use the binaries.
+
 ## Build Instructions
 
 Font Validator was developed with Visual Studio C# by Microsoft; when it was released under MIT license in autumn 2015, VC# project files were not released. Instead, building with Mono's mcs C# compiler (http://www.mono-project.com/) was added.
