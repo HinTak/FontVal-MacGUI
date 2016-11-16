@@ -1326,7 +1326,7 @@ namespace OTFontFileVal
                         new Range(i++, 0x2f800, 0x2fa1f, "CJK Compatibility Ideographs Supplement"),
                         new Range(i++, 0xe0000, 0xe007f, "Tags"),
                         new Range(i++, 0xe0100, 0xe01ef, "Variation Selectors Supplement"),
-                        new Range(i++, 0xff000, 0xffffd, "Private Use (plane 15)"),
+                        new Range(i++, 0xf0000, 0xffffd, "Private Use (plane 15)"),
                         new Range(i++, 0x100000, 0x10fffd, "Private Use (plane 16)")
                     };
 
