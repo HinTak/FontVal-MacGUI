@@ -8989,6 +8989,28 @@ once at the same location, one per reference point. This is seen with IP and MSI
 </item>
 
 <item
+    helpID="W0023"
+    atom="_FONT_W_FONTNAME_CHARS"
+    linkTitle="details about OpenType files"
+    specLink="http://www.microsoft.com/typography/otspec/otff.htm"
+    shortDesc="Unusual characters in FontName"
+    fwLinkID="10363"
+    tableName="Font">
+    <problem>Unusual characters detected in FontName. Please check that this is necessary.</problem>
+</item>
+
+<item
+    helpID="W0024"
+    atom="_FONT_W_FONTVERSION_CHARS"
+    linkTitle="details about OpenType files"
+    specLink="http://www.microsoft.com/typography/otspec/otff.htm"
+    shortDesc="Unusual characters in FontVersion"
+    fwLinkID="10363"
+    tableName="Font">
+    <problem>Unusual characters detected in FontVersion. Please check that this is necessary.</problem>
+</item>
+
+<item
     helpID="W0030"
     atom="_DE_W_TableAlignment"
     linkTitle="details about OpenType files"
