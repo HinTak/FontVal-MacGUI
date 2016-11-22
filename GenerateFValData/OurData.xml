@@ -5058,7 +5058,12 @@ FontVal 1.0 mis-implemented the check as F26.6 and thus for [-1048576, 1048512] 
     shortDesc="Not called from pre-program"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Make sure you only make this call from the pre-program.&lt;BR&gt;&lt;BR&gt;FDEF and IDEF can only be called from the font program or pre-program. INSTCTRL[ ] can only be called from the pre-program.</problem>
+    <problem>Make sure you only make this call from the pre-program.&lt;BR&gt;&lt;BR&gt;FDEF and IDEF can only be called from the font program or pre-program. INSTCTRL[ ] can only be called from the pre-program.
+
+&lt;p&gt;
+&lt;A TARGET=&quot;top&quot; HREF=&quot;https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx&quot;&gt;The ClearType whitepaper&lt;/A&gt;
+states that INSTCTRL[ ] with selector 3 is used in glyph programs for ClearType. This was not taken account of in FontVal 1.0 .
+</problem>
 </item>
 
 <item
