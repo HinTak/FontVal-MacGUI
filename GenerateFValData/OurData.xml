@@ -10015,7 +10015,11 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
     shortDesc="Setting the loop variable to zero is an error"
     fwLinkID="0"
     tableName="Rasterization Test">
-    <problem>Setting the loop variable to zero is an error</problem>
+    <problem>Setting the loop variable to zero is an error, according to Apple documentation.
+
+&lt;ol&gt;
+ttfautohint is known to generate such hinting instructions, and FreeType is known to tolerate it.
+If the font is intended to be used only on systems where FreeType is the rendering engine, this warning can be safely ignored.</problem>
 </item>
 
 <item
