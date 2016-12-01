@@ -351,7 +351,7 @@ namespace OTFontFileVal {
             }
 
             m_xmlWriter = new XmlTextWriter(stream, 
-                                                System.Text.Encoding.UTF8);
+                                                Encoding.UTF8);
             m_xmlWriter.WriteStartDocument();
             m_xmlWriter.WriteWhitespace("\r\n");
             string type = "type=\"text/xsl\" href=\"fval.xsl\"";
