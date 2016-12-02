@@ -216,7 +216,7 @@ namespace OTFontFile
 
             public string GetUTFString(uint i)
             {
-                return System.Text.UTF8Encoding.UTF8.GetString(GetData(i));
+                return UTF8Encoding.UTF8.GetString(GetData(i));
             }
 
             public string StringForID(ushort sid)

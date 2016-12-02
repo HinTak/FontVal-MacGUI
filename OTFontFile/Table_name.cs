@@ -219,7 +219,7 @@ namespace OTFontFile
 
             if (PlatID == 0) // unicode
             {
-                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding(true, false);
+                UnicodeEncoding ue = new UnicodeEncoding(true, false);
                 s = ue.GetString(EncodedStringBuf);
             }
             else if (PlatID == 1) // Mac
@@ -281,7 +281,7 @@ namespace OTFontFile
                     EncID == 1 || // unicode
                     EncID == 10 ) // unicode with surrogate support for UCS-4
                 {
-                    System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding(true, false);
+                    UnicodeEncoding ue = new UnicodeEncoding(true, false);
                     s = ue.GetString(EncodedStringBuf);
                 }
                 else if (EncID >= 2 && EncID <= 6)
@@ -304,7 +304,7 @@ namespace OTFontFile
 
             if(PlatID == 0) // unicode
             {
-                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding( true, false );
+                UnicodeEncoding ue = new UnicodeEncoding( true, false );
                 buf = ue.GetBytes( s );
             }
             else if (PlatID == 1 ) // Mac
@@ -322,7 +322,7 @@ namespace OTFontFile
                     EncID == 1 || // unicode
                     EncID == 10 ) // unicode with surrogate support for UCS-4
                 {
-                    System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding( true, false );
+                    UnicodeEncoding ue = new UnicodeEncoding( true, false );
                     buf = ue.GetBytes(s);
                 }
                 else if (EncID >= 2 || EncID <= 6)
