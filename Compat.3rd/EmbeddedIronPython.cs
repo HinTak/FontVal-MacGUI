@@ -67,7 +67,7 @@ namespace Compat
                 {
                     { "Arguments", args },
                 };
-            
+
             ScriptEngine engine = Python.CreateEngine(options);
             ScriptSource source = engine.CreateScriptSourceFromFile(args[0]);
 
