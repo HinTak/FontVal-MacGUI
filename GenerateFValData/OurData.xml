@@ -4,7 +4,7 @@
     atom="GERR_VAL_FAILURE"
     linkTitle="glyf table specification"
     specLink="http://www.microsoft.com/typography/otspec/glyf.htm"
-    shortDesc="Test failed because of unhandeled exception"
+    shortDesc="Test failed because of unhandled exception"
     fwLinkID="10348"
     tableName="glyf">
     <problem>Unused in either 1.0.1286.23890 or 1.1.3359.19055</problem>
