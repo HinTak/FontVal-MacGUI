@@ -211,7 +211,20 @@ namespace Compat
                 }
 
                 SignedCms cms = new SignedCms();
-                cms.Decode(sgb.bSignature);
+                try
+                {
+                    cms.Decode(sgb.bSignature);
+                }
+                catch ( Exception e )
+                {
+                    if ( e is NullReferenceException /* Mono */
+                         || e is CryptographicException /* .Net2 */ )
+                    {
+                        Warn_MalformedSIG = true;
+                        break;
+                    }
+                    throw;
+                }
 
                 signer_count = cms.SignerInfos.Count;
                 if ( signer_count > 1 )
@@ -342,7 +355,20 @@ namespace Compat
                 }
 
                 SignedCms cms = new SignedCms();
-                cms.Decode(sgb.bSignature);
+                try
+                {
+                    cms.Decode(sgb.bSignature);
+                }
+                catch ( Exception e )
+                {
+                    if ( e is NullReferenceException /* Mono */
+                         || e is CryptographicException /* .Net2 */ )
+                    {
+                        Console.WriteLine("Error: Malformed Signature");
+                        break;
+                    }
+                    throw;
+                }
 
                 if ( cms.SignerInfos.Count > 1 )
                 Console.WriteLine( "#SignerInfos: {0}", cms.SignerInfos.Count );
