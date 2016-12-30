@@ -151,16 +151,15 @@ namespace OTFontFileVal
                     Table_EBLC.bitmapSizeTable bst = EBLCTable.GetBitmapSizeTable(i);
                     string sSize = "bitmapsize[" + i + "], ppemX=" + bst.ppemX + ", ppemY=" + bst.ppemY;
 
-                    Table_EBLC.indexSubTableArray[] ista = EBLCTable.GetIndexSubTableArray(bst);
-
-                    if (ista != null)
+                    if ( true )
                     {
                         for (uint j=0; j < bst.numberOfIndexSubTables; j++)
                         {
                             Table_EBLC.indexSubTable ist = null;
-                            if (ista[j] != null)
+                            Table_EBLC.indexSubTableArray ista_j = EBLCTable.GetIndexSubTableArray(bst, j);
+                            if (ista_j != null)
                             {
-                                 ist = bst.GetIndexSubTable(ista[j]);
+                                 ist = bst.GetIndexSubTable(ista_j);
                             }
 
                             if (ist != null)
