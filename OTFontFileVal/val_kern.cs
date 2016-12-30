@@ -261,9 +261,28 @@ namespace OTFontFileVal
                                 stf0.GetKerningPairAndValue(iPair, ref left, ref right, ref kernvalue);
                                 short absKernValue = Math.Abs(kernvalue);
 
-                                Table_hmtx.longHorMetric lhmLeft = hmtxTable.GetOrMakeHMetric(left, fontOwner);
-                                Table_hmtx.longHorMetric lhmRight = hmtxTable.GetOrMakeHMetric(right, fontOwner);
-                            
+                                Table_hmtx.longHorMetric lhmLeft = null;
+                                Table_hmtx.longHorMetric lhmRight = null;
+                                try {
+                                    lhmLeft = hmtxTable.GetOrMakeHMetric(left, fontOwner);
+                                    lhmRight = hmtxTable.GetOrMakeHMetric(right, fontOwner);
+                                }
+                                catch ( Exception e )
+                                {
+                                    v.ApplicationError(T.kern_Format0_Values, E._Table_E_Exception, m_tag, "GetOrMakeHMetric:" + e.Message);
+                                    bValuesOk=false;
+                                    bRet = false;
+                                    break;
+                                }
+
+                                if ( lhmLeft == null || lhmRight == null )
+                                {
+                                    v.ApplicationError(T.kern_Format0_Values, E._Table_E_Exception, m_tag, "hmtx Left or Right null");
+                                    bValuesOk=false;
+                                    bRet = false;
+                                    break;
+                                }
+
                                 if (absKernValue > lhmLeft.advanceWidth && absKernValue > lhmRight.advanceWidth)
                                 {
                                     v.Error(T.kern_Format0_Values, E.kern_E_Format0_Values, m_tag, "kern pair[" + iPair + "]: left id = " + left + ", right id = " + right + ", value = " + kernvalue);
