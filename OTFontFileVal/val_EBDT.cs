@@ -87,6 +87,24 @@ namespace OTFontFileVal
         {
             bool bRet = true;
 
+            if ( fontOwner.GetFile().IsCollection() )
+            {
+                if ( fontOwner.GetFontIndexInFile() > 0 )
+                {
+                    // checksum not matching data is covered by check elsewhere. Assume they match.
+                    DirectoryEntry de_EBDT = fontOwner.GetDirectoryEntry("EBDT");
+                    for ( uint i = 0 ; i < fontOwner.GetFontIndexInFile() ; i++ )
+                    {
+                        if ( fontOwner.GetFile().GetFont(i).GetDirectoryEntry("EBDT").checkSum
+                             == de_EBDT.checkSum )
+                        {
+                            v.Info(T.T_NULL, I.glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC, m_tag);
+                            return true;
+                        }
+                    }
+                }
+            }
+
             m_nCachedMaxpNumGlyphs = fontOwner.GetMaxpNumGlyphs();
 
 
