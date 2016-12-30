@@ -322,7 +322,16 @@ namespace OTFontFileVal
             for (ushort idGlyph=ista.firstGlyphIndex; idGlyph <= ista.lastGlyphIndex; idGlyph++)
             {
                 // validate small metrics
-                smallGlyphMetrics sgm = GetSmallMetrics(ist, idGlyph, ista.firstGlyphIndex);
+                smallGlyphMetrics sgm = null;
+                try {
+                    sgm = GetSmallMetrics(ist, idGlyph, ista.firstGlyphIndex);
+                }
+                catch ( Exception e )
+                {
+                    v.ApplicationError(T.EBDT_GlyphImageData, E._Table_E_Exception, m_tag, "EBDT.Format2: " + e.Message);
+                    bOk = false;
+                    return bOk;
+                }
                 if (sgm != null)
                 {
                     smallGlyphMetrics_val sgm_val = smallGlyphMetrics_val.CreateFromSmallGlyphMetrics(sgm);
