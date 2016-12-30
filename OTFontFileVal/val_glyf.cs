@@ -68,7 +68,8 @@ namespace OTFontFileVal
             {
                 try
                 {
-                    validator.OnTableProgress("Validating glyph with index "+indGlyph+" (out of "+numGlyph+" glyphs)");
+                    if ( (indGlyph % 100) == 0 )
+                        validator.OnTableProgress("Validating glyph with index "+indGlyph+" (out of "+numGlyph+" glyphs)");
                     Glyph glyph=fm.GGet(indGlyph);
                     glyph.GValidate();
                     bRet &= fm.GErrGetInformed(indGlyph,diaFilter);
