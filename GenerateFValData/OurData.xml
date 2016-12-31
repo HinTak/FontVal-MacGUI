@@ -9192,10 +9192,10 @@ All tables should be recorded in the table directory with their actual length. T
     atom="glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC"
     linkTitle="glyf table specification"
     specLink="http://www.microsoft.com/typography/otspec/glyf.htm"
-    shortDesc="No need to check identical glyf tables in TTC beyond the first member"
+    shortDesc="No need to check identical glyf or EBDT tables in TTC beyond the first member"
     fwLinkID="10348"
     tableName="glyf">
-    <problem>No need to check identical glyf tables in TTC beyond the first member</problem>
+    <problem>No need to check identical glyf or EBDT tables in TTC beyond the first member</problem>
 </item>
 
 <item
