@@ -213,7 +213,7 @@ namespace FontValidator
             Console.WriteLine( "-file          <fontfile>      (multiple allowed)" );
             Console.WriteLine( "+table         <table-include> (multible allowed)" );
             Console.WriteLine( "-table         <table-skip>    (multiple allowed)" );
-            Console.WriteLine( "-all-tables" );
+            Console.WriteLine( "-all-tables    (\"+all-tables\" is an alias)" );
             Console.WriteLine( "-only-tables" );
             Console.WriteLine( "-quiet" );
             Console.WriteLine( "+raster-tests" );
@@ -283,7 +283,7 @@ namespace FontValidator
                         err = true;
                     }
                 }
-                else if ( "-all-tables" == args[i] ) {
+                else if ( "-all-tables" == args[i] || "+all-tables" == args[i] ) {
                     vp.SetAllTables();
                 }
                 else if ( "-only-tables" == args[i] ) {
