@@ -234,7 +234,21 @@ namespace Compat
                     signer = si.Certificate.Subject;
                 };
 
-                ASN1 spc = new ASN1(cms.ContentInfo.Content);
+                // Windows 10/.net 4.6.x throws here
+                ASN1 spc;
+                try
+                {
+                    spc = new ASN1(cms.ContentInfo.Content);
+                }
+                catch ( Exception e )
+                {
+                    if ( e is IndexOutOfRangeException )
+                    {
+                        Warn_MalformedSIG = true;
+                        break;
+                    }
+                    throw;
+                }
 
                 ASN1 playload_oid = null;
                 ASN1 oid = null;
@@ -367,6 +381,7 @@ namespace Compat
                         Console.WriteLine("Error: Malformed Signature");
                         break;
                     }
+                    Console.WriteLine("Error: Malformed Signature (Unexpected Case 1)");
                     throw;
                 }
 
@@ -420,7 +435,22 @@ namespace Compat
                         break;
                 }
 #endif
-                ASN1 spc = new ASN1(cms.ContentInfo.Content);
+                // Windows 10/.net 4.6.x throws here
+                ASN1 spc;
+                try
+                {
+                    spc = new ASN1(cms.ContentInfo.Content);
+                }
+                catch ( Exception e )
+                {
+                    if ( e is IndexOutOfRangeException )
+                    {
+                        Console.WriteLine("Error: Malformed Signature (Win10/.net 4.6.x)");
+                        break;
+                    }
+                    Console.WriteLine("Error: Malformed Signature (Unexpected Case 2)");
+                    throw;
+                }
 
                 ASN1 playload_oid = null;
                 ASN1 oid = null;
