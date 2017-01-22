@@ -9673,6 +9673,17 @@ All tables should be recorded in the table directory with their actual length. T
 </item>
 
 <item
+    helpID="W2305"
+    atom="post_W_Version_4_Apple"
+    linkTitle="post table specification"
+    specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6post.html"
+    shortDesc="As a rule, format 4 post tables are no longer necessary and should be avoided."
+    fwLinkID="10365"
+    tableName="post">
+    <problem>As a rule, format 4 post tables are no longer necessary and should be avoided.</problem>
+</item>
+
+<item
     helpID="W5021"
     atom="_OTL_DeviceTable_W_StartSize"
     linkTitle="OTL common table formats"
