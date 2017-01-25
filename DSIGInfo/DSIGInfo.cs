@@ -627,6 +627,7 @@ namespace Compat
                 ttcb.FillUint32MBO( 0 );
                 ttcb.FillUint32MBO( 0 );
             }
+            uint Position = (uint) ttcb.buffer.Length;
             hash.TransformBlock ( ttcb.buffer, 0, ttcb.buffer.Length, ttcb.buffer, 0 );
 
             // build an array of offset tables
@@ -651,6 +652,7 @@ namespace Compat
                     // write the offset table
                     hash.TransformBlock (otArr[iFont].m_buf.GetBuffer(), 0, (int)otArr[iFont].m_buf.GetLength(),
                                          otArr[iFont].m_buf.GetBuffer(), 0);
+                    Position += otArr[iFont].m_buf.GetLength();
 
                     // write the directory entries
                     for (int i=0; i<f.GetFont(iFont).GetNumTables(); i++)
@@ -658,11 +660,14 @@ namespace Compat
                         DirectoryEntry de = (DirectoryEntry)otArr[iFont].DirectoryEntries[i];
                         hash.TransformBlock (de.m_buf.GetBuffer(), 0, (int)de.m_buf.GetLength(),
                                              de.m_buf.GetBuffer(), 0 );
+                        Position += de.m_buf.GetLength();
                     }
                 }
             }
 
             // write out each font
+            uint max_offset = 0;
+            uint max_padded_length = 0;
             uint PrevPos = 0;
             for (uint iFont=0; iFont<f.GetNumFonts(); iFont++)
             {
@@ -674,6 +679,7 @@ namespace Compat
                     // write the offset table
                     hash.TransformBlock (otArr[iFont].m_buf.GetBuffer(), 0, (int)otArr[iFont].m_buf.GetLength(),
                                          otArr[iFont].m_buf.GetBuffer(), 0 );
+                    Position += otArr[iFont].m_buf.GetLength();
 
                     // write the directory entries
                     for (int i=0; i<numTables; i++)
@@ -681,6 +687,7 @@ namespace Compat
                         DirectoryEntry de = (DirectoryEntry)otArr[iFont].DirectoryEntries[i];
                         hash.TransformBlock (de.m_buf.GetBuffer(), 0, (int)de.m_buf.GetLength(),
                                              de.m_buf.GetBuffer(), 0 );
+                        Position += de.m_buf.GetLength();
                     }
                 }
 
@@ -688,16 +695,24 @@ namespace Compat
                 for (ushort i=0; i<numTables; i++)
                 {
                     DirectoryEntry de = (DirectoryEntry)otArr[iFont].DirectoryEntries[i];
+                    if (de.offset > max_offset)
+                    {
+                        max_offset = de.offset;
+                        max_padded_length = f.GetFont(iFont).GetTable(de.tag).GetBuffer().GetPaddedLength();
+                    }
                     if (PrevPos < de.offset) //crude
                     {
                         OTTable table = f.GetFont(iFont).GetTable(de.tag);
                         hash.TransformBlock (table.m_bufTable.GetBuffer(), 0, (int)table.GetBuffer().GetPaddedLength(),
                                              table.m_bufTable.GetBuffer(), 0 );
+                        Position += table.GetBuffer().GetPaddedLength();
                         PrevPos = de.offset;
                     }
                 }
             }
 
+            if (max_offset + max_padded_length - Position != 0)
+                throw new NotImplementedException( "Unusual Layout" );
             byte[] usFlag = {0, 1};
             hash.TransformFinalBlock(usFlag, 0,2);
             return hash.Hash;
