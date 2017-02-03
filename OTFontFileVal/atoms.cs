@@ -74,6 +74,8 @@ namespace OTFontFileVal {
         post_W_underlinePos_LT_descender,
         post_W_underlineThickness,
         post_W_Version_2_5,
+        post_W_Version_3_Apple,
+        post_W_Version_4_Apple,
         VDMX_W_CalcData,
         VDMX_W_Need_Newer_FreeType,
         SVG_W_version,
@@ -100,6 +102,7 @@ namespace OTFontFileVal {
         _rast_W_Need_Newer_FreeType,
     }
     public enum E {
+        GERR_VAL_FAILURE,
         OS_2_A_CodePageNotInstalled,
         _rast_A_ExceptionUnhandled,
         _GEN_E_EOFError,
