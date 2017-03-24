@@ -5336,6 +5336,17 @@ once at the same location, one per reference point. This is seen with IP and MSI
 </item>
 
 <item
+    helpID="E6071"
+    atom="_rast_E_FT_EXECUTION_TOO_LONG_BACKWARD_JUMP"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="Execution time too long and exceeds dynamic limit in backward jump"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>Execution time too long and exceeds dynamic limit in backward jump</problem>
+</item>
+
+<item
     helpID="I0001"
     atom="_GEN_I_Collection"
     linkTitle="WARNING: field missing"
