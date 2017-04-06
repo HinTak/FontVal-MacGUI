@@ -5347,6 +5347,17 @@ once at the same location, one per reference point. This is seen with IP and MSI
 </item>
 
 <item
+    helpID="E6072"
+    atom="_rast_E_FT_DEF_IN_GLYF"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="FDEF or IDEF should be in fpgm and prep only, not in glyf"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>FDEF or IDEF should be in fpgm and prep only, not in glyf</problem>
+</item>
+
+<item
     helpID="I0001"
     atom="_GEN_I_Collection"
     linkTitle="WARNING: field missing"
