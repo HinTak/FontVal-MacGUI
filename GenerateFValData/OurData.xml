@@ -5659,45 +5659,45 @@ once at the same location, one per reference point. This is seen with IP and MSI
 <item
     helpID="I2001"
     atom="name_I_Preferred_family_present"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
-    shortDesc="Preferred family"
+    linkTitle="name table specification"
+    specLink="https://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="Found Typographic Family name (Name ID 16)"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>Found Typographic Family name (Name ID 16)</problem>
 </item>
 
 <item
     helpID="I2002"
     atom="name_I_Preferred_family_not_present"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
-    shortDesc="No string for Preferred Family"
+    linkTitle="name table specification"
+    specLink="https://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="No string for Typographic Family name (Name ID 16)"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>No string for Typographic Family name (Name ID 16)</problem>
 </item>
 
 <item
     helpID="I2003"
     atom="name_I_Preferred_subfamily_present"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
-    shortDesc="Preferred subfamily"
+    linkTitle="name table specification"
+    specLink="https://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="Found Typographic Subfamily name (Name ID 17)"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>Found Typographic Subfamily name (Name ID 17)</problem>
 </item>
 
 <item
     helpID="I2004"
     atom="name_I_Preferred_subfamily_not_present"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
-    shortDesc="No string for Preferred Subfamily"
+    linkTitle="name table specification"
+    specLink="https://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="No string for Typographic Subfamily name (Name ID 17)"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>No string for Typographic Subfamily name (Name ID 17)</problem>
 </item>
 
 <item
