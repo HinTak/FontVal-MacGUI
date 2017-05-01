@@ -751,6 +751,33 @@ namespace OTFontFileVal
                 }
             }
 
+            if (v.PerformTest(T.name_NameID1to6))
+            {
+                for (uint id=1; id<=6; id++)
+                {
+                    bool bFound = false;
+
+                    for (uint i=0; i<NumberNameRecords; i++)
+                    {
+                        NameRecord nr = GetNameRecord(i);
+                        if (nr != null)
+                        {
+                            if (nr.NameID == id)
+                            {
+                                bFound = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!bFound)
+                    {
+                        v.Warning(T.name_NameID1to6, W.name_W_ID_1to6_Required_For_Common_OSes, m_tag,
+                               "Missing Name ID " + id);
+                    }
+                }
+            }
+
 			if (v.PerformTest(T.name_PreferredFamily))
 			{
 				bool bFound = false;

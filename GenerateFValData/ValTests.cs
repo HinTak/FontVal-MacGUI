@@ -144,6 +144,7 @@ namespace helpgen {
             "name_Subfamily",
             "name_NoFormat14",
             "name_SampleString",
+            "name_NameID1to6",
             "name_PreferredFamily",
             "name_PreferredSubfamily",
             "OS_2_Version",
