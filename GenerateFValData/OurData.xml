@@ -9390,7 +9390,7 @@ All tables should be recorded in the table directory with their actual length. T
     helpID="W2001"
     atom="name_W_VersionMismatch_MS_MAC"
     linkTitle="name table specification"
-    specLink="WARNING: field missing"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The MS version string doesn't match the Mac version string"
     fwLinkID="10361"
     tableName="name">
@@ -9400,45 +9400,45 @@ All tables should be recorded in the table directory with their actual length. T
 <item
     helpID="W2002"
     atom="name_W_VersionMismatch_3_1_3_10"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The 3,1 version string doesn't match the 3,10 version string"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>The 3,1 version string doesn't match the 3,10 version string</problem>
 </item>
 
 <item
     helpID="W2003"
     atom="name_W_CopyrightInconsistent"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The copyright strings are inconsistent"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>The copyright strings are inconsistent</problem>
 </item>
 
 <item
     helpID="W2004"
     atom="name_W_DescriptionInconsistent"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The description strings are inconsistent"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>The description strings are inconsistent</problem>
 </item>
 
 <item
     helpID="W2005"
     atom="name_W_TrademarkInconsistent"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The trademark strings are inconsistent"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>The trademark strings are inconsistent</problem>
 </item>
 
 <item
