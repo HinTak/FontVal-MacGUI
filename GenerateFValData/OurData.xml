@@ -9449,7 +9449,9 @@ All tables should be recorded in the table directory with their actual length. T
     shortDesc="Name ID 1 to 6 are often needed to be installable."
     fwLinkID="0"
     tableName="name">
-    <problem>Name ID 1 to 6 are often needed, to be installable to Windows and Mac OS X.</problem>
+    <problem>Name ID 1 to 6 are often needed, to be installable to Windows and Mac OS X.
+&lt;P&gt;See also &lt;A TARGET=&quot;top&quot; HREF=&quot;http://www.adobe.com/devnet/opentype/afdko/topic_tables_win.html&quot;&gt;OpenType tables used by Windows&lt;/A&gt; at Adobe Developer Connection.
+  </problem>
 </item>
 
 <item
