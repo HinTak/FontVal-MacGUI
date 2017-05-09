@@ -10099,6 +10099,17 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
 </item>
 
 <item
+    helpID="W6030"
+    atom="_rast_W_FT_ALIGNRP_AFTER_IUP"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="ALIGNRP after IUP in Subpixel-hinting mode"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>ALIGNRP after IUP in Subpixel-hinting mode.</problem>
+</item>
+
+<item
     helpID="W1703"
     atom="loca_W_GlyfEntryEmpty"
     linkTitle="loca table specification"
