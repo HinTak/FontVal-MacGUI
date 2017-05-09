@@ -10012,7 +10012,18 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
     atom="_rast_W_FT_VALUE_OUT_OF_RANGE_SLOOP"
     linkTitle="WARNING: field missing"
     specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM05/Chap5.html#SLOOP"
-    shortDesc="Setting the loop variable to zero or negative value"
+    shortDesc="Setting the loop variable to negative value"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Setting the loop variable to negative value.</problem>
+</item>
+
+<item
+    helpID="W6029"
+    atom="_rast_W_FT_VALUE_OUT_OF_RANGE_SLOOP_ZERO"
+    linkTitle="WARNING: field missing"
+    specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM05/Chap5.html#SLOOP"
+    shortDesc="Setting the loop variable to zero is an error"
     fwLinkID="0"
     tableName="Rasterization Test">
     <problem>Setting the loop variable to zero is an error, according to Apple documentation.
