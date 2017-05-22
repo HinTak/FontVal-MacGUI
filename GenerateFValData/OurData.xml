@@ -4832,7 +4832,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     <problem>Zero-based value for function number exceeds the maxp value for maxFunctionsDefs - 1.</problem>
 </item>
 
-<!-- HTL: E6017 is not used AFAIK, seems to be a mistake as it is almost identical to E6020. -->
+<!-- HTL: E6017 is not used AFAIK, seems to be a mistake as it is almost identical to E6020.; not in 1.0.1028/1.0.1140/1.1 -->
 <item
     helpID="E6017"
     atom="_rast_E_FDEF_SPACE_NOT_DEFINED"
@@ -5106,7 +5106,7 @@ states that INSTCTRL[ ] with selector 3 is used in glyph programs for ClearType.
     <problem>If you are operating in the pre-program, a zone referenced must be the twilight zone since the context does not include a particular glyph and there are no actual points.</problem>
 </item>
 
-<!-- HTL: E6041 not used AFAIK -->
+<!-- HTL: E6041 not used AFAIK; not in 1.0.1028/1.0.1140/1.1 -->
 <item
     helpID="E6041"
     atom="_rast_E_REFPOINT_USED_BUT_NOT_SET"
