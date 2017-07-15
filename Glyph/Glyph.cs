@@ -844,8 +844,7 @@ namespace NS_Glyph
                 bool isMisoriented;
                 if (!cont.IsMisoriented(this.outl, out isMisoriented))
                 {
-                    throw new ExceptionGlyph("Glyph","ValidateSimpContMisor",null);
-                    //return StatusGV.TypeStatusExec.Aborted;
+                    isMisoriented = true;
                 }
                 if (isMisoriented)
                 {
