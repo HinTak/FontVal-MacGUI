@@ -6,6 +6,8 @@ namespace OTFontFileVal {
         _FONT_W_OptimalOrder,
         _FONT_W_UnnecessaryTable,
         _FONT_W_MissingRecommendedTable,
+        _FONT_W_FONTNAME_CHARS,
+        _FONT_W_FONTVERSION_CHARS,
         _DE_W_TableAlignment,
         _DE_W_PadBytesNotZero,
         _TEST_W_ErrorInAnotherTable,
@@ -101,8 +103,20 @@ namespace OTFontFileVal {
         _rast_W_PT_NOT_TOUCHED,
         _rast_W_SANGW_OBSELETE,
         _rast_W_Need_Newer_FreeType,
+        _rast_W_FT_VALUE_OUT_OF_RANGE_SLOOP,
+        _rast_W_FT_ZERO_LEN_FUNC,
+        _rast_W_FT_ZERO_LEN_UD_INSTR,
+        _rast_W_FT_InvalidOutline,
+        _rast_W_FT_InvalidArgument,
+        _rast_W_FT_InvalidPixelSize,
+        _rast_W_FT_InvalidSizeHandle,
+        _rast_W_FT_MAXP_maxComponentDepth_TOO_LOW,
+        _rast_W_FT_MAX_NUM_TWILIGHT_POINTS_CLAMP,
+        _rast_W_FT_VALUE_OUT_OF_RANGE_SLOOP_ZERO,
+        _rast_W_FT_ALIGNRP_AFTER_IUP,
     }
     public enum E {
+        DSIG_A_UNUSUAL_TTC_TABLE_LAYOUT,
         GERR_VAL_FAILURE,
         OS_2_A_CodePageNotInstalled,
         _rast_A_ExceptionUnhandled,
@@ -552,6 +566,9 @@ namespace OTFontFileVal {
         _rast_E_VECTOR_XY_ZERO,
         _rast_E_ZONE_NOT_0_NOR_1,
         _rast_E_rasterization,
+        _rast_E_FT_EXECUTION_TOO_LONG,
+        _rast_E_FT_EXECUTION_TOO_LONG_BACKWARD_JUMP,
+        _rast_E_FT_DEF_IN_GLYF,
     }
     public enum I {
         _GEN_I_Collection,
@@ -568,6 +585,7 @@ namespace OTFontFileVal {
         CFF_I_CIDROS,
         DSIG_I_VerifySignature_Generic,
         fpgm_I_NotValidated,
+        glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC,
         hhea_I_Ascender_yMax,
         hhea_I_Descender_yMin,
         loca_I_GlyfEntryEmpty,
@@ -588,6 +606,7 @@ namespace OTFontFileVal {
         prep_I_NotValidated,
         GDEF_I_MarkSetCount,
         _rast_I_rasterization,
+        _rast_I_FT_Error_Supplymentary_Info,
     }
     public enum P {
         _OFFSET_P_BinarySearchTables,
