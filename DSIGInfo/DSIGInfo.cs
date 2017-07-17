@@ -712,7 +712,7 @@ namespace Compat
             }
 
             if (max_offset + max_padded_length - Position != 0)
-                throw new NotImplementedException( "Unusual Layout" );
+                throw new NotImplementedException( "Unusual TTC Directory Layout" );
             byte[] usFlag = {0, 1};
             hash.TransformFinalBlock(usFlag, 0,2);
             return hash.Hash;
