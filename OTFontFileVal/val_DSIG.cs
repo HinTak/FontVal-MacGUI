@@ -118,7 +118,10 @@ namespace OTFontFileVal
                 }
                 catch (Exception e)
                 {
-                    v.Error(T.DSIG_VerifySignature, E.DSIG_E_VerifySignature, m_tag, e.Message);
+                    if ( e is NotImplementedException )
+                        v.ApplicationError(T.DSIG_VerifySignature, E.DSIG_A_UNUSUAL_TTC_TABLE_LAYOUT, m_tag, e.Message);
+                    else
+                        v.Error(T.DSIG_VerifySignature, E.DSIG_E_VerifySignature, m_tag, e.Message);
                     bRet = false;
                 }
             }

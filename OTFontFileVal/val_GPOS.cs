@@ -107,13 +107,34 @@ namespace OTFontFileVal
             if (v.PerformTest(T.GPOS_Subtables))
             {
                 ScriptListTable_val slt = GetScriptListTable_val();
+                try {
                 bRet &= slt.Validate(v, "ScriptList", this);
+                }
+                catch ( Exception e )
+                {
+                    v.ApplicationError(T.GPOS_Subtables, E._Table_E_Exception, m_tag, "ScriptList: " + e.Message);
+                    bRet &= false;
+                }
 
                 FeatureListTable_val flt = GetFeatureListTable_val();
+                try {
                 bRet &= flt.Validate(v, "FeatureList", this);
+                }
+                catch ( Exception e )
+                {
+                    v.ApplicationError(T.GPOS_Subtables, E._Table_E_Exception, m_tag, "FeatureList: " + e.Message);
+                    bRet &= false;
+                }
 
                 LookupListTable_val llt = GetLookupListTable_val();
+                try {
                 bRet &= llt.Validate(v, "LookupList", this);
+                }
+                catch ( Exception e )
+                {
+                    v.ApplicationError(T.GPOS_Subtables, E._Table_E_Exception, m_tag, "LookupList: " + e.Message);
+                    bRet &= false;
+                }
             }
 
 

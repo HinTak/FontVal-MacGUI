@@ -165,9 +165,21 @@ namespace OTFontFile.Rasterizer
             {
                 if ( m_UserCancelledTest ) return true;
                 pUpdateProgressDelegate("Processing Size " + arrPointSizes[i]);
-                _face.SetCharSize(new Fixed26Dot6(arrPointSizes[i]),
-                                  new Fixed26Dot6(arrPointSizes[i]),
-                                  (uint) resX, (uint) resY);
+                try{
+                    _face.SetCharSize(new Fixed26Dot6(arrPointSizes[i]),
+                                      new Fixed26Dot6(arrPointSizes[i]),
+                                      (uint) resX, (uint) resY);
+                } catch (FreeTypeException e) {
+                    if (e.Error == Error.InvalidPixelSize)
+                    {
+                        pRastTestErrorDelegate("_rast_W_FT_InvalidPixelSize", "Setting unsupported size "
+                                               + arrPointSizes[i] + " for fixed-size font.");
+                        m_RastErrorCount += 1;
+                        continue;
+                    }
+                    else
+                        throw;
+                }
                 _face.SetTransform(fmatrix, fdelta);
                 for (uint ig = 0; ig < numGlyphs; ig++) {
                     diagnostics_Function diagnostics =
@@ -201,7 +213,37 @@ namespace OTFontFile.Rasterizer
                             return 0; // Not used currently.
                         };
                     TT_Diagnostics_Set(diagnostics);
-                    _face.LoadGlyph(ig, lf, lt);
+                    try{
+                        _face.LoadGlyph(ig, lf, lt);
+                    } catch (Exception ee) {
+                        if (ee is FreeTypeException)
+                        {
+                            FreeTypeException e = (FreeTypeException) ee;
+                            if ( e.Error == Error.InvalidOutline )
+                            {
+                                pRastTestErrorDelegate("_rast_W_FT_InvalidOutline", "Invalid Outline in Glyph " + ig);
+                                m_RastErrorCount += 1;
+                                continue;
+                            }
+                            if ( e.Error == Error.InvalidArgument )
+                            {
+                                pRastTestErrorDelegate("_rast_W_FT_InvalidArgument", "Invalid Argument in Glyph " + ig);
+                                m_RastErrorCount += 1;
+                                continue;
+                            }
+                            if ( e.Error == Error.InvalidSizeHandle )
+                            {
+                                pRastTestErrorDelegate("_rast_W_FT_InvalidSizeHandle", "Invalid Metrics for Glyph " + ig + " at size "
+                                                       + arrPointSizes[i]);
+                                m_RastErrorCount += 1;
+                                continue;
+                            }
+                        }
+
+                        pRastTestErrorDelegate("_rast_I_FT_Error_Supplymentary_Info", "Glyph " + ig +
+                                               " at size " + arrPointSizes[i]);
+                        throw;
+                    }
                     TT_Diagnostics_Unset();
                 }
             }
@@ -328,7 +370,10 @@ namespace OTFontFile.Rasterizer
 
         public ushort RasterNewSfnt (FileStream fontFileStream, uint faceIndex)
         {
-            _face = _lib.NewFace(fontFileStream.Name, (int)faceIndex);
+            if ( Type.GetType("Mono.Runtime") != null )
+                _face = _lib.NewFace(fontFileStream.Name, (int)faceIndex);
+            else
+                _face = new Face(_lib, fontFileStream, (int)faceIndex, false);
             m_UserCancelledTest = false;
             m_RastErrorCount = 0;
 

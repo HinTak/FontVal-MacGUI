@@ -523,7 +523,7 @@ double Bez2D::ParFromSeg(double parM, double parSeg, Boolean &isSamePnt)
             parSupport.Round(0,1);
             if ((parSupport.Val<0)||(parSupport.Val>1))
             {
-                throw new ExceptionGMath("Bez2D","ParamFromSupport",null);
+                throw new ExceptionGMath("Bez2D","ParamFromSupport","Outside [0,1]");
                 //return false;
             }
 
@@ -533,6 +533,7 @@ double Bez2D::ParFromSeg(double parM, double parSeg, Boolean &isSamePnt)
                 parsBez=new Param[1];
                 parsBez[0]=parSupport.Copy();
                 this.ParamFromSeg(parsBez[0]);
+                return true;
             }
 
             // self-intersecting Bezier
@@ -543,6 +544,7 @@ double Bez2D::ParFromSeg(double parM, double parSeg, Boolean &isSamePnt)
                 parsBez=new Param[2];
                 parsBez[0]=new Param(0.5*(1-Math.Sqrt(1-2*tau)));
                 parsBez[1]=new Param(0.5*(1+Math.Sqrt(1-2*tau)));
+                return true;
             }
             else if (valM>1)
             {
@@ -572,7 +574,7 @@ double Bez2D::ParFromSeg(double parM, double parSeg, Boolean &isSamePnt)
             }
             else
             {
-                // valM<0
+                // valM<=1
                 Bez2D bezRev=this.Reversed as Bez2D;
                 if (!bezRev.ParamFromSupport(1-parSupport.Val, out parsBez))
                     return false;

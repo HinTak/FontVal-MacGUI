@@ -168,6 +168,7 @@ namespace OTFontFile
                 case "loca": table = new Table_loca(tag, buf); break;
                 case "LTSH": table = new Table_LTSH(tag, buf); break;
                 case "maxp": table = new Table_maxp(tag, buf); break;
+                case "meta": table = new Table_meta(tag, buf); break;
                 case "name": table = new Table_name(tag, buf); break;
                 case "OS/2": table = new Table_OS2(tag, buf); break;
                 case "PCLT": table = new Table_PCLT(tag, buf); break;

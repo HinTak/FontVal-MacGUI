@@ -1094,7 +1094,14 @@ namespace OTFontFileVal
                     Table_GPOS GPOSTable = (Table_GPOS)fontOwner.GetTable("GPOS");
                     if (GPOSTable != null)
                     {
-                        GPOSMaxContext = GPOSTable.GetMaxContext();
+                        try {
+                            GPOSMaxContext = GPOSTable.GetMaxContext();
+                        }
+                        catch ( Exception e )
+                        {
+                            v.ApplicationError(T.OS_2_usMaxContext, E._Table_E_Exception, m_tag, "GPOS.GetMaxContext: " + e.Message);
+                            return false;
+                        }
                     }
 
                     ushort GSUBMaxContext = 0;

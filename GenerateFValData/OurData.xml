@@ -1,5 +1,16 @@
 <helpitems xmlns="urn:helpgen">
 <item
+    helpID="A0500"
+    atom="DSIG_A_UNUSUAL_TTC_TABLE_LAYOUT"
+    linkTitle="DSIG table specification"
+    specLink="http://www.microsoft.com/typography/otspec/dsig.htm"
+    shortDesc="Cannot cope with unusual ttc table layout"
+    fwLinkID="10341"
+    tableName="DSIG">
+    <problem>Cannot cope with unusual ttc table layout</problem>
+</item>
+
+<item
     helpID="A1113"
     atom="GERR_VAL_FAILURE"
     linkTitle="glyf table specification"
@@ -51,8 +62,14 @@ for Apple Color Emoji.ttf.
 That may or may not be related.
 
 &lt;p&gt;
-In the old FontVal 1.0, error A6000, &quot;Secure Rasterizer error: Function out of range&quot; can accompany E6016 &quot;FDEF out of range&quot;,
-and A6000 &quot;Secure Rasterizer error: TrueType stack overflow&quot; can accompany E6045 &quot;Stack Overflow&quot;, depending on where the E6016 and E6045 errors happen. Font designers should address these other errors first.
+In the old FontVal 1.0, error A6000,
+&quot;Secure Rasterizer error: Function out of range&quot; can accompany E6016 &quot;FDEF out of range&quot;,
+A6000 &quot;Secure Rasterizer error: TrueType stack overflow&quot; can accompany E6045 &quot;Stack Overflow&quot;,
+A6000 &quot;Secure Rasterizer error: Storage index out of range&quot; can accompany E6047 &quot;Storage index out of range&quot;,
+depending on where the E6016, E6045 and E6047 errors happen. Font designers should address these other errors first.
+
+&lt;p&gt;
+Running FontVal 1.0 (and perhaps 2.0 too) under wine can occasionally result in error A6000, &quot;Attempted to read or write protected memory. This is often an indication that other memory is corrupt.&quot; . This is intermittent and a problem with wine. Users should simply re-run.
 </problem>
 </item>
 
@@ -4815,6 +4832,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     <problem>Zero-based value for function number exceeds the maxp value for maxFunctionsDefs - 1.</problem>
 </item>
 
+<!-- HTL: E6017 is not used AFAIK, seems to be a mistake as it is almost identical to E6020.; not in 1.0.1028/1.0.1140/1.1 -->
 <item
     helpID="E6017"
     atom="_rast_E_FDEF_SPACE_NOT_DEFINED"
@@ -4845,7 +4863,11 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Funit coordinate out of range must be -16384 .. 16383"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Font Unit values must be in the range of -16384 to 16383.</problem>
+    <problem>Font Unit values must be in the range of -16384 to 16383.
+
+&lt;p&gt;
+FontVal 1.0 mis-implemented the check as F26.6 and thus for [-1048576, 1048512] instead.
+</problem>
 </item>
 
 <item
@@ -5043,7 +5065,12 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Not called from pre-program"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Make sure you only make this call from the pre-program.&lt;BR&gt;&lt;BR&gt;FDEF and IDEF can only be called from the font program or pre-program. INSTCTRL[ ] can only be called from the pre-program.</problem>
+    <problem>Make sure you only make this call from the pre-program.&lt;BR&gt;&lt;BR&gt;FDEF and IDEF can only be called from the font program or pre-program. INSTCTRL[ ] can only be called from the pre-program.
+
+&lt;p&gt;
+&lt;A TARGET=&quot;top&quot; HREF=&quot;https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx&quot;&gt;The ClearType whitepaper&lt;/A&gt;
+states that INSTCTRL[ ] with selector 3 is used in glyph programs for ClearType. This was not taken account of in FontVal 1.0 .
+</problem>
 </item>
 
 <item
@@ -5079,6 +5106,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     <problem>If you are operating in the pre-program, a zone referenced must be the twilight zone since the context does not include a particular glyph and there are no actual points.</problem>
 </item>
 
+<!-- HTL: E6041 not used AFAIK; not in 1.0.1028/1.0.1140/1.1 -->
 <item
     helpID="E6041"
     atom="_rast_E_REFPOINT_USED_BUT_NOT_SET"
@@ -5131,7 +5159,13 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Stack Overflow"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>There is an attempt to PUSH more data on the stack than space will accommodate. Adjust maxStackElements field in the maxp table.</problem>
+    <problem>There is an attempt to PUSH more data on the stack than space will accommodate. Adjust maxStackElements field in the maxp table.
+
+&lt;p&gt;
+Note that the FreeType backend of FontVal 2.0+ behaves differently after this error, compared to FontVal 1.0.
+Instead of aborting, it continues processing the rest of the instruction stream. Users can therefore see further problems
+beyond the point of this error. This is expected.
+</problem>
 </item>
 
 <item
@@ -5142,7 +5176,13 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Stack Underflow"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>There is an attempt to POP a value from below the bottom of the stack. Make sure the data you are popping from the stack has been pushed onto the stack.</problem>
+    <problem>There is an attempt to POP a value from below the bottom of the stack. Make sure the data you are popping from the stack has been pushed onto the stack.
+
+&lt;p&gt;
+Note that the FreeType backend of FontVal 2.0+ behaves differently after this error, compared to FontVal 1.0.
+Instead of aborting, it continues processing the rest of the instruction stream. Users can therefore see further problems
+beyond the point of this error. This is expected.
+</problem>
 </item>
 
 <item
@@ -5290,6 +5330,39 @@ once at the same location, one per reference point. This is seen with IP and MSI
     fwLinkID="10363"
     tableName="Rasterization Test">
     <problem>Rasterization could not be performed because the head, maxp, or glyf table is missing.</problem>
+</item>
+
+<item
+    helpID="E6070"
+    atom="_rast_E_FT_EXECUTION_TOO_LONG"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="Execution time too long and exceeds dynamic limit"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>Execution time too long and exceeds dynamic limit</problem>
+</item>
+
+<item
+    helpID="E6071"
+    atom="_rast_E_FT_EXECUTION_TOO_LONG_BACKWARD_JUMP"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="Execution time too long and exceeds dynamic limit in backward jump"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>Execution time too long and exceeds dynamic limit in backward jump</problem>
+</item>
+
+<item
+    helpID="E6072"
+    atom="_rast_E_FT_DEF_IN_GLYF"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="FDEF or IDEF should be in fpgm and prep only, not in glyf"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>FDEF or IDEF should be in fpgm and prep only, not in glyf</problem>
 </item>
 
 <item
@@ -8924,6 +8997,28 @@ once at the same location, one per reference point. This is seen with IP and MSI
 </item>
 
 <item
+    helpID="W0023"
+    atom="_FONT_W_FONTNAME_CHARS"
+    linkTitle="details about OpenType files"
+    specLink="http://www.microsoft.com/typography/otspec/otff.htm"
+    shortDesc="Unusual characters in FontName"
+    fwLinkID="10363"
+    tableName="Font">
+    <problem>Unusual characters detected in FontName. Please check that this is necessary.</problem>
+</item>
+
+<item
+    helpID="W0024"
+    atom="_FONT_W_FONTVERSION_CHARS"
+    linkTitle="details about OpenType files"
+    specLink="http://www.microsoft.com/typography/otspec/otff.htm"
+    shortDesc="Unusual characters in FontVersion"
+    fwLinkID="10363"
+    tableName="Font">
+    <problem>Unusual characters detected in FontVersion. Please check that this is necessary.</problem>
+</item>
+
+<item
     helpID="W0030"
     atom="_DE_W_TableAlignment"
     linkTitle="details about OpenType files"
@@ -9098,6 +9193,17 @@ All tables should be recorded in the table directory with their actual length. T
     fwLinkID="10348"
     tableName="glyf">
     <problem>A composite glyph description contained in the glyf table has bit 4 of the flag field incorrectly set to 1. This bit should be set to 0.</problem>
+</item>
+
+<item
+    helpID="I1100"
+    atom="glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC"
+    linkTitle="glyf table specification"
+    specLink="http://www.microsoft.com/typography/otspec/glyf.htm"
+    shortDesc="No need to check identical glyf or EBDT tables in TTC beyond the first member"
+    fwLinkID="10348"
+    tableName="glyf">
+    <problem>No need to check identical glyf or EBDT tables in TTC beyond the first member</problem>
 </item>
 
 <item
@@ -9891,7 +9997,7 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
 </item>
 
 <item
-    helpID="W6013"
+    helpID="W6019"
     atom="_rast_W_Need_Newer_FreeType"
     linkTitle="WARNING: field missing"
     specLink="WARNING: field missing"
@@ -9899,6 +10005,131 @@ bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
     fwLinkID="0"
     tableName="Rasterization Test">
     <problem>Place holder - We most likely need to enhance Freetype and do a minimum version check.</problem>
+</item>
+
+<item
+    helpID="W6020"
+    atom="_rast_W_FT_VALUE_OUT_OF_RANGE_SLOOP"
+    linkTitle="WARNING: field missing"
+    specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM05/Chap5.html#SLOOP"
+    shortDesc="Setting the loop variable to negative value"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Setting the loop variable to negative value.</problem>
+</item>
+
+<item
+    helpID="W6029"
+    atom="_rast_W_FT_VALUE_OUT_OF_RANGE_SLOOP_ZERO"
+    linkTitle="WARNING: field missing"
+    specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM05/Chap5.html#SLOOP"
+    shortDesc="Setting the loop variable to zero is an error"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Setting the loop variable to zero is an error, according to Apple documentation.
+
+&lt;ol&gt;
+ttfautohint is known to generate such hinting instructions, and FreeType is known to tolerate it.
+If the font is intended to be used only on systems where FreeType is the rendering engine, this warning can be safely ignored.</problem>
+</item>
+
+<item
+    helpID="W6021"
+    atom="_rast_W_FT_ZERO_LEN_FUNC"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Defining zero-length function"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Defining zero-length function</problem>
+</item>
+
+<item
+    helpID="W6022"
+    atom="_rast_W_FT_ZERO_LEN_UD_INSTR"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Defining zero-length user-defined instruction"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Defining zero-length user-defined instruction</problem>
+</item>
+
+<item
+    helpID="W6023"
+    atom="_rast_W_FT_InvalidOutline"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid Outline"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid Outline&quot; error on this glyph. Check and fix errors indicated by the glyf table test first, before re-test.</problem>
+</item>
+
+<item
+    helpID="W6024"
+    atom="_rast_W_FT_InvalidArgument"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid Argument"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid Argument&quot; error. Most likely there is an inconsistency in the number of glyphs declared in different tables. Fixes these other errors first, before re-test.</problem>
+</item>
+
+<item
+    helpID="W6025"
+    atom="_rast_W_FT_InvalidPixelSize"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid PixelSize"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid PixelSize&quot; error. This is likely a user error, trying to set an unsupported size for a fixed-size font.</problem>
+</item>
+
+<item
+    helpID="W6026"
+    atom="_rast_W_FT_InvalidSizeHandle"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid Size Handle"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid Size Handle&quot; error. When this happens for a fixed-size font at specific glyphs, it is likely that those glyphs have invalid metrics.</problem>
+</item>
+
+<item
+    helpID="W6027"
+    atom="_rast_W_FT_MAXP_maxComponentDepth_TOO_LOW"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="maxComponentDepth in maxp is too low"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>maxComponentDepth in maxp is too low. Consider increasing its value.</problem>
+</item>
+
+<item
+    helpID="W6028"
+    atom="_rast_W_FT_MAX_NUM_TWILIGHT_POINTS_CLAMP"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="number of twilight points unreasonably large"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Number of twilight points seems unreasonably large. Consider resetting to a more reasonable heuristic value.</problem>
+</item>
+
+<item
+    helpID="W6030"
+    atom="_rast_W_FT_ALIGNRP_AFTER_IUP"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="ALIGNRP after IUP in Subpixel-hinting mode"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>ALIGNRP after IUP in Subpixel-hinting mode.</problem>
 </item>
 
 <item
@@ -9995,6 +10226,17 @@ by either method may indicate some other problem in the font.
     fwLinkID="10363"
     tableName="Rasterization Test">
     <problem>Rasterization could not be performed because the font file has PostScript outlines.</problem>
+</item>
+
+<item
+    helpID="I6070"
+    atom="_rast_I_FT_Error_Supplymentary_Info"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="Supplementary Information"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>Supplementary Information, just before impending Font Engine error.</problem>
 </item>
 
 <item

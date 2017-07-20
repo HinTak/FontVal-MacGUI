@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
@@ -119,6 +120,14 @@ namespace OTFontFileVal {
         DriverCallbacks       m_callbacks;
         XmlTextWriter         m_xmlWriter;
 
+        private static string CleanInvalidXmlChars(string text)
+        {
+            // From xml spec valid chars:
+            // #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+            // any Unicode character, excluding the surrogate blocks, FFFE, and FFFF.
+            string re = @"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]";
+            return Regex.Replace(text, re, "");
+        }
 
         public Driver( DriverCallbacks cbs )
         {
@@ -182,7 +191,7 @@ namespace OTFontFileVal {
             m_xmlWriter.WriteStartElement("FontInfo");
             if (sFontName != null) {
                 m_xmlWriter.WriteAttributeString("FontName", 
-                                                 sFontName);
+                                                 CleanInvalidXmlChars(sFontName));
             } else {
                 m_xmlWriter.WriteAttributeString("FontName", 
                                                  "BAD FONT NAME");
@@ -190,7 +199,7 @@ namespace OTFontFileVal {
             
             if ( sFontVersion != null) {
                 m_xmlWriter.WriteAttributeString("FontVersion", 
-                                                 sFontVersion);
+                                                 CleanInvalidXmlChars(sFontVersion));
             } else {
                 m_xmlWriter.WriteAttributeString("FontVersion", 
                                                  "BAD FONT VERSION");
