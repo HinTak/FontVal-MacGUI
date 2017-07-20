@@ -220,7 +220,7 @@ namespace OTFontFileVal
             // rasterization test - BW
 
             v.OnRastTestValidationEvent_BW(true);
-            if ( Is_TTC_LaterIdenticalTable("glyf") )
+            if ( v.PeformRastTest_BW() && Is_TTC_LaterIdenticalTable("glyf") )
             {
                 v.Info(T.T_NULL, I.glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC, null, "B/W Rasterization");
             }
@@ -278,7 +278,7 @@ namespace OTFontFileVal
             // rasterization test - Grayscale
 
             v.OnRastTestValidationEvent_Grayscale(true);
-            if ( Is_TTC_LaterIdenticalTable("glyf") )
+            if ( v.PeformRastTest_Grayscale() && Is_TTC_LaterIdenticalTable("glyf") )
             {
                 v.Info(T.T_NULL, I.glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC, null, "Grayscale Rasterization");
             }
@@ -337,7 +337,7 @@ namespace OTFontFileVal
             // rasterization test - Cleartype
 
             v.OnRastTestValidationEvent_Cleartype(true);
-            if ( Is_TTC_LaterIdenticalTable("glyf") )
+            if ( v.PeformRastTest_Cleartype() && Is_TTC_LaterIdenticalTable("glyf") )
             {
                 v.Info(T.T_NULL, I.glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC, null, "Cleartype Rasterization");
             }
@@ -1232,8 +1232,13 @@ namespace OTFontFileVal
                 {
                     // checksum not matching data is covered by check elsewhere. Assume they match.
                     DirectoryEntry de_current = GetDirectoryEntry(s);
+                    if ( de_current == null )
+                        return false;
                     for ( uint i = 0 ; i < GetFontIndexInFile() ; i++ )
                     {
+                        if ( GetFile().GetFont(i).GetDirectoryEntry(s) == null )
+                            return false;
+
                         if ( GetFile().GetFont(i).GetDirectoryEntry(s).checkSum
                              == de_current.checkSum )
                         {
