@@ -370,10 +370,7 @@ namespace OTFontFile.Rasterizer
 
         public ushort RasterNewSfnt (FileStream fontFileStream, uint faceIndex)
         {
-            if ( Type.GetType("Mono.Runtime") != null )
-                _face = _lib.NewFace(fontFileStream.Name, (int)faceIndex);
-            else
-                _face = new Face(_lib, fontFileStream, (int)faceIndex, false);
+            _face = _lib.NewFace(fontFileStream.Name, (int)faceIndex);
             m_UserCancelledTest = false;
             m_RastErrorCount = 0;
 
