@@ -25,6 +25,7 @@ namespace FontValidator
         List<string>          m_captions = new List<string>();
         bool m_verbose;
         bool m_report2stdout;
+        static string version = "2.1.1";
 
         static void ErrOut( string s ) 
         {
@@ -209,6 +210,9 @@ namespace FontValidator
         {
             Console.WriteLine( "Usage: FontValidator [options]" );
             Console.WriteLine( "" );
+            Console.WriteLine( "Version: {0}", version);
+            Console.WriteLine( "" );
+
             Console.WriteLine( "Options:" );
             Console.WriteLine( "-file          <fontfile>      (multiple allowed)" );
             Console.WriteLine( "+table         <table-include> (multible allowed)" );
@@ -221,6 +225,7 @@ namespace FontValidator
             Console.WriteLine( "-report-stdout                 (=\"-stdout\", implies -quiet)" );
             Console.WriteLine( "-temporary-reports" );
             Console.WriteLine( "-report-in-font-dir" );
+            Console.WriteLine( "-version" );
 
             Console.WriteLine( "" );
             Console.WriteLine( "Valid table names (note the space after \"CFF \" and \"cvt \"):" );
@@ -327,6 +332,10 @@ namespace FontValidator
                 }
                 else if ( "-temporary-reports" == args[i] ) {
                     rfd = ReportFileDestination.TempFiles;
+                }
+                else if ( "-version" == args[i] ) {
+                    Console.WriteLine( "Version: {0}", version);
+                    return 0; /* terminates success */
                 }
                 else {
                     ErrOut( "Unknown argument: \"" + args[i] + "\"" );
