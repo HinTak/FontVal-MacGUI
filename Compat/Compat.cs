@@ -53,10 +53,10 @@ namespace OTFontFile.Rasterizer
                                                  int range_base, int is_composite,
                                                  int IP, int callTop, int opc, int start);
 
-        [DllImport("freetype6.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("freetype6", CallingConvention = CallingConvention.Cdecl)]
         public static extern void TT_Diagnostics_Set([MarshalAs(UnmanagedType.FunctionPtr)] diagnostics_Function diagnostics);
 
-        [DllImport("freetype6.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("freetype6", CallingConvention = CallingConvention.Cdecl)]
         public static extern void TT_Diagnostics_Unset();
 
         private RasterInterf ()
