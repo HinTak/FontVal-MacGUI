@@ -11,7 +11,7 @@ Most (only?) active development happens at
 http://github.com/HinTak/Font-Validator .
 
 
-FontVal 2.1.1
+FontVal 2.1.1 , Sep  1 2017
 =============
 
 - This is an update from FontVal 2.1 on the FreeType backend only,
@@ -33,7 +33,7 @@ FontVal 2.1.1
 Special thanks to Christian Demmer for multiple rounds of patient testing
 of the Mac OS X binaries!
 
-FontVal 2.1
+FontVal 2.1 , Jul 20 2017
 ===========
 
 - Backend b70+10.5, based on FreeType 2.8+ (VER-2-8-73-g38bdf22bf)
@@ -88,7 +88,7 @@ FontVal 2.0 , Jul 17 2016
 
 - backend b54, based on FreeType 2.6.4
 
-FontVal 1.1, Apr 07 2009
+FontVal 1.1 , Apr 07 2009
 ===========
 - Microsoft released to Github on Nov 11 2015; incomplete
 
