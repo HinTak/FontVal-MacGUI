@@ -1,5 +1,27 @@
 <helpitems xmlns="urn:helpgen">
 <item
+    helpID="A0500"
+    atom="DSIG_A_UNUSUAL_TTC_TABLE_LAYOUT"
+    linkTitle="DSIG table specification"
+    specLink="http://www.microsoft.com/typography/otspec/dsig.htm"
+    shortDesc="Cannot cope with unusual ttc table layout"
+    fwLinkID="10341"
+    tableName="DSIG">
+    <problem>Cannot cope with unusual ttc table layout</problem>
+</item>
+
+<item
+    helpID="A1113"
+    atom="GERR_VAL_FAILURE"
+    linkTitle="glyf table specification"
+    specLink="http://www.microsoft.com/typography/otspec/glyf.htm"
+    shortDesc="Test failed because of unhandled exception"
+    fwLinkID="10348"
+    tableName="glyf">
+    <problem>Unused in either 1.0.1286.23890 or 1.1.3359.19055</problem>
+</item>
+
+<item
     helpID="A2100"
     atom="OS_2_A_CodePageNotInstalled"
     linkTitle="OS/2 table specification"
@@ -7,7 +29,10 @@
     shortDesc="A range in the ulCodePageRange field cannot be validated because a code page is not installed"
     fwLinkID="10381"
     tableName="OS/2">
-    <problem>This message does not indicate there is an error in the font. To validate the codepage compliance of a font, all codepages covered by the font must be installed on the testing system.&lt;BR&gt;&lt;BR&gt;To install additional codepages in Windows, do the following:&lt;OL&gt;&lt;LI&gt;Go to Control Panel.&lt;/LI&gt;&lt;LI&gt;Choose Regional and Language Options.&lt;/LI&gt;&lt;LI&gt;Click the Advanced tab.&lt;/LI&gt;&lt;LI&gt;In the Codepage Conversion Tables list, select the codepages you wish to install. You will need to have your Windows installation disk available.&lt;/LI&gt;&lt;/OL&gt;</problem>
+    <problem>This message does not indicate there is an error in the font. To validate the codepage compliance of a font, all codepages covered by the font must be installed on the testing system.&lt;BR&gt;&lt;BR&gt;To install additional codepages in Windows, do the following:&lt;OL&gt;&lt;LI&gt;Go to Control Panel.&lt;/LI&gt;&lt;LI&gt;Choose Regional and Language Options.&lt;/LI&gt;&lt;LI&gt;Click the Advanced tab.&lt;/LI&gt;&lt;LI&gt;In the Codepage Conversion Tables list, select the codepages you wish to install. You will need to have your Windows installation disk available.&lt;/LI&gt;&lt;/OL&gt;
+
+    &lt;p&gt;This message is not used and should not be seen from 2015 onwards with FontVal 2.0 .
+  </problem>
 </item>
 
 <item
@@ -18,7 +43,34 @@
     shortDesc="An exception occurred during rasterization testing"
     fwLinkID="10368"
     tableName="Application">
-    <problem>The rasterization testing cannot be continued due to an error in the font. Before completing rasterization testing, you will need to identify and fix this error, using details provided.&lt;BR&gt;&lt;BR&gt;If exception errors continue after you have changed the font data, please contact the Microsoft Typography group.</problem>
+    <problem>The rasterization testing cannot be continued due to an error in the font. Before completing rasterization testing, you will need to identify and fix this error, using details provided.&lt;BR&gt;&lt;BR&gt;If exception errors continue after you have changed the font data, please contact the Microsoft Typography group.
+
+&lt;p&gt;
+This message can happen on MS Windows with FontVal 2.0 when testing fonts within non-English file names,
+with the detail &quot; Cannot marshal: Encountered unmappable character. &quot;
+This is a known limitation of SharpFont on Windows ( https://github.com/Robmaister/SharpFont/issues/89 ).
+Try renaming or copy the file with an English name and re-test.
+
+&lt;p&gt;
+Bitmap-only fonts, such as Apple Color Emoji.ttf, which are designed for only some specific pixel sizes,
+may result in
+&quot; FreeType error: Invalid pixel size. &quot;
+when testing for sizes which they are not designed for.
+Under this circumstance, this message is harmless and can be ignored.
+The older FontVal 1.0 and 1.1 shows &quot; Secure Rasterizer error: Function out of range &quot; as well as E6016 &quot;FDEF out of range&quot;
+for Apple Color Emoji.ttf.
+That may or may not be related.
+
+&lt;p&gt;
+In the old FontVal 1.0, error A6000,
+&quot;Secure Rasterizer error: Function out of range&quot; can accompany E6016 &quot;FDEF out of range&quot;,
+A6000 &quot;Secure Rasterizer error: TrueType stack overflow&quot; can accompany E6045 &quot;Stack Overflow&quot;,
+A6000 &quot;Secure Rasterizer error: Storage index out of range&quot; can accompany E6047 &quot;Storage index out of range&quot;,
+depending on where the E6016, E6045 and E6047 errors happen. Font designers should address these other errors first.
+
+&lt;p&gt;
+Running FontVal 1.0 (and perhaps 2.0 too) under wine can occasionally result in error A6000, &quot;Attempted to read or write protected memory. This is often an indication that other memory is corrupt.&quot; . This is intermittent and a problem with wine. Users should simply re-run.
+</problem>
 </item>
 
 <item
@@ -141,6 +193,10 @@
     tableName="General">
     <problem>A minimum of eight tables are required in a valid TrueType font: cmap, head, hhea, hmtx, maxp, name, OS/2, and post.&lt;BR&gt;&lt;BR&gt;If TrueType data is present in the font, then the following tables are also required: cvt, fpgm, glyf, loca, and prep. If CFF data is in the font, then both the CFF and VORG tables need to be present.&lt;BR&gt;&lt;BR&gt;Microsoft also requires that the DSIG table be present in fonts delivered by vendors to Microsoft.&lt;BR&gt;&lt;BR&gt;Microsoft further recommends that the gasp table be present in all fonts.To learn more about these recommendations, see the &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=10456&quot;&gt;Hinting and Production Guidelines Specification&lt;/A&gt;.</problem>
 </item>
+<!--
+    A commented out stale entry "W7003 / _FONT_W_MissingRequiredTable"
+    was removed in c2f1f1e7fda7d79e3e16dba682545e0c727c140d
+-->
 
 <item
     helpID="E0030"
@@ -986,7 +1042,7 @@ This error indicates a structural problem with the font. Structural errors may b
     shortDesc="The version number is not valid"
     fwLinkID="10346"
     tableName="gasp">
-    <problem>Version 0 is the only version of the gasp table currently defined. Correct this field using a table editing tool.</problem>
+    <problem>Version 0 and 1 are the only versions of the gasp table currently defined. Correct this field using a table editing tool.</problem>
 </item>
 
 <item
@@ -2417,7 +2473,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 7, ArmStyle &gt; 11"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that want to substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2428,7 +2484,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 5, Contrast &gt; 9"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2439,7 +2495,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 1, FamilyType &gt; 5"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2450,7 +2506,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 8, Letterform &gt; 15"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2461,7 +2517,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 9, Midline &gt; 13"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2472,7 +2528,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 4, Proportion &gt; 9"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2483,7 +2539,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 2, SerifStyle &gt; 15"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2494,7 +2550,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 6, StrokeVariation &gt; 10"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2505,7 +2561,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 3, Weight &gt; 11"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping.  PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2516,7 +2572,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) byte 10, XHeight &gt; 7"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not reliably available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2731,6 +2787,17 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
 </item>
 
 <item
+    helpID="I2131"
+    atom="OS_2_I_usLastCharIndex"
+    linkTitle="OS/2 table specification"
+    specLink="http://www.microsoft.com/typography/otspec/os2.htm#lci"
+    shortDesc="The usLastCharIndex is 0xFFFF and a (3.10) cmap is present"
+    fwLinkID="10386"
+    tableName="OS/2">
+    <problem>The maximum Unicode index (character code) in this font, according to the cmap subtable for platform ID 3 and encoding ID 0 or 1. This value depends on which character sets the font supports. This field cannot represent supplementary character values (codepoints greater than 0xFFFF). Fonts that support supplementary characters should set the value in this field to 0xFFFF.</problem>
+</item>
+
+<item
     helpID="E2132"
     atom="OS_2_E_Version"
     linkTitle="OS/2 table specification"
@@ -2820,7 +2887,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="Font is a symbol font, but PANOSE(tm) byte 1, FamilyType, is not set to Latin Symbol"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2831,7 +2898,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="Font is a not a symbol font, but PANOSE(tm) byte 1, FamilyType, is set to Latin Symbol"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2842,7 +2909,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE family kind is Latin Symbol, but byte 5, Aspect Ratio and Contrast, does not equal 1"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -2853,7 +2920,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE family kind is Latin Symbol, but byte 3, Weight, does not equal 1"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -4765,6 +4832,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     <problem>Zero-based value for function number exceeds the maxp value for maxFunctionsDefs - 1.</problem>
 </item>
 
+<!-- HTL: E6017 is not used AFAIK, seems to be a mistake as it is almost identical to E6020.; not in 1.0.1028/1.0.1140/1.1 -->
 <item
     helpID="E6017"
     atom="_rast_E_FDEF_SPACE_NOT_DEFINED"
@@ -4795,7 +4863,11 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Funit coordinate out of range must be -16384 .. 16383"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Font Unit values must be in the range of -16384 to 16383.</problem>
+    <problem>Font Unit values must be in the range of -16384 to 16383.
+
+&lt;p&gt;
+FontVal 1.0 mis-implemented the check as F26.6 and thus for [-1048576, 1048512] instead.
+</problem>
 </item>
 
 <item
@@ -4927,7 +4999,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Invalid zone"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Valid values for zone are: 0 or 1 if maxZones in maxp is 2; 1 if maxZones in maxp1 is 1.</problem>
+    <problem>Valid values for zone are: 0 or 1 if maxZones in maxp is 2; 1 if maxZones in maxp is 1.</problem>
 </item>
 
 <item
@@ -4993,7 +5065,12 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Not called from pre-program"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Make sure you only make this call from the pre-program.&lt;BR&gt;&lt;BR&gt;FDEF and IDEF can only be called from the font program or pre-program. INSTCTRL[ ] can only be called from the pre-program.</problem>
+    <problem>Make sure you only make this call from the pre-program.&lt;BR&gt;&lt;BR&gt;FDEF and IDEF can only be called from the font program or pre-program. INSTCTRL[ ] can only be called from the pre-program.
+
+&lt;p&gt;
+&lt;A TARGET=&quot;top&quot; HREF=&quot;https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx&quot;&gt;The ClearType whitepaper&lt;/A&gt;
+states that INSTCTRL[ ] with selector 3 is used in glyph programs for ClearType. This was not taken account of in FontVal 1.0 .
+</problem>
 </item>
 
 <item
@@ -5029,6 +5106,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     <problem>If you are operating in the pre-program, a zone referenced must be the twilight zone since the context does not include a particular glyph and there are no actual points.</problem>
 </item>
 
+<!-- HTL: E6041 not used AFAIK; not in 1.0.1028/1.0.1140/1.1 -->
 <item
     helpID="E6041"
     atom="_rast_E_REFPOINT_USED_BUT_NOT_SET"
@@ -5081,7 +5159,13 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Stack Overflow"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>There is an attempt to PUSH more data on the stack than space will accommodate. Adjust maxStackElements field in the maxp table.</problem>
+    <problem>There is an attempt to PUSH more data on the stack than space will accommodate. Adjust maxStackElements field in the maxp table.
+
+&lt;p&gt;
+Note that the FreeType backend of FontVal 2.0+ behaves differently after this error, compared to FontVal 1.0.
+Instead of aborting, it continues processing the rest of the instruction stream. Users can therefore see further problems
+beyond the point of this error. This is expected.
+</problem>
 </item>
 
 <item
@@ -5092,7 +5176,13 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Stack Underflow"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>There is an attempt to POP a value from below the bottom of the stack. Make sure the data you are popping from the stack has been pushed onto the stack.</problem>
+    <problem>There is an attempt to POP a value from below the bottom of the stack. Make sure the data you are popping from the stack has been pushed onto the stack.
+
+&lt;p&gt;
+Note that the FreeType backend of FontVal 2.0+ behaves differently after this error, compared to FontVal 1.0.
+Instead of aborting, it continues processing the rest of the instruction stream. Users can therefore see further problems
+beyond the point of this error. This is expected.
+</problem>
 </item>
 
 <item
@@ -5125,7 +5215,11 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="Twilight zone point not set"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>A twilight zone point has not been set and is not valid. Make sure it is set with an instruction like MDAP before it is used.</problem>
+    <problem>A twilight zone point has not been set and is not valid. Make sure it is set with an instructions like MDAP, MIAP, MIRP, MSIRP, or SCFS before it is used.
+
+&lt;p&gt;A few instructions use more than one reference points or contain a loop, and can therefore emit this error message more than
+once at the same location, one per reference point. This is seen with IP and MSIRP in the wild.
+</problem>
 </item>
 
 <item
@@ -5236,6 +5330,39 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     fwLinkID="10363"
     tableName="Rasterization Test">
     <problem>Rasterization could not be performed because the head, maxp, or glyf table is missing.</problem>
+</item>
+
+<item
+    helpID="E6070"
+    atom="_rast_E_FT_EXECUTION_TOO_LONG"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="Execution time too long and exceeds dynamic limit"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>Execution time too long and exceeds dynamic limit</problem>
+</item>
+
+<item
+    helpID="E6071"
+    atom="_rast_E_FT_EXECUTION_TOO_LONG_BACKWARD_JUMP"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="Execution time too long and exceeds dynamic limit in backward jump"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>Execution time too long and exceeds dynamic limit in backward jump</problem>
+</item>
+
+<item
+    helpID="E6072"
+    atom="_rast_E_FT_DEF_IN_GLYF"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="FDEF or IDEF should be in fpgm and prep only, not in glyf"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>FDEF or IDEF should be in fpgm and prep only, not in glyf</problem>
 </item>
 
 <item
@@ -5605,45 +5732,45 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
 <item
     helpID="I2001"
     atom="name_I_Preferred_family_present"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
-    shortDesc="Preferred family"
+    linkTitle="name table specification"
+    specLink="https://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="Found Typographic Family name (Name ID 16)"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>Found Typographic Family name (Name ID 16)</problem>
 </item>
 
 <item
     helpID="I2002"
     atom="name_I_Preferred_family_not_present"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
-    shortDesc="No string for Preferred Family"
+    linkTitle="name table specification"
+    specLink="https://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="No string for Typographic Family name (Name ID 16)"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>No string for Typographic Family name (Name ID 16)</problem>
 </item>
 
 <item
     helpID="I2003"
     atom="name_I_Preferred_subfamily_present"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
-    shortDesc="Preferred subfamily"
+    linkTitle="name table specification"
+    specLink="https://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="Found Typographic Subfamily name (Name ID 17)"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>Found Typographic Subfamily name (Name ID 17)</problem>
 </item>
 
 <item
     helpID="I2004"
     atom="name_I_Preferred_subfamily_not_present"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
-    shortDesc="No string for Preferred Subfamily"
+    linkTitle="name table specification"
+    specLink="https://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="No string for Typographic Subfamily name (Name ID 17)"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>No string for Typographic Subfamily name (Name ID 17)</problem>
 </item>
 
 <item
@@ -5665,7 +5792,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="The post name isn't in uniXXXX or uXXXXX format and there is no Adobe Glyph List entry"
     fwLinkID="10365"
     tableName="post">
-    <problem>PostScript character set glyph names should match those in the PostScript Reference Manual. Glyphs outside the PostScript character set may use a character string in the format of uniXXXX as their PostScript name. To learn more about PostScript names, see &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=10682&quot;&gt;Adobe Glyph List&lt;/A&gt;.</problem>
+    <problem>PostScript character set glyph names should match those in the PostScript Reference Manual. Glyphs outside the PostScript character set may use a character string in the format of uniXXXX as their PostScript name. To learn more about PostScript names, see &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=0&quot;&gt;Adobe Glyph List&lt;/A&gt;.</problem>
 </item>
 
 <item
@@ -5676,7 +5803,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     shortDesc="The post name does not match the name in the Adobe Glyph List"
     fwLinkID="10365"
     tableName="post">
-    <problem>PostScript character set glyph names should match those in the PostScript Reference Manual. Glyphs outside the PostScript character set may use a character string in the format of uniXXXX as their PostScript name. To learn more about PostScript names, see &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=10682&quot;&gt;Adobe Glyph List&lt;/A&gt;.</problem>
+    <problem>PostScript character set glyph names should match those in the PostScript Reference Manual. Glyphs outside the PostScript character set may use a character string in the format of uniXXXX as their PostScript name. To learn more about PostScript names, see &lt;A TARGET=&quot;top&quot; HREF=&quot;http://go.microsoft.com/fwlink?LinkID=0&quot;&gt;Adobe Glyph List&lt;/A&gt;.</problem>
 </item>
 
 <item
@@ -6258,7 +6385,7 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
     specLink="WARNING: field missing"
     shortDesc="There are no DeviceRecord padding bytes"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="hdmx">
     <problem/>
 </item>
 
@@ -8870,6 +8997,28 @@ Correct this data using a table editing tool.&lt;BR&gt;For examples of how to us
 </item>
 
 <item
+    helpID="W0023"
+    atom="_FONT_W_FONTNAME_CHARS"
+    linkTitle="details about OpenType files"
+    specLink="http://www.microsoft.com/typography/otspec/otff.htm"
+    shortDesc="Unusual characters in FontName"
+    fwLinkID="10363"
+    tableName="Font">
+    <problem>Unusual characters detected in FontName. Please check that this is necessary.</problem>
+</item>
+
+<item
+    helpID="W0024"
+    atom="_FONT_W_FONTVERSION_CHARS"
+    linkTitle="details about OpenType files"
+    specLink="http://www.microsoft.com/typography/otspec/otff.htm"
+    shortDesc="Unusual characters in FontVersion"
+    fwLinkID="10363"
+    tableName="Font">
+    <problem>Unusual characters detected in FontVersion. Please check that this is necessary.</problem>
+</item>
+
+<item
     helpID="W0030"
     atom="_DE_W_TableAlignment"
     linkTitle="details about OpenType files"
@@ -9047,13 +9196,24 @@ All tables should be recorded in the table directory with their actual length. T
 </item>
 
 <item
+    helpID="I1100"
+    atom="glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC"
+    linkTitle="glyf table specification"
+    specLink="http://www.microsoft.com/typography/otspec/glyf.htm"
+    shortDesc="No need to check identical glyf or EBDT tables in TTC beyond the first member"
+    fwLinkID="10348"
+    tableName="glyf">
+    <problem>No need to check identical glyf or EBDT tables in TTC beyond the first member</problem>
+</item>
+
+<item
     helpID="W1200"
     atom="hdmx_W_Need_Newer_FreeType"
     linkTitle="WARNING: field missing"
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="hdmx">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
@@ -9151,7 +9311,7 @@ All tables should be recorded in the table directory with their actual length. T
     linkTitle="Apple TrueType Reference Manual"
     specLink="http://developer.apple.com/fonts/TTRefMan/RM06/Chap6head.html"
     shortDesc="The unitsPerEm is less than 64 which is in violation of the Apple spec"
-    fwLinkID="10402"
+    fwLinkID="0"
     tableName="head">
     <problem>The Apple specification for TrueType fonts specifies that the range of possible values for unitsPerEm is 64-16384, and should be a power of 2.</problem>
 </item>
@@ -9317,7 +9477,7 @@ All tables should be recorded in the table directory with their actual length. T
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="LTSH">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
@@ -9336,7 +9496,7 @@ All tables should be recorded in the table directory with their actual length. T
     helpID="W2001"
     atom="name_W_VersionMismatch_MS_MAC"
     linkTitle="name table specification"
-    specLink="WARNING: field missing"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The MS version string doesn't match the Mac version string"
     fwLinkID="10361"
     tableName="name">
@@ -9346,45 +9506,58 @@ All tables should be recorded in the table directory with their actual length. T
 <item
     helpID="W2002"
     atom="name_W_VersionMismatch_3_1_3_10"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The 3,1 version string doesn't match the 3,10 version string"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>The 3,1 version string doesn't match the 3,10 version string</problem>
 </item>
 
 <item
     helpID="W2003"
     atom="name_W_CopyrightInconsistent"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The copyright strings are inconsistent"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>The copyright strings are inconsistent</problem>
 </item>
 
 <item
     helpID="W2004"
     atom="name_W_DescriptionInconsistent"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The description strings are inconsistent"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>The description strings are inconsistent</problem>
 </item>
 
 <item
     helpID="W2005"
     atom="name_W_TrademarkInconsistent"
-    linkTitle="WARNING: field missing"
-    specLink="WARNING: field missing"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
     shortDesc="The trademark strings are inconsistent"
     fwLinkID="0"
-    tableName="WARNING: field missing">
-    <problem>ERROR: Required field missing</problem>
+    tableName="name">
+    <problem>The trademark strings are inconsistent</problem>
+</item>
+
+<item
+    helpID="W2006"
+    atom="name_W_ID_1to6_Required_For_Common_OSes"
+    linkTitle="name table specification"
+    specLink="http://www.microsoft.com/typography/otspec/name.htm"
+    shortDesc="Name ID 1 to 6 are often needed to be installable."
+    fwLinkID="0"
+    tableName="name">
+    <problem>Name ID 1 to 6 are often needed, to be installable to Windows and Mac OS X.
+&lt;P&gt;See also &lt;A TARGET=&quot;top&quot; HREF=&quot;http://www.adobe.com/devnet/opentype/afdko/topic_tables_win.html&quot;&gt;OpenType tables used by Windows&lt;/A&gt; at Adobe Developer Connection.
+  </problem>
 </item>
 
 <item
@@ -9437,7 +9610,7 @@ All tables should be recorded in the table directory with their actual length. T
     linkTitle="PANOSE specification"
     specLink="http://www.panose.com/hardware/pan2.asp"
     shortDesc="PANOSE(tm) is undefined. Font mapping may not work properly"
-    fwLinkID="10403"
+    fwLinkID="0"
     tableName="OS/2">
     <problem>PANOSE(tm) values are important for font clients that must substitute a font when a specified font is not available. PANOSE values should be carefully assigned to ensure adequate font mapping. PANOSE values are fully described in the reference noted below.</problem>
 </item>
@@ -9608,6 +9781,28 @@ All tables should be recorded in the table directory with their actual length. T
 </item>
 
 <item
+    helpID="W2304"
+    atom="post_W_Version_3_Apple"
+    linkTitle="post table specification"
+    specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6post.html"
+    shortDesc="Apple recommends against using post table format 3 under most circumstances"
+    fwLinkID="10365"
+    tableName="post">
+    <problem>Apple recommends against using 'post' table format 3 under most circumstances, as it can create problems with some printer drivers and PDF documents. The savings in disk space usually does not justify the potential loss in functionality.</problem>
+</item>
+
+<item
+    helpID="W2305"
+    atom="post_W_Version_4_Apple"
+    linkTitle="post table specification"
+    specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6post.html"
+    shortDesc="As a rule, format 4 post tables are no longer necessary and should be avoided."
+    fwLinkID="10365"
+    tableName="post">
+    <problem>As a rule, format 4 post tables are no longer necessary and should be avoided.</problem>
+</item>
+
+<item
     helpID="W5021"
     atom="_OTL_DeviceTable_W_StartSize"
     linkTitle="OTL common table formats"
@@ -9645,10 +9840,25 @@ All tables should be recorded in the table directory with their actual length. T
     atom="_rast_W_APPLE_ONLY_INSTR"
     linkTitle="TrueType instruction set"
     specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
-    shortDesc="Instruction is only valid on the Apple platform"
+    shortDesc="GETVARIATION, GETDATA (Apple-specific) or IDEFs at opcode 0x91,0x92"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>This warning indicates that the instruction used is not valid under Windows. The instruction is only valid on Apple platforms. Please consult Apple documentation to find out for which versions of the Mac OS the instruction is valid.</problem>
+  <problem>This warning indicates that opcode 0x91 or 0x92 is detected.
+
+&lt;P&gt;Apple uses opcode 0x91 and 0x92 for their Quick Draw GX-specific instructions GETVARIATION and GETDATA.
+The GETVARIATION and GETDATA instructions are not valid under Windows. These instructions are only valid on Apple platforms. Please consult Apple documentation to find out for which versions of the Mac OS the instruction is valid.
+
+&lt;P&gt;Microsoft removed support for GETVARIATION and GETDATA in its
+bytecode engine. Instead, they allow IDEFs for opcode 0x91 and 0x92.
+
+&lt;P&gt;The specification says that IDEFs work for undefined opcodes only.
+
+&lt;P&gt;IDEFs for bytecodes 0x91 and 0x92 are not possible with the Apple bytecode engine since those instructions are undocumented but still in use for backwards compatibility.
+
+&lt;P&gt;Microsoft ships two fonts, LaoUIb.ttf and LaoUI.ttf, which use IDEFs at opcode 0x91 and 0x92 (and therefore do not work correctly on Mac OS). Apple ships Skia.ttf which uses GETVARIATION (and therefore do not work correctly on MS Windows).
+
+&lt;P&gt;To support multiple platforms, font designers are advised to avoid either usage of opcode 0x91 and 0x92 in new fonts.
+  </problem>
 </item>
 
 <item
@@ -9725,7 +9935,10 @@ All tables should be recorded in the table directory with their actual length. T
     shortDesc="Loop variable not 1 at end of program. This means it was set but not used"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>At the end of the execution of the instructions for a glyph, the loop variable was not 1, which means that it was set and not used by any other instructions. In this case, the SLOOP instruction is wasted.</problem>
+    <problem>At the end of the execution of the instructions for a glyph, the loop variable was not 1, which means that it was set and not used by any other instructions. In this case, a previous SLOOP instruction is wasted.
+
+&lt;P&gt;Note that the Details part of the diagnostic message is essentially meaningless: it contains information about the last instruction executed. To rectify this issue, the font designer should examine the last SLOOP instruction, by searching backwards from the end.
+</problem>
 </item>
 
 <item
@@ -9784,14 +9997,139 @@ All tables should be recorded in the table directory with their actual length. T
 </item>
 
 <item
-    helpID="W6013"
+    helpID="W6019"
     atom="_rast_W_Need_Newer_FreeType"
     linkTitle="WARNING: field missing"
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="Rasterization Test">
     <problem>Place holder - We most likely need to enhance Freetype and do a minimum version check.</problem>
+</item>
+
+<item
+    helpID="W6020"
+    atom="_rast_W_FT_VALUE_OUT_OF_RANGE_SLOOP"
+    linkTitle="WARNING: field missing"
+    specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM05/Chap5.html#SLOOP"
+    shortDesc="Setting the loop variable to negative value"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Setting the loop variable to negative value.</problem>
+</item>
+
+<item
+    helpID="W6029"
+    atom="_rast_W_FT_VALUE_OUT_OF_RANGE_SLOOP_ZERO"
+    linkTitle="WARNING: field missing"
+    specLink="https://developer.apple.com/fonts/TrueType-Reference-Manual/RM05/Chap5.html#SLOOP"
+    shortDesc="Setting the loop variable to zero is an error"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Setting the loop variable to zero is an error, according to Apple documentation.
+
+&lt;ol&gt;
+ttfautohint is known to generate such hinting instructions, and FreeType is known to tolerate it.
+If the font is intended to be used only on systems where FreeType is the rendering engine, this warning can be safely ignored.</problem>
+</item>
+
+<item
+    helpID="W6021"
+    atom="_rast_W_FT_ZERO_LEN_FUNC"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Defining zero-length function"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Defining zero-length function</problem>
+</item>
+
+<item
+    helpID="W6022"
+    atom="_rast_W_FT_ZERO_LEN_UD_INSTR"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Defining zero-length user-defined instruction"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Defining zero-length user-defined instruction</problem>
+</item>
+
+<item
+    helpID="W6023"
+    atom="_rast_W_FT_InvalidOutline"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid Outline"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid Outline&quot; error on this glyph. Check and fix errors indicated by the glyf table test first, before re-test.</problem>
+</item>
+
+<item
+    helpID="W6024"
+    atom="_rast_W_FT_InvalidArgument"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid Argument"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid Argument&quot; error. Most likely there is an inconsistency in the number of glyphs declared in different tables. Fixes these other errors first, before re-test.</problem>
+</item>
+
+<item
+    helpID="W6025"
+    atom="_rast_W_FT_InvalidPixelSize"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid PixelSize"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid PixelSize&quot; error. This is likely a user error, trying to set an unsupported size for a fixed-size font.</problem>
+</item>
+
+<item
+    helpID="W6026"
+    atom="_rast_W_FT_InvalidSizeHandle"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="Invalid Size Handle"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>FreeType throws &quot;Invalid Size Handle&quot; error. When this happens for a fixed-size font at specific glyphs, it is likely that those glyphs have invalid metrics.</problem>
+</item>
+
+<item
+    helpID="W6027"
+    atom="_rast_W_FT_MAXP_maxComponentDepth_TOO_LOW"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="maxComponentDepth in maxp is too low"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>maxComponentDepth in maxp is too low. Consider increasing its value.</problem>
+</item>
+
+<item
+    helpID="W6028"
+    atom="_rast_W_FT_MAX_NUM_TWILIGHT_POINTS_CLAMP"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="number of twilight points unreasonably large"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>Number of twilight points seems unreasonably large. Consider resetting to a more reasonable heuristic value.</problem>
+</item>
+
+<item
+    helpID="W6030"
+    atom="_rast_W_FT_ALIGNRP_AFTER_IUP"
+    linkTitle="WARNING: field missing"
+    specLink="WARNING: field missing"
+    shortDesc="ALIGNRP after IUP in Subpixel-hinting mode"
+    fwLinkID="0"
+    tableName="Rasterization Test">
+    <problem>ALIGNRP after IUP in Subpixel-hinting mode.</problem>
 </item>
 
 <item
@@ -9891,6 +10229,17 @@ by either method may indicate some other problem in the font.
 </item>
 
 <item
+    helpID="I6070"
+    atom="_rast_I_FT_Error_Supplymentary_Info"
+    linkTitle="TrueType instruction set"
+    specLink="http://www.microsoft.com/typography/otspec/ttinst.htm"
+    shortDesc="Supplementary Information"
+    fwLinkID="10368"
+    tableName="Rasterization Test">
+    <problem>Supplementary Information, just before impending Font Engine error.</problem>
+</item>
+
+<item
     helpID="W2500"
     atom="VDMX_W_CalcData"
     linkTitle="VDMX table specification"
@@ -9908,7 +10257,7 @@ by either method may indicate some other problem in the font.
     specLink="WARNING: field missing"
     shortDesc="The Freetype version is too old"
     fwLinkID="0"
-    tableName="WARNING: field missing">
+    tableName="VDMX">
     <problem>To calculate HDMX, LTSH and VDMX correctly, the minimum version of Freetype required is 2.6.1.</problem>
 </item>
 
@@ -9968,6 +10317,16 @@ Pre-2015 assigned values:
 <!--
 2015:
 reserve 30-35 for CBDT/CBLC/COLR/CPAL/MATH/SVG
+-->
+
+<!--
+    As part of the re-organization,
+    a few 1.1 codes were re-assigned:
+
+    loca_W_GlyfEntryEmpty      : W7001 -> W1703
+    maxp_I_Calculation_Method1 : I9001 -> I1900
+    maxp_I_Calculation_Method2 : I9002 -> I1901
+    maxp_W_Calculation_Unclear : W7002 -> W1900
 -->
 
 <item

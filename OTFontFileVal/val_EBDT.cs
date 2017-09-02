@@ -87,6 +87,24 @@ namespace OTFontFileVal
         {
             bool bRet = true;
 
+            if ( fontOwner.GetFile().IsCollection() )
+            {
+                if ( fontOwner.GetFontIndexInFile() > 0 )
+                {
+                    // checksum not matching data is covered by check elsewhere. Assume they match.
+                    DirectoryEntry de_EBDT = fontOwner.GetDirectoryEntry("EBDT");
+                    for ( uint i = 0 ; i < fontOwner.GetFontIndexInFile() ; i++ )
+                    {
+                        if ( fontOwner.GetFile().GetFont(i).GetDirectoryEntry("EBDT").checkSum
+                             == de_EBDT.checkSum )
+                        {
+                            v.Info(T.T_NULL, I.glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC, m_tag);
+                            return true;
+                        }
+                    }
+                }
+            }
+
             m_nCachedMaxpNumGlyphs = fontOwner.GetMaxpNumGlyphs();
 
 
@@ -133,16 +151,15 @@ namespace OTFontFileVal
                     Table_EBLC.bitmapSizeTable bst = EBLCTable.GetBitmapSizeTable(i);
                     string sSize = "bitmapsize[" + i + "], ppemX=" + bst.ppemX + ", ppemY=" + bst.ppemY;
 
-                    Table_EBLC.indexSubTableArray[] ista = EBLCTable.GetIndexSubTableArray(bst);
-
-                    if (ista != null)
+                    if ( true )
                     {
                         for (uint j=0; j < bst.numberOfIndexSubTables; j++)
                         {
                             Table_EBLC.indexSubTable ist = null;
-                            if (ista[j] != null)
+                            Table_EBLC.indexSubTableArray ista_j = EBLCTable.GetIndexSubTableArray(bst, j);
+                            if (ista_j != null)
                             {
-                                 ist = bst.GetIndexSubTable(ista[j]);
+                                 ist = bst.GetIndexSubTable(ista_j);
                             }
 
                             if (ist != null)
@@ -305,7 +322,16 @@ namespace OTFontFileVal
             for (ushort idGlyph=ista.firstGlyphIndex; idGlyph <= ista.lastGlyphIndex; idGlyph++)
             {
                 // validate small metrics
-                smallGlyphMetrics sgm = GetSmallMetrics(ist, idGlyph, ista.firstGlyphIndex);
+                smallGlyphMetrics sgm = null;
+                try {
+                    sgm = GetSmallMetrics(ist, idGlyph, ista.firstGlyphIndex);
+                }
+                catch ( Exception e )
+                {
+                    v.ApplicationError(T.EBDT_GlyphImageData, E._Table_E_Exception, m_tag, "EBDT.Format2: " + e.Message);
+                    bOk = false;
+                    return bOk;
+                }
                 if (sgm != null)
                 {
                     smallGlyphMetrics_val sgm_val = smallGlyphMetrics_val.CreateFromSmallGlyphMetrics(sgm);

@@ -699,6 +699,10 @@ namespace OTFontFileVal
             {
                 Warning(null, sStringName, null, sDetails);
             }
+            else if (sStringName[6] == 'I')
+            {
+                Info(null, sStringName, null, sDetails);
+            }
             else
             {
                 Error(null, sStringName, null, sDetails);

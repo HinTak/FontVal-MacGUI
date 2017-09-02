@@ -41,6 +41,7 @@ namespace Compat
             {
                 { "0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43", "CN=DigiCert Assured ID Root CA, OU=www.digicert.com, O=DigiCert Inc, C=US" },
                 { "18F7C1FCC3090203FD5BAA2F861A754976C8DD25", "OU=\"NO LIABILITY ACCEPTED, (c)97 VeriSign, Inc.\", OU=VeriSign Time Stamping Service Root, OU=\"VeriSign, Inc.\", O=VeriSign Trust Network" },
+                { "23E594945195F2414803B4D564D2A3A3F5D88B8C", "C=ZA, S=Western Cape, L=Cape Town, O=Thawte Consulting cc, OU=Certification Services Division, CN=Thawte Server CA, E=server-certs@thawte.com" },
                 { "245C97DF7514E7CF2DF8BE72AE957B9E04741E85", "OU=Copyright (c) 1997 Microsoft Corp., OU=Microsoft Time Stamping Service Root, OU=Microsoft Corporation, O=Microsoft Trust Network" },
                 { "24A40A1F573643A67F0A4B0749F6A22BF28ABB6B", "OU=VeriSign Commercial Software Publishers CA, O=\"VeriSign, Inc.\", L=Internet" },
                 { "3B1EFD3A66EA28B16697394703A72CA340A05BD5", "CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" },
@@ -211,7 +212,20 @@ namespace Compat
                 }
 
                 SignedCms cms = new SignedCms();
-                cms.Decode(sgb.bSignature);
+                try
+                {
+                    cms.Decode(sgb.bSignature);
+                }
+                catch ( Exception e )
+                {
+                    if ( e is NullReferenceException /* Mono */
+                         || e is CryptographicException /* .Net2 */ )
+                    {
+                        Warn_MalformedSIG = true;
+                        break;
+                    }
+                    throw;
+                }
 
                 signer_count = cms.SignerInfos.Count;
                 if ( signer_count > 1 )
@@ -221,7 +235,21 @@ namespace Compat
                     signer = si.Certificate.Subject;
                 };
 
-                ASN1 spc = new ASN1(cms.ContentInfo.Content);
+                // Windows 10/.net 4.6.x throws here
+                ASN1 spc;
+                try
+                {
+                    spc = new ASN1(cms.ContentInfo.Content);
+                }
+                catch ( Exception e )
+                {
+                    if ( e is IndexOutOfRangeException )
+                    {
+                        Warn_MalformedSIG = true;
+                        break;
+                    }
+                    throw;
+                }
 
                 ASN1 playload_oid = null;
                 ASN1 oid = null;
@@ -254,6 +282,15 @@ namespace Compat
                         break;
                     case "sha1":
                         hash = HashAlgorithm.Create ("SHA1");
+                        break;
+                    case "sha256":
+                        hash = HashAlgorithm.Create ("SHA256");
+                        break;
+                    case "sha384":
+                        hash = HashAlgorithm.Create ("SHA384");
+                        break;
+                    case "sha512":
+                        hash = HashAlgorithm.Create ("SHA512");
                         break;
                     default:
                         throw new NotImplementedException("Unknown HashAlgorithm: " + algoname );
@@ -342,7 +379,21 @@ namespace Compat
                 }
 
                 SignedCms cms = new SignedCms();
-                cms.Decode(sgb.bSignature);
+                try
+                {
+                    cms.Decode(sgb.bSignature);
+                }
+                catch ( Exception e )
+                {
+                    if ( e is NullReferenceException /* Mono */
+                         || e is CryptographicException /* .Net2 */ )
+                    {
+                        Console.WriteLine("Error: Malformed Signature");
+                        break;
+                    }
+                    Console.WriteLine("Error: Malformed Signature (Unexpected Case 1)");
+                    throw;
+                }
 
                 if ( cms.SignerInfos.Count > 1 )
                 Console.WriteLine( "#SignerInfos: {0}", cms.SignerInfos.Count );
@@ -394,7 +445,22 @@ namespace Compat
                         break;
                 }
 #endif
-                ASN1 spc = new ASN1(cms.ContentInfo.Content);
+                // Windows 10/.net 4.6.x throws here
+                ASN1 spc;
+                try
+                {
+                    spc = new ASN1(cms.ContentInfo.Content);
+                }
+                catch ( Exception e )
+                {
+                    if ( e is IndexOutOfRangeException )
+                    {
+                        Console.WriteLine("Error: Malformed Signature (Win10/.net 4.6.x)");
+                        break;
+                    }
+                    Console.WriteLine("Error: Malformed Signature (Unexpected Case 2)");
+                    throw;
+                }
 
                 ASN1 playload_oid = null;
                 ASN1 oid = null;
@@ -452,8 +518,8 @@ namespace Compat
                     hexLine.AppendFormat ("{0} ", cdigest [i].ToString ("X2"));
                 }
                 hexLine.AppendFormat (Environment.NewLine);
-                Console.WriteLine("{0} Signed Digest: {1}", algoname.ToUpper(), hexLine_sig);
-                Console.WriteLine("Calculated Digest: {0}", hexLine);
+                Console.WriteLine("{0} Signed Digest:\t{1}", algoname.ToUpper(), hexLine_sig);
+                Console.WriteLine("Calculated Digest:\t{0}", hexLine);
                 string root_thumb = "";
 #if HAVE_MONO_X509
                 root_thumb =
@@ -561,6 +627,7 @@ namespace Compat
                 ttcb.FillUint32MBO( 0 );
                 ttcb.FillUint32MBO( 0 );
             }
+            uint Position = (uint) ttcb.buffer.Length;
             hash.TransformBlock ( ttcb.buffer, 0, ttcb.buffer.Length, ttcb.buffer, 0 );
 
             // build an array of offset tables
@@ -585,6 +652,7 @@ namespace Compat
                     // write the offset table
                     hash.TransformBlock (otArr[iFont].m_buf.GetBuffer(), 0, (int)otArr[iFont].m_buf.GetLength(),
                                          otArr[iFont].m_buf.GetBuffer(), 0);
+                    Position += otArr[iFont].m_buf.GetLength();
 
                     // write the directory entries
                     for (int i=0; i<f.GetFont(iFont).GetNumTables(); i++)
@@ -592,11 +660,14 @@ namespace Compat
                         DirectoryEntry de = (DirectoryEntry)otArr[iFont].DirectoryEntries[i];
                         hash.TransformBlock (de.m_buf.GetBuffer(), 0, (int)de.m_buf.GetLength(),
                                              de.m_buf.GetBuffer(), 0 );
+                        Position += de.m_buf.GetLength();
                     }
                 }
             }
 
             // write out each font
+            uint max_offset = 0;
+            uint max_padded_length = 0;
             uint PrevPos = 0;
             for (uint iFont=0; iFont<f.GetNumFonts(); iFont++)
             {
@@ -608,6 +679,7 @@ namespace Compat
                     // write the offset table
                     hash.TransformBlock (otArr[iFont].m_buf.GetBuffer(), 0, (int)otArr[iFont].m_buf.GetLength(),
                                          otArr[iFont].m_buf.GetBuffer(), 0 );
+                    Position += otArr[iFont].m_buf.GetLength();
 
                     // write the directory entries
                     for (int i=0; i<numTables; i++)
@@ -615,6 +687,7 @@ namespace Compat
                         DirectoryEntry de = (DirectoryEntry)otArr[iFont].DirectoryEntries[i];
                         hash.TransformBlock (de.m_buf.GetBuffer(), 0, (int)de.m_buf.GetLength(),
                                              de.m_buf.GetBuffer(), 0 );
+                        Position += de.m_buf.GetLength();
                     }
                 }
 
@@ -622,16 +695,24 @@ namespace Compat
                 for (ushort i=0; i<numTables; i++)
                 {
                     DirectoryEntry de = (DirectoryEntry)otArr[iFont].DirectoryEntries[i];
+                    if (de.offset > max_offset)
+                    {
+                        max_offset = de.offset;
+                        max_padded_length = f.GetFont(iFont).GetTable(de.tag).GetBuffer().GetPaddedLength();
+                    }
                     if (PrevPos < de.offset) //crude
                     {
                         OTTable table = f.GetFont(iFont).GetTable(de.tag);
                         hash.TransformBlock (table.m_bufTable.GetBuffer(), 0, (int)table.GetBuffer().GetPaddedLength(),
                                              table.m_bufTable.GetBuffer(), 0 );
+                        Position += table.GetBuffer().GetPaddedLength();
                         PrevPos = de.offset;
                     }
                 }
             }
 
+            if (max_offset + max_padded_length - Position != 0)
+                throw new NotImplementedException( "Unusual TTC Directory Layout" );
             byte[] usFlag = {0, 1};
             hash.TransformFinalBlock(usFlag, 0,2);
             return hash.Hash;

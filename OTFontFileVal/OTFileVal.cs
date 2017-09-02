@@ -95,7 +95,15 @@ namespace OTFontFileVal
             // verify that table has pad bytes set to zero
             if (table != null)
             {
-                uint nBytes = GetNumPadBytesAfterTable(table);
+                uint nBytes = 0;
+                try {
+                    nBytes = GetNumPadBytesAfterTable(table);
+                }
+                catch ( Exception e )
+                {
+                    v.ApplicationError(T.T_NULL, E._Table_E_Exception, de.tag, "GetNumPadBytesAfterTable: " + e.Message);
+                    bRet = false;
+                }
 
                 bool bPadBytesZero = true;
 

@@ -65,9 +65,17 @@ namespace OTFontFileVal
                 {
                     v.Warning(T.post_Version, W.post_W_Version_2_5, m_tag);
                 }
-                else if (ver == 0x00010000 || ver == 0x00020000 || ver == 0x00030000)
+                else if (ver == 0x00010000 || ver == 0x00020000)
                 {
                     v.Pass(T.post_Version, P.post_P_Version, m_tag);
+                }
+                else if (ver == 0x00030000)
+                {
+                    v.Warning(T.post_Version, W.post_W_Version_3_Apple, m_tag);
+                }
+                else if (ver == 0x00040000)
+                {
+                    v.Warning(T.post_Version, W.post_W_Version_4_Apple, m_tag);
                 }
                 else
                 {

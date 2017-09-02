@@ -28,6 +28,24 @@ namespace OTFontFileVal
                 return true;
             }
 
+            if ( fontOwner.GetFile().IsCollection() )
+            {
+                if ( fontOwner.GetFontIndexInFile() > 0 )
+                {
+                    // checksum not matching data is covered by check elsewhere. Assume they match.
+                    DirectoryEntry de_glyf = fontOwner.GetDirectoryEntry("glyf");
+                    for ( uint i = 0 ; i < fontOwner.GetFontIndexInFile() ; i++ )
+                    {
+                        if ( fontOwner.GetFile().GetFont(i).GetDirectoryEntry("glyf").checkSum
+                             == de_glyf.checkSum )
+                        {
+                            validator.Info(T.T_NULL, I.glyf_I_IDENTICAL_GLYF_TABLES_IN_TTC, m_tag);
+                            return true;
+                        }
+                    }
+                }
+            }
+
             this.m_diaValidate=validator.DIA;
             this.m_cnts=new int[this.m_namesInfoCnt.Length];
             for (int iCnt=0; iCnt<this.m_cnts.Length; iCnt++)
@@ -50,7 +68,8 @@ namespace OTFontFileVal
             {
                 try
                 {
-                    validator.OnTableProgress("Validating glyph with index "+indGlyph+" (out of "+numGlyph+" glyphs)");
+                    if ( (indGlyph % 100) == 0 )
+                        validator.OnTableProgress("Validating glyph with index "+indGlyph+" (out of "+numGlyph+" glyphs)");
                     Glyph glyph=fm.GGet(indGlyph);
                     glyph.GValidate();
                     bRet &= fm.GErrGetInformed(indGlyph,diaFilter);
@@ -144,9 +163,6 @@ namespace OTFontFileVal
             
             this.m_diaValidate(info);
         }
-
-
-
 
     }
 }

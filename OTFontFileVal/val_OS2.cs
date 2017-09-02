@@ -925,11 +925,19 @@ namespace OTFontFileVal
                                     bRet = false;
                                 }
                         
-                                if (usLastCharIndex != charLast)
+                                if ( (usLastCharIndex != charLast) &&
+                                     ( (cmapTable.GetEncodingTableEntry(3,10) == null) || (usLastCharIndex != 0xFFFF) )
+                                     )
+
                                 {
                                     String sDetails = "actual = 0x" + usLastCharIndex.ToString("x4") + ", calculated = 0x" + charLast.ToString("x4");
                                     v.Error(T.OS_2_CharIndexes, E.OS_2_E_usLastCharIndex, m_tag, sDetails);
                                     bRet = false;
+                                }
+                                else
+                                {
+                                    // (3.10) present, and usLastCharIndex == 0xFF
+                                    v.Info(T.OS_2_CharIndexes, I.OS_2_I_usLastCharIndex, m_tag);
                                 }
                             }
                         }
@@ -1086,7 +1094,14 @@ namespace OTFontFileVal
                     Table_GPOS GPOSTable = (Table_GPOS)fontOwner.GetTable("GPOS");
                     if (GPOSTable != null)
                     {
-                        GPOSMaxContext = GPOSTable.GetMaxContext();
+                        try {
+                            GPOSMaxContext = GPOSTable.GetMaxContext();
+                        }
+                        catch ( Exception e )
+                        {
+                            v.ApplicationError(T.OS_2_usMaxContext, E._Table_E_Exception, m_tag, "GPOS.GetMaxContext: " + e.Message);
+                            return false;
+                        }
                     }
 
                     ushort GSUBMaxContext = 0;
@@ -1318,7 +1333,7 @@ namespace OTFontFileVal
                         new Range(i++, 0x2f800, 0x2fa1f, "CJK Compatibility Ideographs Supplement"),
                         new Range(i++, 0xe0000, 0xe007f, "Tags"),
                         new Range(i++, 0xe0100, 0xe01ef, "Variation Selectors Supplement"),
-                        new Range(i++, 0xff000, 0xffffd, "Private Use (plane 15)"),
+                        new Range(i++, 0xf0000, 0xffffd, "Private Use (plane 15)"),
                         new Range(i++, 0x100000, 0x10fffd, "Private Use (plane 16)")
                     };
 

@@ -1491,7 +1491,7 @@ namespace FontVal
 
         private void menuItemHelpHelp_Click(object sender, System.EventArgs e)
         {
-            Help.ShowHelp(this, "fontvalidatorhelp.chm");
+            Help.ShowHelp(this, "FontValidatorHelp.chm");
         }
 
         private void menuItemHelpAbout_Click(object sender, System.EventArgs e)
@@ -1614,7 +1614,7 @@ namespace FontVal
             // show help if this is the first time the program is being run
             if (m_PersistedData.m_bFirstTime)
             {
-                Help.ShowHelp(this, "fontvalidatorhelp.chm", HelpNavigator.Topic, "usingvalidator.htm");
+                Help.ShowHelp(this, "FontValidatorHelp.chm", HelpNavigator.Topic, "usingvalidator.htm");
                 m_PersistedData.m_bFirstTime = false;
             }
         }

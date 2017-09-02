@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 
 
@@ -99,8 +100,8 @@ namespace OTFontFile
         {
             char[] charBuf = new char[16];
 
-            System.Text.ASCIIEncoding ae = new System.Text.ASCIIEncoding();
-            System.Text.Decoder d = ae.GetDecoder();
+            ASCIIEncoding ae = new ASCIIEncoding();
+            Decoder d = ae.GetDecoder();
 
             d.GetChars(Typeface, 0, 16, charBuf, 0);
 
@@ -121,8 +122,8 @@ namespace OTFontFile
         {
             char [] charBuf = new char[8];
 
-            System.Text.ASCIIEncoding ae = new System.Text.ASCIIEncoding();
-            System.Text.Decoder d = ae.GetDecoder();
+            ASCIIEncoding ae = new ASCIIEncoding();
+            Decoder d = ae.GetDecoder();
 
             d.GetChars(CharacterComplement, 0, 8, charBuf, 0);
 
@@ -143,8 +144,8 @@ namespace OTFontFile
         {
             char [] charBuf = new char[6];
 
-            System.Text.ASCIIEncoding ae = new System.Text.ASCIIEncoding();
-            System.Text.Decoder d = ae.GetDecoder();
+            ASCIIEncoding ae = new ASCIIEncoding();
+            Decoder d = ae.GetDecoder();
 
             d.GetChars(FileName, 0, 6, charBuf, 0);
 
@@ -334,8 +335,8 @@ namespace OTFontFile
             {
                 char [] charBuf = new char[16];
 
-                System.Text.ASCIIEncoding ae = new System.Text.ASCIIEncoding();
-                System.Text.Decoder d = ae.GetDecoder();
+                ASCIIEncoding ae = new ASCIIEncoding();
+                Decoder d = ae.GetDecoder();
 
                 d.GetChars( m_Typeface, 0, 6, charBuf, 0 );
 
@@ -346,7 +347,7 @@ namespace OTFontFile
             {
                 bool bResult = true;
 
-                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+                UnicodeEncoding ue = new UnicodeEncoding();
             
                 if( ue.GetByteCount( sTypeface ) != 6 )
                 {
@@ -385,8 +386,8 @@ namespace OTFontFile
             {
                 char [] charBuf = new char[8];
 
-                System.Text.ASCIIEncoding ae = new System.Text.ASCIIEncoding();
-                System.Text.Decoder d = ae.GetDecoder();
+                ASCIIEncoding ae = new ASCIIEncoding();
+                Decoder d = ae.GetDecoder();
 
                 d.GetChars( m_CharacterComplement, 0, 8, charBuf, 0 );
 
@@ -397,7 +398,7 @@ namespace OTFontFile
             {
                 bool bResult = true;
 
-                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+                UnicodeEncoding ue = new UnicodeEncoding();
             
                 if( ue.GetByteCount( sCharacterComplement ) != 8 )
                 {
@@ -437,8 +438,8 @@ namespace OTFontFile
             {
                 char [] charBuf = new char[6];
 
-                System.Text.ASCIIEncoding ae = new System.Text.ASCIIEncoding();
-                System.Text.Decoder d = ae.GetDecoder();
+                ASCIIEncoding ae = new ASCIIEncoding();
+                Decoder d = ae.GetDecoder();
 
                 d.GetChars( m_FileName, 0, 6, charBuf, 0 );
 
@@ -449,7 +450,7 @@ namespace OTFontFile
             {
                 bool bResult = true;
 
-                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+                UnicodeEncoding ue = new UnicodeEncoding();
             
                 if( ue.GetByteCount( sFileName ) != 6 )
                 {

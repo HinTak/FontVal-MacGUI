@@ -25,6 +25,7 @@ namespace FontValidator
         List<string>          m_captions = new List<string>();
         bool m_verbose;
         bool m_report2stdout;
+        static string version = "2.1.1";
 
         static void ErrOut( string s ) 
         {
@@ -96,7 +97,14 @@ namespace FontValidator
                 xslTrans.Load(sDestFile);
                 string sTXTFile = sReportFile.Replace(".report.xml", ".report.txt");
                 if ( sTXTFile != sReportFile )
-                    xslTrans.Transform(sReportFile, sTXTFile);
+                    try
+                    {
+                        xslTrans.Transform(sReportFile, sTXTFile);
+                    }
+                    catch (Exception e)
+                    {
+                        ErrOut( "xslTrans.Transform failure: " + e.Message );
+                    }
 
                 using (StreamReader sr = new StreamReader(sTXTFile))
                 {
@@ -138,6 +146,11 @@ namespace FontValidator
                 case ReportFileDestination.TempFiles:
                     string sTemp = Path.GetTempFileName();
                     sReportFile = sTemp + ".report.xml";
+                    while ( File.Exists( sReportFile ) )
+                    {
+                        sTemp = Path.GetTempFileName();
+                        sReportFile = sTemp + ".report.xml";
+                    }
                     File.Move(sTemp, sReportFile);
                     break;
                 case ReportFileDestination.FixedDir:
@@ -197,11 +210,14 @@ namespace FontValidator
         {
             Console.WriteLine( "Usage: FontValidator [options]" );
             Console.WriteLine( "" );
+            Console.WriteLine( "Version: {0}", version);
+            Console.WriteLine( "" );
+
             Console.WriteLine( "Options:" );
             Console.WriteLine( "-file          <fontfile>      (multiple allowed)" );
             Console.WriteLine( "+table         <table-include> (multible allowed)" );
             Console.WriteLine( "-table         <table-skip>    (multiple allowed)" );
-            Console.WriteLine( "-all-tables" );
+            Console.WriteLine( "-all-tables    (\"+all-tables\" is an alias)" );
             Console.WriteLine( "-only-tables" );
             Console.WriteLine( "-quiet" );
             Console.WriteLine( "+raster-tests" );
@@ -209,6 +225,7 @@ namespace FontValidator
             Console.WriteLine( "-report-stdout                 (=\"-stdout\", implies -quiet)" );
             Console.WriteLine( "-temporary-reports" );
             Console.WriteLine( "-report-in-font-dir" );
+            Console.WriteLine( "-version" );
 
             Console.WriteLine( "" );
             Console.WriteLine( "Valid table names (note the space after \"CFF \" and \"cvt \"):" );
@@ -271,7 +288,7 @@ namespace FontValidator
                         err = true;
                     }
                 }
-                else if ( "-all-tables" == args[i] ) {
+                else if ( "-all-tables" == args[i] || "+all-tables" == args[i] ) {
                     vp.SetAllTables();
                 }
                 else if ( "-only-tables" == args[i] ) {
@@ -315,6 +332,10 @@ namespace FontValidator
                 }
                 else if ( "-temporary-reports" == args[i] ) {
                     rfd = ReportFileDestination.TempFiles;
+                }
+                else if ( "-version" == args[i] ) {
+                    Console.WriteLine( "Version: {0}", version);
+                    return 0; /* terminates success */
                 }
                 else {
                     ErrOut( "Unknown argument: \"" + args[i] + "\"" );
