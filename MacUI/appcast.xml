@@ -7,15 +7,15 @@
 		<language>en</language>
 		<item>
 			<title>Version 0.1</title>
-			<sparkle:releaseNotesLink>https://htmlpreview.github.com/?https://github.com/schriftgestalt/Font-Validator/master/MacUI/build/FontValidator0.1-3.html</sparkle:releaseNotesLink>
+			<sparkle:releaseNotesLink>https://cdn.rawgit.com/schriftgestalt/Font-Validator/745bb527/MacUI/build/FontValidator0.1-4.html</sparkle:releaseNotesLink>
 			<sparkle:minimumSystemVersion>10.9.3</sparkle:minimumSystemVersion>
-			<pubDate>Tue, 6 June 2016 00:00:00 +0000</pubDate>
+			<pubDate>Sat, 02 Sep 2017 11:27:57 +0200</pubDate>
 			<enclosure
-				url="https://raw.githubusercontent.com/schriftgestalt/Font-Validator/master/MacUI/build/FontValidator0.1-3.zip"
-				sparkle:version="3"
+				url="https://raw.githubusercontent.com/schriftgestalt/Font-Validator/master/MacUI/build/FontValidator0.1-4.zip"
+				sparkle:version="4"
 				sparkle:shortVersionString="0.1"
 				type="application/octet-stream"
-				length="19655505"
+				length="20604799"
 			/>
 		</item>
 	</channel>
