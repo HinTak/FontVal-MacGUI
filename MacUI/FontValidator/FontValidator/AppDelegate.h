@@ -11,9 +11,8 @@
 @class SUUpdater;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-	SUUpdater *_updater;
+	
 }
-
-
+@property (nonatomic, weak) IBOutlet NSWindow *preferencesWindow;
+@property (nonatomic, weak) IBOutlet SUUpdater *updater;
 @end
-
