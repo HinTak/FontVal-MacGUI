@@ -1,0 +1,23 @@
+* {
+	font-size:13px;
+	font-family: -apple-system-font, HelveticaNeue, LucidaGrande;
+}
+.indexentrytext {
+	padding-bottom:3px;
+}
+.indexentrytext a {
+	text-decoration: none;
+	color:black;
+}
+.number {
+	font-weight: bold;
+}
+#navbox {
+	border-bottom: 1px solid #999;
+	padding-bottom:3px;
+	margin-bottom:12px;
+}
+#navbox a {
+	text-decoration: none;
+	color:black;
+}

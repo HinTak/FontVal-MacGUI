@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+	<link rel="stylesheet" href="../../shrd/styles.css" type="text/css" media="screen">
+<title>W0030</title>
+</head>
+<body>
+<!-- <Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="W0030">
+	<param name="Keyword" value="Table Directory">
+</object> -->
+<h1><a name="W0030"></a>Message: W0030</h1></div>
+<p><b><i>Table Directory</i>: The directory entry table offset is not a multiple of 4</b></p>
+<p>All tables should be aligned to begin at offsets which are multiples of four bytes. While this is not required by the TrueType rasterizer, it does prevent ambiguous checksum calculations and greatly speeds table access on some processors.<br>
+All tables should be recorded in the table directory with their actual length. To ensure that checksums are calculated correctly, it is suggested that tables begin on LONG word boundries. Any extra space after a table (and before the next LONG word boundry) should be padded with zeros.</p>
+<p>For more information, see the <a target="top" HREF="http://go.microsoft.com/fwlink?LinkID=10363">details about OpenType files</a>.
+</body>
+</html>
+
