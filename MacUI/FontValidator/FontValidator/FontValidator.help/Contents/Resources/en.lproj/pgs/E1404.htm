@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+	<link rel="stylesheet" href="../../shrd/styles.css" type="text/css" media="screen">
+<title>E1404</title>
+</head>
+<body>
+<!-- <Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="E1404">
+	<param name="Keyword" value="hhea">
+</object> -->
+<h1><a name="E1404"></a>Message: E1404</h1></div>
+<p><b><i>hhea</i>: The numberOfHMetrics value is not consistent with the length of the hmtx table</b></p>
+<p>The numberOfHMetrics field must have a value that reflects the number of HMetric entries in the hmtx table. An HMetric entry consists of paired advance width and left side bearing values for a glyph. If the font is monospaced, Microsoft recommends that there be three long-metric entries in the hmtx table, followed by the short metric (lsb) entries. The last long-metric entry in the hmtx table applies to all subsequent glyphs.<br><br>Ensure that the tool you are using is updating the value in the hhea table after compressing entries from long-metrics format to short-metrics.</p>
+<p>For more information, see the <a target="top" HREF="http://go.microsoft.com/fwlink?LinkID=10353">hhea table specification</a>.
+</body>
+</html>
+

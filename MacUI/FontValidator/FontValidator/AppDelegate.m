@@ -60,7 +60,6 @@
 }
 
 - (void)awakeFromNib {
-	_updater = [[SUUpdater alloc] init];
 	NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
 	NSMenu *SubMenu = [[mainMenu itemAtIndex:0] submenu];
 	NSMenuItem *MenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Check for Updates...", @"") action:@selector(checkForUpdates:) keyEquivalent:@""];
@@ -76,4 +75,7 @@
 	// Insert code here to tear down your application
 }
 
+- (IBAction)showMainPreferences:(id)sender {
+	[self.preferencesWindow makeKeyAndOrderFront:sender];
+}
 @end

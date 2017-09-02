@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+	<link rel="stylesheet" href="../../shrd/styles.css" type="text/css" media="screen">
+<title>E2100</title>
+</head>
+<body>
+<!-- <Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="E2100">
+	<param name="Keyword" value="OS/2">
+</object> -->
+<h1><a name="E2100"></a>Message: E2100</h1></div>
+<p><b><i>OS/2</i>: A bit in the fsSelection field doesn&#39;t match the name table&#39;s font subfamily string</b></p>
+<p>There are several places within the font file that the typeface may be characterized as 'Regular,' 
+
+'Bold,' 'Italic,' 'Condensed,' etc. Font designers should encode this information consistently 
+
+throughout the font. Font clients use the information to:<br>
+<ul>
+<li>organize related typefaces into families (i.e., Arial Narrow, Arial, Arial Bold, Arial 
+
+Expanded...)</li>
+<li>use appropriate names when enumerating typefaces to the user
+<li>obtain a font from the system according to certain attributes (weight, style, width)</li>
+</ul>
+The fields related to encoding this information exist in several different tables:
+<ul>
+<li>In the name table, Name ID strings (family name, subfamily name, full-font name, preferred 
+
+family grouping, and preferred subfamily grouping)</li>
+<li>In the OS/2 table, usWeightClass, usWidthClass, fsSelection, and PANOSE(tm)</li>
+<li>In the head table, macStyle bits</li>
+</ul>
+Correct this data using a table editing tool.<br>For examples of how to use these various fields, see these <a target="top"  HREF="http://go.microsoft.com/fwlink?LinkID=10455">name string examples</a>.<br></p>
+<p>For more information, see the <a target="top" HREF="http://go.microsoft.com/fwlink?LinkID=10384">OS/2 table specification</a>.
+</body>
+</html>
+

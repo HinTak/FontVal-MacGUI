@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		56E502A61C6F8A6500B1D609 /* Index Help */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 56E502A71C6F8A6500B1D609 /* Build configuration list for PBXAggregateTarget "Index Help" */;
+			buildPhases = (
+				56E502AA1C6F8A8000B1D609 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Index Help";
+			productName = "Index Help";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		56477C511C67D67E007332DA /* FontValidator in Resources */ = {isa = PBXBuildFile; fileRef = 56477C501C67D67E007332DA /* FontValidator */; };
 		565A9E971D05F3C800F420BA /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 565A9E961D05F3C800F420BA /* Credits.html */; };
@@ -20,6 +34,7 @@
 		56E138F71C69EB68004C7072 /* libfreetype.6.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 56871BD81C69E32A0058C6FA /* libfreetype.6.dylib */; };
 		56E138F81C69EB69004C7072 /* libpng16.16.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 56871BD91C69E32A0058C6FA /* libpng16.16.dylib */; };
 		56E139331C69F312004C7072 /* PreferenceWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E139321C69F312004C7072 /* PreferenceWindow.xib */; };
+		56E502A51C6F840E00B1D609 /* FontValidator.help in Resources */ = {isa = PBXBuildFile; fileRef = 56E502A41C6F840E00B1D609 /* FontValidator.help */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +68,7 @@
 		56871BD81C69E32A0058C6FA /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfreetype.6.dylib; sourceTree = "<group>"; };
 		56871BD91C69E32A0058C6FA /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpng16.16.dylib; sourceTree = "<group>"; };
 		56E139321C69F312004C7072 /* PreferenceWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferenceWindow.xib; sourceTree = "<group>"; };
+		56E502A41C6F840E00B1D609 /* FontValidator.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FontValidator.help; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +113,7 @@
 				565FFDE91C67CC4E00E203FB /* MainMenu.xib */,
 				565FFDEC1C67CC4E00E203FB /* Info.plist */,
 				565A9E961D05F3C800F420BA /* Credits.html */,
+				56E502A41C6F840E00B1D609 /* FontValidator.help */,
 				565FFDDE1C67CC4E00E203FB /* Supporting Files */,
 			);
 			path = FontValidator;
@@ -149,7 +166,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = "Georg Seifert";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					565FFDD71C67CC4E00E203FB = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -170,6 +187,7 @@
 			projectRoot = "";
 			targets = (
 				565FFDD71C67CC4E00E203FB /* FontValidator */,
+				56E502A61C6F8A6500B1D609 /* Index Help */,
 			);
 		};
 /* End PBXProject section */
@@ -183,6 +201,7 @@
 				565FFDE81C67CC4E00E203FB /* Assets.xcassets in Resources */,
 				565FFDE61C67CC4E00E203FB /* Document.xib in Resources */,
 				56477C511C67D67E007332DA /* FontValidator in Resources */,
+				56E502A51C6F840E00B1D609 /* FontValidator.help in Resources */,
 				565FFDEB1C67CC4E00E203FB /* MainMenu.xib in Resources */,
 				565A9E971D05F3C800F420BA /* Credits.html in Resources */,
 				56E138F81C69EB69004C7072 /* libpng16.16.dylib in Resources */,
@@ -191,6 +210,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		56E502AA1C6F8A8000B1D609 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "hiutil -C $SRCROOT/FontValidator/FontValidator.help -a -s en -m 3 -f $SRCROOT/FontValidator/FontValidator.help/Contents/Resources/en.lproj/FontValidator.helpindex";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		565FFDD41C67CC4E00E203FB /* Sources */ = {
@@ -348,6 +383,20 @@
 			};
 			name = Release;
 		};
+		56E502A81C6F8A6500B1D609 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		56E502A91C6F8A6500B1D609 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -365,6 +414,15 @@
 			buildConfigurations = (
 				565FFDF01C67CC4E00E203FB /* Debug */,
 				565FFDF11C67CC4E00E203FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56E502A71C6F8A6500B1D609 /* Build configuration list for PBXAggregateTarget "Index Help" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56E502A81C6F8A6500B1D609 /* Debug */,
+				56E502A91C6F8A6500B1D609 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

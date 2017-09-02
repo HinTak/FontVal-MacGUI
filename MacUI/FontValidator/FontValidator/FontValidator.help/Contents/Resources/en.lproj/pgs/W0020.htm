@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+	<link rel="stylesheet" href="../../shrd/styles.css" type="text/css" media="screen">
+<title>W0020</title>
+</head>
+<body>
+<!-- <Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value="W0020">
+	<param name="Keyword" value="Font">
+</object> -->
+<h1><a name="W0020"></a>Message: W0020</h1></div>
+<p><b><i>Font</i>: Tables are not in optimal order</b></p>
+<p>OpenType fonts with TrueType outlines are most efficiently utilized by Windows when the tables are ordered as follows (from first to last):<br>head, hhea, maxp, OS/2, hmtx, LTSH, VDMX, hdmx, cmap, fpgm, prep, cvt, loca, glyf, kern, name, post, gasp, PCLT, DSIG<br><br>The initial loading of an OpenType font containing CFF data will be more efficient if the following table ordering is used within the body of the font (from first to last):<br>head, hhea, maxp, OS/2, name, cmap, post, CFF, other tables (as convenient)<br><br>This efficiency results from the operating system being able to access commonly used information without having to move between 'pages' of data in memory. Therefore, the efficiency gained by Windows applies to implementations of the rasterizer on other operating systems that use a paging architecture.<br><br>To reorder the tables of a font, use the FastFont tool (available from Microsoft). You will need to create a text file containing table tags in the order in which you want them, and then reference this text file as a parameter of the FastFont tool. (The default order in which tables are placed by FastFont is antiquated.) Tables not included in the list above should be placed at the end of the table before the font is signed (and a DSIG table is appended as the last table in the font). If two tables are dependent on each other (like vhea/vmtx) then they should be placed next to each other.</p>
+<p>For more information, see the <a target="top" HREF="http://go.microsoft.com/fwlink?LinkID=10367">Recommendations for OpenType fonts</a>.
+</body>
+</html>
+

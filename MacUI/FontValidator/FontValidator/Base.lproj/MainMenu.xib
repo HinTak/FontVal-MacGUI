@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
@@ -12,7 +12,12 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+            <connections>
+                <outlet property="preferencesWindow" destination="SkC-g9-EFN" id="PmA-ra-QdD"/>
+                <outlet property="updater" destination="e7F-vE-VPx" id="g6F-B0-Koj"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
@@ -27,7 +32,11 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                <connections>
+                                    <action selector="showMainPreferences:" target="Voe-Tx-rLC" id="zVk-SR-LeM"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                             <menuItem title="Services" id="NMo-om-nkz">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -663,6 +672,79 @@
                 </menuItem>
             </items>
         </menu>
-        <customObject id="e7F-vE-VPx"/>
+        <customObject id="e7F-vE-VPx" customClass="SUUpdater"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MainPreferenceWindow" animationBehavior="default" id="SkC-g9-EFN" userLabel="MainPreferences">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <rect key="contentRect" x="489" y="344" width="354" height="123"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="gnm-sW-a0A">
+                <rect key="frame" x="0.0" y="0.0" width="354" height="123"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view translatesAutoresizingMaskIntoConstraints="NO" id="uEz-ru-Uo5">
+                        <rect key="frame" x="0.0" y="0.0" width="354" height="123"/>
+                        <subviews>
+                            <button horizontalHuggingPriority="950" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="q7H-Yw-i8o">
+                                <rect key="frame" x="95" y="87" width="221" height="18"/>
+                                <buttonCell key="cell" type="check" title="Automatically check for updates." bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="wev-MH-PDB">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="950" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0qG-PD-6CR">
+                                <rect key="frame" x="38" y="64" width="74" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Last check:" id="9db-6l-lBU">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LLx-Jk-ZoH">
+                                <rect key="frame" x="109" y="23" width="109" height="32"/>
+                                <buttonCell key="cell" type="push" title="Check Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E3C-kr-E6Z">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="e7F-vE-VPx" id="Yoy-BF-9nH"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-29-JN0">
+                                <rect key="frame" x="113" y="64" width="37" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="zVf-Rt-uOk">
+                                    <dateFormatter key="formatter" dateStyle="long" timeStyle="short" doesRelativeDateFormatting="YES" id="HbN-zF-JOu"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="QLh-3g-HRF" name="value" keyPath="values.SULastCheckTime" id="ah8-RR-h2t"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="bdg-29-JN0" firstAttribute="top" secondItem="q7H-Yw-i8o" secondAttribute="bottom" constant="8" symbolic="YES" id="2NT-rB-x3A"/>
+                            <constraint firstAttribute="bottom" secondItem="LLx-Jk-ZoH" secondAttribute="bottom" constant="30" id="BcG-j7-ndx"/>
+                            <constraint firstItem="bdg-29-JN0" firstAttribute="leading" secondItem="0qG-PD-6CR" secondAttribute="trailing" constant="5" id="Czw-8p-9Lm"/>
+                            <constraint firstItem="q7H-Yw-i8o" firstAttribute="top" secondItem="uEz-ru-Uo5" secondAttribute="top" constant="20" symbolic="YES" id="GZU-SD-dBH"/>
+                            <constraint firstItem="LLx-Jk-ZoH" firstAttribute="leading" secondItem="bdg-29-JN0" secondAttribute="leading" id="JNt-vh-C8i"/>
+                            <constraint firstItem="0qG-PD-6CR" firstAttribute="baseline" secondItem="bdg-29-JN0" secondAttribute="baseline" id="Tqe-nu-pH4"/>
+                            <constraint firstItem="bdg-29-JN0" firstAttribute="leading" secondItem="q7H-Yw-i8o" secondAttribute="leading" constant="18" id="cyY-xK-xBf"/>
+                            <constraint firstItem="LLx-Jk-ZoH" firstAttribute="top" secondItem="bdg-29-JN0" secondAttribute="bottom" constant="13" id="eW9-Ke-Hr1"/>
+                            <constraint firstItem="0qG-PD-6CR" firstAttribute="leading" secondItem="uEz-ru-Uo5" secondAttribute="leading" constant="40" id="j7I-fq-7Ab"/>
+                            <constraint firstAttribute="trailing" secondItem="q7H-Yw-i8o" secondAttribute="trailing" constant="40" id="naX-Iy-kLC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uEz-ru-Uo5" firstAttribute="top" secondItem="gnm-sW-a0A" secondAttribute="top" id="Q2v-UQ-QPt"/>
+                    <constraint firstItem="uEz-ru-Uo5" firstAttribute="leading" secondItem="gnm-sW-a0A" secondAttribute="leading" id="Zsc-qR-cEM"/>
+                    <constraint firstAttribute="trailing" secondItem="uEz-ru-Uo5" secondAttribute="trailing" id="iZH-Ol-Fl6"/>
+                    <constraint firstAttribute="bottom" secondItem="uEz-ru-Uo5" secondAttribute="bottom" id="lCw-R3-Jnb"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="275" y="407.5"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="QLh-3g-HRF"/>
     </objects>
 </document>
