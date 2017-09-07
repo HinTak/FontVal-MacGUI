@@ -278,18 +278,18 @@ namespace OTFontFileVal
                 if ((created >> 32) == 0)
                 {
                     DateTime dtCreated = this.GetCreatedDateTime();
+                    string sDetails = "created = " + created + " (" + dtCreated.ToString("f", null) + ")";
                     if (created == 0)
                     {
                         v.Warning(T.head_Dates, W.head_W_created_0, m_tag);
                     }
                     else if (dtCreated < dtBeforeTrueType || dtCreated > DateTime.Now)
                     {
-                        string sDetails = "created = " + created + " (" + dtCreated.ToString("f", null) + ")";
                         v.Warning(T.head_Dates, W.head_W_created_unlikely, m_tag, sDetails);
                     }
                     else
                     {
-                        v.Pass(T.head_Dates, P.head_P_created_0, m_tag);
+                        v.Pass(T.head_Dates, P.head_P_created_0, m_tag, sDetails);
                     }
                 }
                 else
@@ -302,18 +302,18 @@ namespace OTFontFileVal
                 if ((modified >> 32) == 0)
                 {
                     DateTime dtModified = this.GetModifiedDateTime();
+                    string sDetails = "modified = " + modified + " (" + dtModified.ToString("f", null) + ")";
                     if (modified == 0)
                     {
                         v.Warning(T.head_Dates, W.head_W_modified_0, m_tag);
                     }
                     else if (dtModified < dtBeforeTrueType || dtModified > DateTime.Now)
                     {
-                        string sDetails = "modified = " + modified + " (" + dtModified.ToString("f", null) + ")";
                         v.Warning(T.head_Dates, W.head_W_modified_unlikely, m_tag, sDetails);
                     }
                     else
                     {
-                        v.Pass(T.head_Dates, P.head_P_modified_0, m_tag);
+                        v.Pass(T.head_Dates, P.head_P_modified_0, m_tag, sDetails);
                     }
                 }
                 else
