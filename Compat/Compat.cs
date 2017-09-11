@@ -37,6 +37,7 @@ namespace OTFontFile.Rasterizer
         private static RasterInterf _Rasterizer;
         private static Library _lib;
         private static Face _face;
+        private static IntPtr _face_handle;
         private DevMetricsData m_DevMetricsData;
         private bool m_UserCancelledTest = false;
         private int m_RastErrorCount;
@@ -49,15 +50,15 @@ namespace OTFontFile.Rasterizer
         private static extern bool SetDllDirectory(string path);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int diagnostics_Function(string message, string opcode,
+        public delegate int diagnostics_Function(int messcode, string message, string opcode,
                                                  int range_base, int is_composite,
                                                  int IP, int callTop, int opc, int start);
 
         [DllImport("freetype6", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void TT_Diagnostics_Set([MarshalAs(UnmanagedType.FunctionPtr)] diagnostics_Function diagnostics);
+        public static extern void TT_Diagnostics_Set(IntPtr face_handle, [MarshalAs(UnmanagedType.FunctionPtr)] diagnostics_Function diagnostics);
 
         [DllImport("freetype6", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void TT_Diagnostics_Unset();
+        public static extern void TT_Diagnostics_Unset(IntPtr face_handle);
 
         private RasterInterf ()
         {
@@ -136,7 +137,7 @@ namespace OTFontFile.Rasterizer
 
             try
             {
-                TT_Diagnostics_Unset();
+                TT_Diagnostics_Unset(_face_handle);
             }
             catch (Exception e)
             {
@@ -212,7 +213,7 @@ namespace OTFontFile.Rasterizer
                             m_RastErrorCount += 1;
                             return 0; // Not used currently.
                         };
-                    TT_Diagnostics_Set(diagnostics);
+                    TT_Diagnostics_Set(_face_handle, diagnostics);
                     try{
                         _face.LoadGlyph(ig, lf, lt);
                     } catch (Exception ee) {
@@ -244,7 +245,7 @@ namespace OTFontFile.Rasterizer
                                                " at size " + arrPointSizes[i]);
                         throw;
                     }
-                    TT_Diagnostics_Unset();
+                    TT_Diagnostics_Unset(_face_handle);
                 }
             }
             return true;
@@ -371,6 +372,8 @@ namespace OTFontFile.Rasterizer
         public ushort RasterNewSfnt (FileStream fontFileStream, uint faceIndex)
         {
             _face = _lib.NewFace(fontFileStream.Name, (int)faceIndex);
+            _face_handle = (IntPtr) _face.GetType().GetField("reference", BindingFlags.NonPublic
+                                                             | BindingFlags.Instance).GetValue(_face);
             m_UserCancelledTest = false;
             m_RastErrorCount = 0;
 
