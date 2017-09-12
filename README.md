@@ -18,6 +18,8 @@ The GUI on X11/mono needs the env variable `MONO_WINFORMS_XIM_STYLE=disabled` se
 
 Since Release 2.0, binaries (`*.dmg` for Mac OS X, `*-bin-net2.zip` or `*-bin-net4.zip` for MS .NET/mono) are available from
 [Binary Downloads](https://sourceforge.net/projects/hp-pxl-jetready/files/Microsoft%20Font%20Validator/).
+From Release 2.1 onwards, gpg-signed binaries for Ubuntu Linux are also available. There is an additional and simplified location for
+Binary downloads at the [Releases link above this page](https://github.com/HinTak/Font-Validator/releases).
 
 Please consider [donating to the effort](https://sourceforge.net/p/hp-pxl-jetready/donate/), if you use the binaries.
 
