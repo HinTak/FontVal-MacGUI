@@ -34,7 +34,7 @@ namespace Compat
     public class EmbeddedIronPython
     {
         // Runs my_class's my_method in my_script.
-        // Caller is responsible for casting the returned object.        
+        // Caller is responsible for casting the returned object.
         static public object RunPythonMethod(string my_script,
                                              string my_class,
                                              string my_method)
@@ -43,7 +43,7 @@ namespace Compat
             ScriptScope scope = engine.CreateScope();
             ScriptSource source = engine.CreateScriptSourceFromFile(my_script);
             ObjectOperations op = engine.Operations;
-            
+
             var paths = engine.GetSearchPaths();
             string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             paths.Add(path);
