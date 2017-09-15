@@ -226,7 +226,8 @@ namespace FontValidator
             Console.WriteLine( "-only-tables" );
             Console.WriteLine( "-quiet" );
             Console.WriteLine( "-test-parms    <test-parms>.py" );
-            Console.WriteLine( "+raster-tests" );
+            //Console.WriteLine( "+raster-tests  (no-op, default)" );
+            Console.WriteLine( "-no-raster-tests" );
             Console.WriteLine( "-report-dir    <reportDir>" );
             Console.WriteLine( "-report-stdout                 (=\"-stdout\", implies -quiet)" );
             Console.WriteLine( "-temporary-reports" );
@@ -269,6 +270,7 @@ namespace FontValidator
                 return 0;
             }
 
+            vp.SetRasterTesting();
             for ( int i = 0; i < args.Length; i++ ) {
                 if ( "-file" == args[i] ) {
                     i++;
@@ -328,7 +330,10 @@ namespace FontValidator
                     }
                 }
                 else if ( "+raster-tests" == args[i] ) {
-                    vp.SetRasterTesting();
+                    // default
+                }
+                else if ( "-no-raster-tests" == args[i] ) {
+                    vp.SetNoRasterTesting();
                 }
                 else if ( "-report-dir" == args[i] ) {
                     i++;
