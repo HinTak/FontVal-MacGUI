@@ -67,10 +67,6 @@ There are a number of known disagreements and issues which are gradually being f
 
 * The DSIG test (DSIG_VerifySignature) does not validate trusted certificate chain yet.
 
-* Many "Required field missing" in GenerateFValData/OurData.xml
-
-* Issues mentioned in "FDK/Technical Documentation/MSFontValidatorIssues.htm"
-
 * Many post-2nd (i.e. 2009) edition changes, such as CBLC/CBDT and other new tables.
 
 See [README-extra.txt](README-extra.txt) for a list of other interesting or non-essential tasks.
