@@ -65,6 +65,8 @@ Existing users of the increasingly dated 1.0 release from 2003 are encouraged to
 There are a number of known disagreements and issues which are gradually being filed and addressed.
 [README-hybrid.txt](README-hybrid.txt) is now of historical interests only.
 
+The [FontVal 2.2 Roadmap](https://github.com/HinTak/Font-Validator/wiki/Two-years-on,-and-2.2-Roadmap).
+
 * The DSIG test (DSIG_VerifySignature) does not validate trusted certificate chain yet.
 
 * Many post-2nd (i.e. 2009) edition changes, such as CBLC/CBDT and other new tables.
