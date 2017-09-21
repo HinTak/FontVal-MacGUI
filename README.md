@@ -25,35 +25,7 @@ Please consider [donating to the effort](https://sourceforge.net/p/hp-pxl-jetrea
 
 ## Build Instructions
 
-Font Validator was developed with Visual Studio C# by Microsoft; when it was released under MIT license in autumn 2015, VC# project files were not released. Instead, building with Mono's mcs C# compiler (http://www.mono-project.com/) was added.
-To build with mono instead of Microsoft C\# simply run:
-
-    make
-
-The usable binaries are then available from the `bin` directory.
-
-If one is making major changes (adding new tests, or new error/warning codes):
-
-    make gendoc
-
-(Plus a few extra manual steps.)
-
-To delete the newly generated binaries:
-
-    make clean
-
-As of Feb 2016, building with Microsoft Visual C# was partially re-implemented. See https://github.com/HinTak/Font-Validator/issues/8 for current status on this.
-
-The rasterer-dependent tests (HDMX/LTSH/VDMX) requires an enhancement which first appears in FreeType 2.6.1. 
-Linux users can use `LD_LIBRARY_PATH` env to load newer library than system's.
-
-The bundled win64 FreeType dll was built with an additional win64-specific patch, `freetype-win64.patch`.
-
-Currently the CHM Help file requires MS Help Workshop to build, so is bundled in the bin/ directory.
-`fval.xsl` is also rarely changed, so duplicated there. 
-
-SharpFont requires xbuild from monodevelop to build. 
-<https://github.com/Robmaister/SharpFont>
+[Build Instructions](https://github.com/HinTak/Font-Validator/wiki/Build-Instructions)
 
 ## Roadmap
 
