@@ -45,22 +45,3 @@ The [FontVal 2.2 Roadmap](https://github.com/HinTak/Font-Validator/wiki/Two-year
 
 See [README-extra.txt](README-extra.txt) for a list of other interesting or non-essential tasks.
 
-### Caveats
-
-The 3 Rasterer-dependent metrics tests (LTSH/HDMX/VDMX) with a FreeType backend are known to behave somewhat differently compared to the MS Font Scaler backend. 
-In particular:
-
-HDMX: differ by up to two pixels (i.e. either side)
-
-LTSH: FreeType backend shows a lot more non-linearity than an MS backend; the result with MS backend should be a sub-set of FreeType's, however.
-
-VDMX: The newer code has a built-in 10% tolerance, so the newer FreeType backend result should be a sub-set of (the older) MS result. Also, note that MS 2003 binary seems to be wrong for non-square resolutions, so results differ by design.
-
-On the other hand, the FreeType backend is up to 5x faster (assuming single-thread), and support CFF rastering. It is not known whether the MS backend is multi-threaded, but the FreeType backend is currently single-threaded.
-
-### Annoyances
-
-Table order is case-insensitive sorted in GUI, but case-sensitive sorted in output, both should be sorted consistently.
-
-GUI allows in-memory reports, so CMD does not warn nor abort when output location is invalid, and wastes time producing no output.
-Only `-report-dir` aborts on that; no workaround to `-report-in-font-dir` nor temp dir yet.
