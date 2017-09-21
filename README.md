@@ -86,13 +86,6 @@ VDMX: The newer code has a built-in 10% tolerance, so the newer FreeType backend
 
 On the other hand, the FreeType backend is up to 5x faster (assuming single-thread), and support CFF rastering. It is not known whether the MS backend is multi-threaded, but the FreeType backend is currently single-threaded.
 
-Incomplete CFF checks:
-
-    val_CFF.cs   I.CFF_I_NotValidated
-    val_head.cs: I._TEST_I_NotForCFF head_MinMaxValues
-    val_hhea.cs: I._TEST_I_NotForCFF hhea_MinMax
-    val_OS2.cs:  I._TEST_I_NotForCFF OS/2_xAvgCharWidth
-
 ### Annoyances
 
 Table order is case-insensitive sorted in GUI, but case-sensitive sorted in output, both should be sorted consistently.
