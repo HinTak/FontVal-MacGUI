@@ -26,9 +26,9 @@ Please consider [donating to the effort](https://sourceforge.net/p/hp-pxl-jetrea
 
 [Build Instructions](https://github.com/HinTak/Font-Validator/wiki/Build-Instructions)
 
-[The FontVal 2.2 Roadmap](https://github.com/HinTak/Font-Validator/wiki/Two-years-on,-and-2.2-Roadmap).
-
 ### Status
+
+[The FontVal 2.2 Roadmap](https://github.com/HinTak/Font-Validator/wiki/Two-years-on,-and-2.2-Roadmap).
 
 As of Release 2.0 (July 18 2016), all the withheld parts not released by Microsoft were re-implemented.
 Release 2.0 run well on non-windows, and is substantially faster also.
