@@ -8,7 +8,8 @@ In 2015 the source code was published under the MIT license ([see release discus
 ## Usage
 
 `FontVal.exe` is the GUI, and `FontValidator.exe` shows usage and example if run without arguments; both should be self-explanatory. 
-Prepend with `mono` if runs on non-Windows systems.
+We provide all-in-one native command-line binaries, `FontValidator`, for Mac OS X and Linux, as of Release 2.1.1.
+Georg Seifert contributed a friendly GUI wrapper for Mac around the command-line tool.
 
 The GUI's built-in help requires a CHM viewer, which defaults to [chmsee](https://github.com/jungleji/chmsee) on GNU+Linux, or via env variable `MONO_HELP_VIEWER` 
 
@@ -23,13 +24,11 @@ Binary downloads at the [Releases link above this page](https://github.com/HinTa
 
 Please consider [donating to the effort](https://sourceforge.net/p/hp-pxl-jetready/donate/), if you use the binaries.
 
-## Build Instructions
-
 [Build Instructions](https://github.com/HinTak/Font-Validator/wiki/Build-Instructions)
 
-## Roadmap
+[The FontVal 2.2 Roadmap](https://github.com/HinTak/Font-Validator/wiki/Two-years-on,-and-2.2-Roadmap).
 
-### Missing/broken Parts
+### Status
 
 As of Release 2.0 (July 18 2016), all the withheld parts not released by Microsoft were re-implemented.
 Release 2.0 run well on non-windows, and is substantially faster also.
@@ -37,11 +36,13 @@ Existing users of the increasingly dated 1.0 release from 2003 are encouraged to
 There are a number of known disagreements and issues which are gradually being filed and addressed.
 [README-hybrid.txt](README-hybrid.txt) is now of historical interests only.
 
-The [FontVal 2.2 Roadmap](https://github.com/HinTak/Font-Validator/wiki/Two-years-on,-and-2.2-Roadmap).
+Release 2.1 is considered to fully supercede the proprietary 1.0 feature-wise and functionality-wise.
 
 * The DSIG test (DSIG_VerifySignature) does not validate trusted certificate chain yet.
 
 * Many post-2nd (i.e. 2009) edition changes, such as CBLC/CBDT and other new tables.
 
-See [README-extra.txt](README-extra.txt) for a list of other interesting or non-essential tasks.
+* Very few post-3rd (i.e. 2015) edition changes are implemented.
+
+See also [README-extra.txt](README-extra.txt) for a list of other interesting or non-essential tasks.
 
