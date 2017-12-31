@@ -102,7 +102,7 @@ namespace OTFontFileVal
                         else
                         {
 
-                            if (   version == 3
+                            if (   version >= 3
                                 || fontOwner.ContainsMsSymbolEncodedCmap())
                             {
                                 int nTotalWidth = 0;
