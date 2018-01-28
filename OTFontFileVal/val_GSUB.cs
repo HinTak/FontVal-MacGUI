@@ -1820,7 +1820,7 @@ namespace OTFontFileVal
                 }
 
                 // check the ExtensionLookupType
-                if (ExtensionLookupType >= 7)
+                if (ExtensionLookupType == 7 || ExtensionLookupType > 8)
                 {
                     v.Error(T.T_NULL, E.GSUB_E_ExtensionLookupType, table.m_tag, sIdentity + ", ExtensionLookupType = " + ExtensionLookupType);
                     bRet = false;
@@ -1848,6 +1848,7 @@ namespace OTFontFileVal
                     case 4: st = new val_GSUB.LigatureSubst_val    (m_offsetExtensionSubst + ExtensionOffset, m_bufTable); break;
                     case 5: st = new val_GSUB.ContextSubst_val     (m_offsetExtensionSubst + ExtensionOffset, m_bufTable); break;
                     case 6: st = new val_GSUB.ChainContextSubst_val(m_offsetExtensionSubst + ExtensionOffset, m_bufTable); break;
+                    case 8: st = new val_GSUB.ReverseChainSubst_val(m_offsetExtensionSubst + ExtensionOffset, m_bufTable); break;
 
                 }
                 if (st != null)
