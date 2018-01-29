@@ -1847,7 +1847,7 @@ namespace OTFontFile
                     case 4: st = new Table_GSUB.LigatureSubst    (m_offsetExtensionSubst + ExtensionOffset, m_bufTable); break;
                     case 5: st = new Table_GSUB.ContextSubst     (m_offsetExtensionSubst + ExtensionOffset, m_bufTable); break;
                     case 6: st = new Table_GSUB.ChainContextSubst(m_offsetExtensionSubst + ExtensionOffset, m_bufTable); break;
-
+                    case 8: st = new Table_GSUB.ReverseChainSubst(m_offsetExtensionSubst + ExtensionOffset, m_bufTable); break;
                 }
                 if (st != null)
                 {
