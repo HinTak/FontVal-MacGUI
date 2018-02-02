@@ -181,6 +181,9 @@
     <Compile Include="Table_maxp.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Table_meta.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Table_name.cs">
       <SubType>Code</SubType>
     </Compile>
