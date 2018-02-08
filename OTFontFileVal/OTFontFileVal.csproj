@@ -72,12 +72,17 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Compat, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\Compat.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
@@ -108,6 +113,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\mcs-class-Mono.Security\ASN1.cs" />
+    <Compile Include="..\mcs-class-Mono.Security\ASN1Convert.cs" />
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,6 +122,7 @@
     <Compile Include="CallbVal.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="..\DSIGInfo\DSIGInfo.cs" />
     <Compile Include="ITableValidate.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -252,6 +260,7 @@
     <Compile Include="val__Unknown.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="..\Compat.2nd\WinVerifyTrustAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
