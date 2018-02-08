@@ -89,6 +89,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Compat">
+      <HintPath>..\bin\Compat.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
       <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v4.0.30319\System.dll</HintPath>
