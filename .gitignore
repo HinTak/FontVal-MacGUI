@@ -1,0 +1,7 @@
+# Visual Studio's temp files:
+FValidator.sdf
+OTFontFileVal/OTFontFileVal.sdf
+WinVerifyTrustAPI/WinVerifyTrustAPI.sdf
+*/obj/
+*.pdb
+*.v12.suo
