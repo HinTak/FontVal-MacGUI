@@ -59,6 +59,13 @@ namespace Compat
                 { "DE28F4A4FFE5B92FA3C503D1A349A7F9962A8212", "CN=GeoTrust Global CA, O=GeoTrust Inc., C=US" },
                 { "E0AB059420725493056062023670F7CD2EFC6666", "E=premium-server@thawte.com, CN=Thawte Premium Server CA, OU=Certification Services Division, O=Thawte Consulting cc, L=Cape Town, S=Western Cape, C=ZA" },
                 { "E12DFB4B41D7D9C32B30514BAC1D81D8385E2D46", "CN=UTN-USERFirst-Object, OU=http://www.usertrust.com, O=The USERTRUST Network, L=Salt Lake City, S=UT, C=US" },
+                { "2796BAE63F1801E277261BA0D77770028F20EEE4", "C=US, O=\"The Go Daddy Group, Inc.\", OU=Go Daddy Class 2 Certification Authority" },
+                { "3036E3B25B88A55B86FC90E6E9EAAD5081445166", "C=US, S=Washington, L=Redmond, O=Microsoft Corporation, CN=Microsoft Code Signing PCA" },
+                { "3CAF9BA2DB5570CAF76942FF99101B993888E257", "C=US, S=Washington, L=Redmond, O=Microsoft Corporation, CN=Microsoft Code Signing PCA" },
+                { "F252E794FE438E35ACE6E53762C0A234A2C52135", "C=US, S=Washington, L=Redmond, O=Microsoft Corporation, CN=Microsoft Code Signing PCA 2011" },
+                { "D6CD0190B31B318581122314B517A0AACEF27BD5", "L=Internet, O=\"VeriSign, Inc.\", OU=VeriSign Commercial Software Publishers CA, OU=\"www.verisign.com/repository/CPS Incorp. by Ref.,LIAB.LTD(c)96\", OU=Digital ID Class 3 - Microsoft Software Validation v2, C=US, S=Washington, L=Redmond, CN=Microsoft Corporation, OU=Microsoft Corporation" },
+                { "8AA137F5039FE028C926AA5590141968FAFFE81A", "L=Internet, O=\"VeriSign, Inc.\", OU=VeriSign Commercial Software Publishers CA, OU=\"www.verisign.com/repository/RPA Incorp. by Ref.,LIAB.LTD(c)98\", OU=Digital ID Class 3 - Microsoft Software Validation v2, C=US, S=Washington, L=Redmond, CN=Microsoft Corporation, OU=Microsoft Corporation" },
+                { "B159A52E3DD8CECD3A9A4A7A7392AA8DA7E7D67F", "L=Internet, O=\"VeriSign, Inc.\", OU=VeriSign Commercial Software Publishers CA, OU=\"www.verisign.com/repository/RPA Incorp. by Ref.,LIAB.LTD(c)98\", OU=Digital ID Class 3 - Microsoft Software Validation v2, C=US, S=Washington, L=Redmond, CN=Microsoft Corporation, OU=Microsoft Corporation" },
             };
         static HashAlgorithm hash;
         private OTFile fontfile;
