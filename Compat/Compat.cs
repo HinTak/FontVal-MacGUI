@@ -184,7 +184,7 @@ namespace OTFontFile.Rasterizer
                 _face.SetTransform(fmatrix, fdelta);
                 for (uint ig = 0; ig < numGlyphs; ig++) {
                     diagnostics_Function diagnostics =
-                        (message, opcode, range_base, is_composite, IP, callTop, opc, start) =>
+                        (messcode, message, opcode, range_base, is_composite, IP, callTop, opc, start) =>
                         {
                             string sDetails = "Size " + arrPointSizes[i] + ", " + opcode;
                             switch ( range_base )
