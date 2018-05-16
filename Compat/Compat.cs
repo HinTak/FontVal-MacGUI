@@ -372,8 +372,7 @@ namespace OTFontFile.Rasterizer
         public ushort RasterNewSfnt (FileStream fontFileStream, uint faceIndex)
         {
             _face = _lib.NewFace(fontFileStream.Name, (int)faceIndex);
-            _face_handle = (IntPtr) _face.GetType().GetField("reference", BindingFlags.NonPublic
-                                                             | BindingFlags.Instance).GetValue(_face);
+            _face_handle = (IntPtr) _face.GetType().GetProperty("pReference", BindingFlags.NonPublic |BindingFlags.Instance).GetValue(_face);
             m_UserCancelledTest = false;
             m_RastErrorCount = 0;
 
