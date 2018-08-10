@@ -50,7 +50,7 @@ namespace OTFontFile.Rasterizer
         private static extern bool SetDllDirectory(string path);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int diagnostics_Function(int messcode, string message, string opcode,
+        public delegate int diagnostics_Function(IntPtr face_handle, int messcode, string message, string opcode,
                                                  int range_base, int is_composite,
                                                  int IP, int callTop, int opc, int start);
 
@@ -184,7 +184,7 @@ namespace OTFontFile.Rasterizer
                 _face.SetTransform(fmatrix, fdelta);
                 for (uint ig = 0; ig < numGlyphs; ig++) {
                     diagnostics_Function diagnostics =
-                        (messcode, message, opcode, range_base, is_composite, IP, callTop, opc, start) =>
+                        (face_handle, messcode, message, opcode, range_base, is_composite, IP, callTop, opc, start) =>
                         {
                             string sDetails = "Size " + arrPointSizes[i] + ", " + opcode;
                             switch ( range_base )
