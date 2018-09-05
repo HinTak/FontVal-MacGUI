@@ -28,7 +28,7 @@ using System.Security.Permissions;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("2.1.*")]
-[assembly: AssemblyInformationalVersion("2.1.1")]
+[assembly: AssemblyInformationalVersion("2.1.2")]
 
 //
 // In order to sign your assembly you must specify a key to use. Refer to the 
