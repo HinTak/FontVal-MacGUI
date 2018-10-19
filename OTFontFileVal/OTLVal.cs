@@ -998,7 +998,7 @@ namespace OTFontFile.OTL
                 bRet = false;
             }
 
-            // check DeltaFormat is 1, 2, or 3
+            // check DeltaFormat is 1, 2, 3, or VARIATION_INDEX
             if ( (DeltaFormat < 1 || DeltaFormat > 3) && (DeltaFormat != 0x8000) )
             {
                 v.Error(T.T_NULL, E._OTL_DeviceTable_E_DeltaFormat, table.m_tag, sIdentity + ", DeltaFormat = " + DeltaFormat);
@@ -1007,6 +1007,7 @@ namespace OTFontFile.OTL
             else
             {
 
+                if ( (DeltaFormat >= 1 || DeltaFormat <= 3) {
                 // check that DeltaValue array doesn't extend past the end of the table
                 int nSizes = EndSize - StartSize + 1;
                 int nValuesPerUint = 16 >> DeltaFormat;
@@ -1017,6 +1018,8 @@ namespace OTFontFile.OTL
                     v.Error(T.T_NULL, E._OTL_DeviceTable_E_DeltaValueArray_pastEOT, table.m_tag, sIdentity);
                     bRet = false;
                 }
+                }
+                // TODO: VARIATION_INDEX check
             }
 
             // way too many device tables to justify this pass message
