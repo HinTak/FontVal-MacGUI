@@ -999,7 +999,7 @@ namespace OTFontFile.OTL
             }
 
             // check DeltaFormat is 1, 2, or 3
-            if (DeltaFormat < 1 || DeltaFormat > 3)
+            if ( (DeltaFormat < 1 || DeltaFormat > 3) && (DeltaFormat != 0x8000) )
             {
                 v.Error(T.T_NULL, E._OTL_DeviceTable_E_DeltaFormat, table.m_tag, sIdentity + ", DeltaFormat = " + DeltaFormat);
                 bRet = false;
