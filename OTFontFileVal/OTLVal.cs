@@ -1007,7 +1007,7 @@ namespace OTFontFile.OTL
             else
             {
 
-                if ( (DeltaFormat >= 1 || DeltaFormat <= 3) {
+                if (DeltaFormat >= 1 || DeltaFormat <= 3) {
                 // check that DeltaValue array doesn't extend past the end of the table
                 int nSizes = EndSize - StartSize + 1;
                 int nValuesPerUint = 16 >> DeltaFormat;
