@@ -31,7 +31,7 @@ namespace OTFontFileVal
 
             if (v.PerformTest(T.GDEF_Version))
             {
-                if (Version.GetUint() == 0x00010000 || Version.GetUint() == 0x00010002 )
+                if (Version.GetUint() == 0x00010000 || Version.GetUint() == 0x00010002 || Version.GetUint() == 0x00010003)
                 {
                     v.Pass(T.GDEF_Version, P.GDEF_P_Version, m_tag, "0x"+ Version.GetUint().ToString("x8"));
                 }
@@ -134,6 +134,7 @@ namespace OTFontFileVal
                 }
             }
 
+            // TODO: Version 1.3 fields
             return bRet;
         }
 
