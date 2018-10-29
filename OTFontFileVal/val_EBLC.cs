@@ -35,6 +35,7 @@ namespace OTFontFileVal
             
             if (v.PerformTest(T.EBLC_version))
             {
+                // TODO warning on 0x00030000 + EBLC and 0x00020000 + CBLC
                 if (version.GetUint() == 0x00020000 || version.GetUint() == 0x00030000)
                 {
                     v.Pass(T.EBLC_version, P.EBLC_P_version, m_tag);

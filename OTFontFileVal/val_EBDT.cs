@@ -110,6 +110,7 @@ namespace OTFontFileVal
 
             if (v.PerformTest(T.EBDT_version))
             {
+                // TODO: warning on 0x00030000 + EBDT and 0x00020000 + CBDT
                 if (version.GetUint() == 0x00020000 || version.GetUint() == 0x00030000)
                 {
                     v.Pass(T.EBDT_version, P.EBDT_P_version, m_tag);

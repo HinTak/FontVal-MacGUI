@@ -276,6 +276,7 @@ namespace OTFontFileVal
                 {
                     m_Validator.Warning(T.T_NULL, W._FONT_W_MissingRecommendedTable, null, "DSIG");
                 }
+                // TODO: check m_ttch.version == 0x00010000/0x00020000
             }
 
             m_Validator.OnFileValidationEvent(this, false);

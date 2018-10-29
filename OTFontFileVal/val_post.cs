@@ -51,6 +51,7 @@ namespace OTFontFileVal
                         bRet = false;
                     }
                 }
+                // TODO: Version.GetUint() === 0x00025000, GetLength()
 
                 if (bLenOk)
                 {
