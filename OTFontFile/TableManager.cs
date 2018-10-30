@@ -148,6 +148,8 @@ namespace OTFontFile
                 case "BASE": table = new Table_BASE(tag, buf); break;
                 case "CFF ": table = new Table_CFF(tag, buf); break;
                 case "cmap": table = new Table_cmap(tag, buf); break;
+                //case "COLR": table = new Table_GenericOT(tag, buf); break;
+                //case "CPAL": table = new Table_GenericOT(tag, buf); break;
                 case "cvt ": table = new Table_cvt(tag, buf); break;
                 case "DSIG": table = new Table_DSIG(tag, buf); break;
                 case "EBDT": table = new Table_EBDT(tag, buf); break;
@@ -167,6 +169,7 @@ namespace OTFontFile
                 case "kern": table = new Table_kern(tag, buf); break;
                 case "loca": table = new Table_loca(tag, buf); break;
                 case "LTSH": table = new Table_LTSH(tag, buf); break;
+                //case "MATH": table = new Table_GenericOT(tag, buf); break;
                 case "maxp": table = new Table_maxp(tag, buf); break;
                 case "meta": table = new Table_meta(tag, buf); break;
                 case "name": table = new Table_name(tag, buf); break;
