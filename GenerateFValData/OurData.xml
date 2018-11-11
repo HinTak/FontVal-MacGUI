@@ -5193,7 +5193,12 @@ beyond the point of this error. This is expected.
     shortDesc="Storage index out of range"
     fwLinkID="10368"
     tableName="Rasterization Test">
-    <problem>Zero-based storage index exceeds the maxp value for maxStorage - 1. Adjust maxp accordingly.</problem>
+    <problem>Zero-based storage index exceeds the maxp value for maxStorage - 1. Adjust maxp accordingly.
+
+&lt;p&gt;
+The FreeType backend of FontVal 2.0+ is known to be better at identifying this kind of error than FontVal 1.0.FontVal 1.0.
+See https://bugzilla.redhat.com/show_bug.cgi?id=1648612 and https://bugzilla.redhat.com/show_bug.cgi?id=1646688 .
+</problem>
 </item>
 
 <item
