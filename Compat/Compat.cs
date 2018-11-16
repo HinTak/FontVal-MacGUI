@@ -63,7 +63,11 @@ namespace OTFontFile.Rasterizer
         private RasterInterf ()
         {
             PlatformID pid = Environment.OSVersion.Platform;
+#if __MonoCS__
             if ( pid != PlatformID.Unix && pid != PlatformID.MacOSX )
+#else
+            if ( pid != PlatformID.Unix )
+#endif
             {
                 string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
                 path = Path.Combine(path, IntPtr.Size == 8 ? "Win64" : "Win32");
