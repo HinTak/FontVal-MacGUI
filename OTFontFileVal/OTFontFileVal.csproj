@@ -112,8 +112,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\mcs-class-Mono.Security\ASN1.cs" />
-    <Compile Include="..\mcs-class-Mono.Security\ASN1Convert.cs" />
+    <Compile Include="..\mcs-class-Mono.Security\ASN1.cs">
+      <Link>ASN1.cs</Link>
+    </Compile>
+    <Compile Include="..\mcs-class-Mono.Security\ASN1Convert.cs">
+      <Link>ASN1Convert.cs</Link>
+    </Compile>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -121,7 +125,9 @@
     <Compile Include="CallbVal.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="..\DSIGInfo\DSIGInfo.cs" />
+    <Compile Include="..\DSIGInfo\DSIGInfo.cs">
+      <Link>DSIGInfo.cs</Link>
+    </Compile>
     <Compile Include="ITableValidate.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -259,7 +265,9 @@
     <Compile Include="val__Unknown.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="..\Compat.2nd\WinVerifyTrustAPI.cs" />
+    <Compile Include="..\Compat.2nd\WinVerifyTrustAPI.cs">
+      <Link>WinVerifyTrustAPI.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

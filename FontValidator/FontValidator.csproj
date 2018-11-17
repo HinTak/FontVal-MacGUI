@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CmdLineInterface.cs" />
-    <Compile Include="..\Compat.3rd\EmbeddedIronPython.cs" />
+    <Compile Include="..\Compat.3rd\EmbeddedIronPython.cs">
+      <Link>EmbeddedIronPython.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
