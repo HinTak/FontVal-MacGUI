@@ -177,6 +177,7 @@
       <SubType>Code</SubType>
     </Compile>
     <EmbeddedResource Include="NS_Glyph.GErrStrings.resx">
+      <Link>GErrStrings.resx</Link>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
