@@ -138,7 +138,7 @@ namespace FontVal
                         {
                             xslTrans.Transform(sFilename, sFileToShow);
                         }
-                        catch(Exception e)
+                        catch(Exception)
                         {
                         }
                     }

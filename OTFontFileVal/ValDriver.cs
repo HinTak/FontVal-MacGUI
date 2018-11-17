@@ -90,7 +90,7 @@ namespace OTFontFileVal {
                         {
                             xslTrans.Transform(sReportFile, sHTMLFile);
                         }
-                        catch(Exception e)
+                        catch(Exception)
                         {
                         }
                 }

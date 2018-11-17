@@ -139,7 +139,7 @@ namespace OTFontFile.Rasterizer
             {
                 TT_Diagnostics_Unset(_face_handle);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new NotImplementedException("UnImplemented in this version of Freetype: " + FTVersion);
             };

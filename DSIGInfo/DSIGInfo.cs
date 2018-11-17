@@ -418,7 +418,7 @@ namespace Compat
                                     ASN1 t = new ASN1(vv[3][1][1].Value);
                                     Console.WriteLine("Decoded Signing Time: {0}", ASN1Convert.ToDateTime (t) );
                                 }
-                                catch (Exception e)
+                                catch (Exception)
                                 {/* Nothing to do */ }
                             }
                         }
