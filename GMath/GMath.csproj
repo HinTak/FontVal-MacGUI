@@ -1,4 +1,4 @@
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.21022</ProductVersion>
@@ -77,15 +77,12 @@
   <ItemGroup>
     <Reference Include="System">
       <Name>System</Name>
-      <HintPath>..\..\..\..\WINNT\Microsoft.NET\Framework\v4.0.30319\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
-      <HintPath>..\..\..\..\WINNT\Microsoft.NET\Framework\v4.0.30319\System.Data.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
-      <HintPath>..\..\..\..\WINNT\Microsoft.NET\Framework\v4.0.30319\System.XML.dll</HintPath>
     </Reference>
     <ProjectReference Include="..\OTFontFile\OTFontFile.csproj">
       <Name>OTFontFile</Name>
