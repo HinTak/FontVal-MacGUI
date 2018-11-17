@@ -33,11 +33,6 @@
       <HintPath>..\bin\SharpFont.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -93,7 +88,6 @@
     <Compile Include="dbcs936.cs" />
     <Compile Include="dbcs949.cs" />
     <Compile Include="dbcs950.cs" />
-    <Compile Include="Win32APIs.cs" />
     <Compile Include="Xsl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

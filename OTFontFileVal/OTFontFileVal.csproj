@@ -265,6 +265,9 @@
     <Compile Include="val__Unknown.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="..\Compat\WIN32APIs.cs">
+      <Link>Win32APIs.cs</Link>
+    </Compile>
     <Compile Include="..\Compat.2nd\WinVerifyTrustAPI.cs">
       <Link>WinVerifyTrustAPI.cs</Link>
     </Compile>
