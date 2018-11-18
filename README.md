@@ -28,6 +28,9 @@ Binary downloads at the [Releases link above this page](https://github.com/HinTa
 
 Please consider [donating to the effort](https://sourceforge.net/p/hp-pxl-jetready/donate/), if you use the binaries.
 
+Loading `FValidator.sln` at the top level into Microsoft Visual Studio 2008+ (Express) by double-clicking it, followed by
+selecting the the relevant menu entries in the GUI, or running `MSbuild` on the command line with MS VS2008+,
+should do. For Mono-based instructions, see
 [Build Instructions](https://github.com/HinTak/Font-Validator/wiki/Build-Instructions)
 
 ### Status
