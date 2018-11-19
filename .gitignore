@@ -12,3 +12,5 @@ OTFontFileVal/atoms.cs
 NewHelp/*
 bin/*.XML
 bin/*.pdb
+# Mono's
+bin/*.mdb
