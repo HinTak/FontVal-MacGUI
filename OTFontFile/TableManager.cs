@@ -156,43 +156,54 @@ namespace OTFontFile
 
             switch (sName)
             {
+                //case "avar": table = new Table_GenericOT(tag, buf); break;
                 case "BASE": table = new Table_BASE(tag, buf); break;
                 case "CFF ": table = new Table_CFF(tag, buf); break;
+                //case "CFF2": table = new Table_GenericOT(tag, buf); break;
                 case "cmap": table = new Table_cmap(tag, buf); break;
                 //case "COLR": table = new Table_GenericOT(tag, buf); break;
                 //case "CPAL": table = new Table_GenericOT(tag, buf); break;
+                //case "cvar": table = new Table_GenericOT(tag, buf); break;
                 case "cvt ": table = new Table_cvt(tag, buf); break;
                 case "DSIG": table = new Table_DSIG(tag, buf); break;
                 case "EBDT": table = new Table_EBDT(tag, buf); break;
                 case "EBLC": table = new Table_EBLC(tag, buf); break;
                 case "EBSC": table = new Table_EBSC(tag, buf); break;
                 case "fpgm": table = new Table_fpgm(tag, buf); break;
+                //case "fvar": table = new Table_GenericOT(tag, buf); break;
                 case "gasp": table = new Table_gasp(tag, buf); break;
                 case "GDEF": table = new Table_GDEF(tag, buf); break;
                 case "glyf": table = new Table_glyf(tag, buf); break;
                 case "GPOS": table = new Table_GPOS(tag, buf); break;
                 case "GSUB": table = new Table_GSUB(tag, buf); break;
+                //case "gvar": table = new Table_GenericOT(tag, buf); break;
                 case "hdmx": table = new Table_hdmx(tag, buf); break;
                 case "head": table = new Table_head(tag, buf); break;
                 case "hhea": table = new Table_hhea(tag, buf); break;
                 case "hmtx": table = new Table_hmtx(tag, buf); break;
+                //case "HVAR": table = new Table_GenericOT(tag, buf); break;
                 case "JSTF": table = new Table_JSTF(tag, buf); break;
                 case "kern": table = new Table_kern(tag, buf); break;
                 case "loca": table = new Table_loca(tag, buf); break;
                 case "LTSH": table = new Table_LTSH(tag, buf); break;
                 //case "MATH": table = new Table_GenericOT(tag, buf); break;
                 case "maxp": table = new Table_maxp(tag, buf); break;
+                //case "MERG": table = new Table_GenericOT(tag, buf); break;
                 case "meta": table = new Table_meta(tag, buf); break;
+                //case "MVAR": table = new Table_GenericOT(tag, buf); break;
                 case "name": table = new Table_name(tag, buf); break;
                 case "OS/2": table = new Table_OS2(tag, buf); break;
                 case "PCLT": table = new Table_PCLT(tag, buf); break;
                 case "post": table = new Table_post(tag, buf); break;
                 case "prep": table = new Table_prep(tag, buf); break;
+                //case "sbix": table = new Table_GenericOT(tag, buf); break;
+                //case "STAT": table = new Table_GenericOT(tag, buf); break;
                 case "SVG ": table = new Table_SVG(tag, buf); break;
                 case "VDMX": table = new Table_VDMX(tag, buf); break;
                 case "vhea": table = new Table_vhea(tag, buf); break;
                 case "vmtx": table = new Table_vmtx(tag, buf); break;
                 case "VORG": table = new Table_VORG(tag, buf); break;
+                //case "VVAR": table = new Table_GenericOT(tag, buf); break;
                 //case "Zapf": table = new Table_Zapf(tag, buf); break;
                 default: table = new Table__Unknown(tag, buf); break;
             }
