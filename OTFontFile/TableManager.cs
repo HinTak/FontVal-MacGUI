@@ -111,6 +111,7 @@ namespace OTFontFile
                     "LTSH",
                     "MATH",
                     "maxp",
+                    "meta",
                     "MERG",
                     "MVAR",
                     "name",
