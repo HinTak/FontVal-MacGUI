@@ -433,7 +433,7 @@ namespace OTFontFile
 
         public bool IsVariableFont()
         {
-            if ( (GetTable("fvar") == null) || (GetTable("STAT") == null) )
+            if ( (GetDirectoryEntry("fvar") == null) || (GetDirectoryEntry("STAT") == null) )
                 return false;
             else
                 return true;
