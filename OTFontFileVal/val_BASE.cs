@@ -31,7 +31,7 @@ namespace OTFontFileVal
 
             if (v.PerformTest(T.BASE_Version))
             {
-                if (Version.GetUint() == 0x00010000)
+                if (Version.GetUint() == 0x00010000 || Version.GetUint() == 0x00010001)
                 {
                     v.Pass(T.BASE_Version, P.BASE_P_Version, m_tag);
                 }
@@ -90,6 +90,7 @@ namespace OTFontFileVal
                     at.Validate(v, "V Axis", this);
                 }
             }
+            // TODO: BASE Item Variation Store
 
             return bRet;
         }
