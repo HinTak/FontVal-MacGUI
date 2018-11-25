@@ -431,6 +431,14 @@ namespace OTFontFile
                 return false;
         }
 
+        public bool IsVariableFont()
+        {
+            if ( (GetTable("fvar") == null) || (GetTable("STAT") == null) )
+                return false;
+            else
+                return true;
+        }
+
         public ushort GetMaxpNumGlyphs()
         {
             // this routine caches the maxp.numGlyphs value for better performance
