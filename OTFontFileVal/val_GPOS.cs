@@ -33,7 +33,7 @@ namespace OTFontFileVal
 
             if (v.PerformTest(T.GPOS_Version))
             {
-                if (Version.GetUint() == 0x00010000)
+                if (Version.GetUint() == 0x00010000 || Version.GetUint() == 0x00010001)
                 {
                     v.Pass(T.GPOS_Version, P.GPOS_P_Version, m_tag);
                 }
@@ -135,6 +135,7 @@ namespace OTFontFileVal
                     v.ApplicationError(T.GPOS_Subtables, E._Table_E_Exception, m_tag, "LookupList: " + e.Message);
                     bRet &= false;
                 }
+                // TODO: 1.1 featureVariationsOffset, FeatureVariations table
             }
 
 
