@@ -32,7 +32,7 @@ namespace OTFontFileVal
 
             if (v.PerformTest(T.GSUB_Version))
             {
-                if (Version.GetUint() == 0x00010000)
+                if (Version.GetUint() == 0x00010000 || Version.GetUint() == 0x00010001)
                 {
                     v.Pass(T.GSUB_Version, P.GSUB_P_Version, m_tag);
                 }
@@ -132,6 +132,7 @@ namespace OTFontFileVal
                         bRet &= llt.Validate(v, "LookupList", this);
                     }
                 }
+                // TODO 1.1: FeatureVariations Offset to FeatureVariations table
             }
 
             return bRet;
