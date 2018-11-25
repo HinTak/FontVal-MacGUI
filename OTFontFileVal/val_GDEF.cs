@@ -134,7 +134,7 @@ namespace OTFontFileVal
                 }
             }
 
-            // TODO: Version 1.3 fields
+            // TODO: Version 1.3: Item Variation Store table
             return bRet;
         }
 
