@@ -144,7 +144,7 @@ namespace OTFontFileVal
         private string[] m_namesInfoCnt=
             {
                 "glyf_W_CompositeReservedBit",
-                "GERR_CONT_DEGEN"
+                //"GERR_CONT_DEGEN"
             };
         private int[] m_cnts;
 
