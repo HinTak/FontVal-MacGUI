@@ -145,7 +145,7 @@ namespace OTFontFileVal
 
                     if (nr != null)
                     {
-                        if (nr.NameID >= 21 && nr.NameID <= 255)
+                        if (nr.NameID >= 26 && nr.NameID <= 255)
                         {
                             string s = "platID = " + nr.PlatformID 
                                 + ", encID = " + nr.EncodingID
