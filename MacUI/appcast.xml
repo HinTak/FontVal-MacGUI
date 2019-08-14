@@ -7,7 +7,7 @@
 		<language>en</language>
 		<item>
 			<title>Version 0.1</title>
-			<sparkle:releaseNotesLink>http://htmlpreview.github.io/?https://raw.githubusercontent.com/schriftgestalt/Font-Validator/master/MacUI/build/FontValidator0.1-5.html</sparkle:releaseNotesLink>
+			<sparkle:releaseNotesLink>https://htmlpreview.github.io/?https://raw.githubusercontent.com/schriftgestalt/Font-Validator/master/MacUI/build/FontValidator0.1-5.html</sparkle:releaseNotesLink>
 			<sparkle:minimumSystemVersion>10.9.3</sparkle:minimumSystemVersion>
 			<pubDate>Wed, 14 Aug 2019 20:09:57 +0200</pubDate>
 			<enclosure
