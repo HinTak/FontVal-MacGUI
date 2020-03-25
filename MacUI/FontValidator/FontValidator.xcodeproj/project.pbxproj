@@ -64,6 +64,7 @@
 		565FFDE71C67CC4E00E203FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		565FFDEA1C67CC4E00E203FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		565FFDEC1C67CC4E00E203FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		566EE8C023C89B2A00D4FBD1 /* FontValidator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FontValidator.entitlements; sourceTree = "<group>"; };
 		56871BD41C68E7620058C6FA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		56871BD81C69E32A0058C6FA /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfreetype.6.dylib; sourceTree = "<group>"; };
 		56871BD91C69E32A0058C6FA /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpng16.16.dylib; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		565FFDDA1C67CC4E00E203FB /* FontValidator */ = {
 			isa = PBXGroup;
 			children = (
+				566EE8C023C89B2A00D4FBD1 /* FontValidator.entitlements */,
 				565FFDDB1C67CC4E00E203FB /* AppDelegate.h */,
 				565FFDDC1C67CC4E00E203FB /* AppDelegate.m */,
 				565FFDE11C67CC4E00E203FB /* FVDocument.h */,
@@ -175,7 +177,7 @@
 			};
 			buildConfigurationList = 565FFDD31C67CC4E00E203FB /* Build configuration list for PBXProject "FontValidator" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -343,7 +345,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconX;
+				CODE_SIGN_ENTITLEMENTS = FontValidator/FontValidator.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -365,7 +369,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconX;
+				CODE_SIGN_ENTITLEMENTS = FontValidator/FontValidator.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
