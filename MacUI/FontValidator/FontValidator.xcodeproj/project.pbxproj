@@ -31,8 +31,6 @@
 		565FFDEB1C67CC4E00E203FB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565FFDE91C67CC4E00E203FB /* MainMenu.xib */; };
 		56871BD51C68E7620058C6FA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56871BD41C68E7620058C6FA /* Sparkle.framework */; };
 		56871BD71C68E7790058C6FA /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 56871BD41C68E7620058C6FA /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		56E138F71C69EB68004C7072 /* libfreetype.6.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 56871BD81C69E32A0058C6FA /* libfreetype.6.dylib */; };
-		56E138F81C69EB69004C7072 /* libpng16.16.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 56871BD91C69E32A0058C6FA /* libpng16.16.dylib */; };
 		56E139331C69F312004C7072 /* PreferenceWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E139321C69F312004C7072 /* PreferenceWindow.xib */; };
 		56E502A51C6F840E00B1D609 /* FontValidator.help in Resources */ = {isa = PBXBuildFile; fileRef = 56E502A41C6F840E00B1D609 /* FontValidator.help */; };
 /* End PBXBuildFile section */
@@ -66,8 +64,6 @@
 		565FFDEC1C67CC4E00E203FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		566EE8C023C89B2A00D4FBD1 /* FontValidator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FontValidator.entitlements; sourceTree = "<group>"; };
 		56871BD41C68E7620058C6FA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		56871BD81C69E32A0058C6FA /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfreetype.6.dylib; sourceTree = "<group>"; };
-		56871BD91C69E32A0058C6FA /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpng16.16.dylib; sourceTree = "<group>"; };
 		56E139321C69F312004C7072 /* PreferenceWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferenceWindow.xib; sourceTree = "<group>"; };
 		56E502A41C6F840E00B1D609 /* FontValidator.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FontValidator.help; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,8 +120,6 @@
 		565FFDDE1C67CC4E00E203FB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				56871BD81C69E32A0058C6FA /* libfreetype.6.dylib */,
-				56871BD91C69E32A0058C6FA /* libpng16.16.dylib */,
 				56477C501C67D67E007332DA /* FontValidator */,
 				565FFDDF1C67CC4E00E203FB /* main.m */,
 			);
@@ -206,8 +200,6 @@
 				56E502A51C6F840E00B1D609 /* FontValidator.help in Resources */,
 				565FFDEB1C67CC4E00E203FB /* MainMenu.xib in Resources */,
 				565A9E971D05F3C800F420BA /* Credits.html in Resources */,
-				56E138F81C69EB69004C7072 /* libpng16.16.dylib in Resources */,
-				56E138F71C69EB68004C7072 /* libfreetype.6.dylib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
