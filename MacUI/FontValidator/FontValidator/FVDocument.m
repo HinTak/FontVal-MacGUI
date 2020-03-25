@@ -16,14 +16,6 @@
 
 @implementation FVDocument
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-		// Add your subclass-specific initialization here.
-    }
-    return self;
-}
-
 - (void)awakeFromNib {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"OptionsVisible"]) {
 		[_optionHeightConstraint setConstant:OptionViewHeight];
