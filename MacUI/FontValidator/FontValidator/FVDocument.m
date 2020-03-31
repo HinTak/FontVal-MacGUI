@@ -88,7 +88,7 @@
 		[Arguments addObject:@"-no-raster-tests"];
 	}
 
-	NSString *Result = [self callCommand:fontValBinPath withAruments:Arguments currentDirectory:nil];
+	NSString *Result = [self callCommand:fontValBinPath withArguments:Arguments currentDirectory:nil];
 	
 
 	Result = [Result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -117,7 +117,7 @@
 	}
 }
 
-- (NSString *)callCommand:(NSString *)Command withAruments:(NSArray *)Arguments currentDirectory:(NSString *)CurrentDirectory {
+- (NSString *)callCommand:(NSString *)Command withArguments:(NSArray *)Arguments currentDirectory:(NSString *)CurrentDirectory {
 	if (Command) {
 		NSTask *task;
 		task = [[NSTask alloc] init];
