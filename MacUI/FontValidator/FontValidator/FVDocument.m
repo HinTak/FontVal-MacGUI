@@ -84,8 +84,8 @@
 			[Arguments addObject:ignoreTable];
 		}
 	}
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"raster_tests"]) {
-		[Arguments addObject:@"+raster-tests"];
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"raster_tests"]) {
+		[Arguments addObject:@"-no-raster-tests"];
 	}
 
 	NSString *Result = [self callCommand:fontValBinPath withAruments:Arguments currentDirectory:nil];
