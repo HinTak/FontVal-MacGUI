@@ -1341,6 +1341,12 @@ namespace OTFontFileVal
             }
 
 
+            public Range [] GetRanges()
+            {
+                return m_arrRanges;
+            }
+
+
             public Range GetRange(uint charcode)
             {
                 Range urReturn = null;
@@ -1452,6 +1458,25 @@ namespace OTFontFileVal
                     if (r != null)
                     {
                         r.count++;
+                    }
+                }
+            }
+            if (fontOwner.HaveNonBMPChars())
+            {
+                foreach (UnicodeRanges.Range currRange in ur.GetRanges())
+                {
+                    if (currRange.m_nLow < 0xffff)
+                    {
+                        continue;
+                    }
+                    for (uint c = currRange.m_nLow; c <= currRange.m_nHigh; c++)
+                    {
+                        // check if c is mapped to a glyph
+                        uint iGlyph = fontOwner.FastMapUnicode32ToGlyphID(c);
+                        if (iGlyph != 0)
+                        {
+                            currRange.count++;
+                        }
                     }
                 }
             }
