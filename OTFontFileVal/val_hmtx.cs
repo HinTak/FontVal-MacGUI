@@ -71,7 +71,7 @@ namespace OTFontFileVal
 
                     if (hm != null)
                     {
-                        if (hm.lsb > hm.advanceWidth)
+                        if (hm.lsb > hm.advanceWidth && hm.advanceWidth != 0)
                         {
                             v.Warning(T.hmtx_CheckMetrics, W.hmtx_W_CheckMetrics_lsb_gt_adv, m_tag, "glyph# " + iGlyph);
                             bMetricsOk = false;
