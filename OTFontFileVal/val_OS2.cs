@@ -51,9 +51,9 @@ namespace OTFontFileVal
                 uint len = GetLength();
                 if ((version == 0 && len == 78)      // TrueType rev 1.5
                     || (version == 1 && len == 86)   // TrueType rev 1.66, + ulCodePageRange1, ulCodePageRange2
-                    || (version == 2 && len == 96)   // OpenType rev 1.2
-                    || (version == 3 && len == 96)   // OpenType rev 1.4
-                    || (version == 4 && len == 96)   // OpenType rev 1.6
+                    || (version == 2 && len == 96)   // OpenType rev 1.2, + five additional fields
+                    || (version == 3 && len == 96)   // OpenType rev 1.4, specification of certain fields revised to reflect changes in Uniode 3.2
+                    || (version == 4 && len == 96)   // OpenType rev 1.6, specification of certain fields revised
                     || (version == 5 && len == 100)) // OpenType rev 1.7, + usLowerOpticalPointSize, usUpperOpticalPointSize
                 {
                     v.Pass(T.OS_2_TableLength, P.OS_2_P_TableLength, m_tag);
