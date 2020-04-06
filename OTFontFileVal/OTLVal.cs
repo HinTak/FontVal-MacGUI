@@ -702,7 +702,7 @@ namespace OTFontFile.OTL
             }
 
             // check LookupFlag reserved bits are clear
-            if ((LookupFlag & 0x00f0) != 0)
+            if ((LookupFlag & 0x00E0) != 0)
             {
                 v.Error(T.T_NULL, E._OTL_LookupTable_E_LookupFlag_reserved, table.m_tag, sIdentity);
                 bRet = false;
