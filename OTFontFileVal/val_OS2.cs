@@ -2185,6 +2185,15 @@ namespace OTFontFileVal
                      */
 
                         // TODO: v4 addition
+
+                        // v4, v5: 123-127 Reserved for process-internal usage
+                        if (version < 6)
+                        {
+                            for (int bitpos = 27; bitpos < 32; bitpos++)
+                            {
+                                if ((ulUnicodeRange4 & (1<<bitpos)) != 0) { bOk = false; v.Error(T.T_NULL, E.OS_2_E_ReservedBitSet_Unicode, m_tag, "bit #" + (96+bitpos)); }
+                            }
+                        }
                     }
                 }
             }
