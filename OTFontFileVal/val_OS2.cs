@@ -2126,7 +2126,8 @@ namespace OTFontFileVal
                     nCharsInRange = ur.GetRange(TAGS_LOW).count;
                     bOk &= VerifyUnicodeRange(v, ulUnicodeRange3, 0x10000000, nCharsInRange, "Tags");
 
-                    // v3: 93-127 Reserved for Unicode SubRanges
+                    // v3: 84 to 92, + already-assigned bits extended to cover additional Unicode ranges
+                    // v4: 58 and bits 93 to 122, + bits 8, 12, 14, 27 and 53 re-assigned
                     if (version < 4)
                     {
                         for (int bitpos = 29; bitpos < 32; bitpos++)
