@@ -513,6 +513,17 @@ namespace OTFontFile
             return glyphID;
         }
 
+        public bool HaveNonBMPChars()
+        {
+            Table_cmap cmapTable = (Table_cmap)GetTable("cmap");
+            if (cmapTable != null)
+            {
+                Table_cmap.Format12 subtable = (Table_cmap.Format12)cmapTable.GetSubtable(3,10);
+                if (subtable != null)
+                    return true;
+            }
+            return false;
+        }
 
         public uint FastMapUnicode32ToGlyphID(uint c)
         {
