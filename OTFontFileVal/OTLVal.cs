@@ -581,11 +581,20 @@ namespace OTFontFile.OTL
         {
             bool bRet = true;
 
-            // check that FeatureParams is null
-            if (FeatureParams != 0)
+            if (sIdentity.EndsWith("(size), FeatureTable"))
             {
-                v.Error(T.T_NULL, E._OTL_FeatureTable_E_FeatureParams_nonnull, table.m_tag, sIdentity);
-                bRet = false;
+                // The "size" feature is special in having non-null FeatureParams
+
+                // TODO
+            }
+            else
+            {
+                // check that FeatureParams is null
+                if (FeatureParams != 0)
+                {
+                    v.Error(T.T_NULL, E._OTL_FeatureTable_E_FeatureParams_nonnull, table.m_tag, sIdentity);
+                    bRet = false;
+                }
             }
 
             // check LookupListIndex array length
