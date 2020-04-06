@@ -331,7 +331,7 @@ namespace OTFontFileVal
                     {
                         if (nr.PlatformID == 0) // unicode
                         {
-                            if (nr.EncodingID > 3)
+                            if (nr.EncodingID > 7)
                             {
                                 string s = "platID = " + nr.PlatformID 
                                     + ", encID = " + nr.EncodingID

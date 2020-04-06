@@ -1185,7 +1185,9 @@ namespace OTFontFileVal
                 bool bRet = true;
 
                 // warn if not encoding id 10
-                if (m_ete.encodingID != 10)
+                if (!(m_ete.platformID == 3 && m_ete.encodingID == 10)
+                    && !(m_ete.platformID == 0 && m_ete.encodingID == 4)
+                    && !(m_ete.platformID == 0 && m_ete.encodingID == 6))
                 {
                     v.Warning(T.T_NULL, W.cmap_W_f12_EncID, table.m_tag, 
                               sIdentity);

@@ -9139,10 +9139,10 @@ All tables should be recorded in the table directory with their actual length. T
     atom="cmap_W_f12_EncID"
     linkTitle="cmap table specification"
     specLink="http://www.microsoft.com/typography/otspec/cmap.htm"
-    shortDesc="The format is 12, but the encoding id is not 10"
+    shortDesc="The format is 12, but the (platform, encoding) id is not (3,10), (0,4) or (0,6)"
     fwLinkID="10339"
     tableName="cmap">
-    <problem>Fonts providing Unicode encoded UCS-4 character support for Win2000 and later need to have a format 4 subtable using platform 3, encoding 1, as well as have a format 12 subtable using platform 3, encoding 10.</problem>
+    <problem>Fonts providing Unicode encoded UCS-4 character support for Win2000 and later need to have a format 4 subtable using platform 3, encoding 1, as well as have a format 12 subtable using platform 3, encoding 10, or using platform 0 encoding 4 or 6.</problem>
 </item>
 
 <item
