@@ -90,7 +90,7 @@ namespace OTFontFileVal
                                 break;
                             }
                         }
-                        double fVersion = Double.Parse(sVersionNum.Substring(0, nLastDigitPos+1));
+                        double fVersion = Double.Parse(sVersionNum.Substring(0, nLastDigitPos+1), System.Globalization.CultureInfo.InvariantCulture);
                         double fRevision = fontRevision.GetDouble();
 
                         if (Math.Round(fVersion, 3) == Math.Round(fRevision, 3))
