@@ -10,6 +10,23 @@ r-lives))
 Most (only?) active development happens at
 http://github.com/HinTak/Font-Validator .
 
+FontVal 2.1.5 , Jun  9 2020
+=============
+
+- No functionality change in the Freetype backend, other than passsively
+  upgrading to VER-2-10-1-71-g4b08cdf78 based on 2.10.1 .
+
+- fixed about a dozen of issues /improvements on OS/2, cmap, head, hmtx,
+  name tables.
+
+- Thanks Miguel Sousa for patches, Stevan White for many of the issues
+  with SMP / large font sets, and Georg Seifert and Rich Fitzgerald on
+  Mac OS X related issues.
+
+- Mac binary now based on patched mono
+  ( https://github.com/HinTak/mono-modification/ )
+
+- The Mac build tested successfully on darling.
 
 FontVal 2.1.1 , Sep  1 2017
 =============
