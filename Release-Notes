@@ -26,6 +26,8 @@ FontVal 2.1.5 , Jun  9 2020
 - Mac binary now based on patched mono
   ( https://github.com/HinTak/mono-modification/ )
 
+- Built and tested on Raspbian too.
+
 - The Mac build tested successfully on darling.
 
 FontVal 2.1.1 , Sep  1 2017
