@@ -30,6 +30,33 @@ FontVal 2.1.5 , Jun  9 2020
 
 - The Mac build tested successfully on darling.
 
+FontVal 2.1.4 , Nov 29 2018
+=============
+
+Mostly for fix to https://github.com/HinTak/Font-Validator/issues/39
+
+Since 2.1.3 enabling building with visual studio, the win32+64 binary is now built with visual studio, instead of mono.
+
+Apologies the windows build still shows version at 2.1.2: I forgot to bump the version shown up before tagging. This was noticed while I tested the Linux binaries, so the Linux/OSX binaries had the problem corrected.
+
+FontVal 2.1.3 , Nov 18 2018
+=============
+
+*** Re-implementing Visual Studio buildability
+
+This is mostly a source-only release to signify that FontVal is now buildable with Visual Studio (Express) 2008+ again, after it was broken just before leaving Microsoft 3 years ago.
+
+FontVal 2.1.2 , Sep  6 2018
+=============
+
+Mostly for mono 5.14-based binary rebuild to fix the $PATH bug ( https://github.com/mono/mono/pull/6147 )
+
+Problems related to building and running FontVal with mono 5 is tracked in https://github.com/Microsoft/Font-Validator/issues/53 .
+
+Most windows users should get the win32+64 build, which caters for both 32-bit and 64-bit windows.
+
+However, if strange crashes on 64-bit windows happen ( possibly related to harfbuzz - see https://github.com/HinTak/Font-Validator/issues/27 ), the win32 build works around such issue by forcing 32-bit mode even on 64-bit windows. I would appreciate people letting me know and also send the font file, if such a crash happens and the usage of the win32 build becomes necessary.
+
 FontVal 2.1.1 , Sep  1 2017
 =============
 
