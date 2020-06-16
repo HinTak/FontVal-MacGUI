@@ -1,0 +1,1 @@
+codesign --deep --timestamp --force --entitlements FontValidator.entitlements -o runtime -s "Developer ID Application: {name of signing identity}" FontValidator
