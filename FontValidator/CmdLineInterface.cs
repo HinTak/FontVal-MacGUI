@@ -27,7 +27,7 @@ namespace FontValidator
         List<string>          m_captions = new List<string>();
         bool m_verbose;
         bool m_report2stdout;
-        static string version = "2.1.5";
+        static string version = "2.1.6";
 
         static void ErrOut( string s ) 
         {
