@@ -10,6 +10,11 @@ r-lives))
 Most (only?) active development happens at
 http://github.com/HinTak/Font-Validator .
 
+FontVal 2.1.6 , Jun 16 2020
+=============
+
+- small update on non-NULL FeatureParams.
+
 FontVal 2.1.5 , Jun  9 2020
 =============
 
