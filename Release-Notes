@@ -28,6 +28,8 @@ FontVal 2.1.5 , Jun  9 2020
   with SMP / large font sets, and Georg Seifert and Rich Fitzgerald on
   Mac OS X related issues.
 
+- fixes crashes under non-English (French/Russian/Portugese) locales.
+
 - Mac binary now based on patched mono
   ( https://github.com/HinTak/mono-modification/ )
 
