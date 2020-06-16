@@ -581,9 +581,13 @@ namespace OTFontFile.OTL
         {
             bool bRet = true;
 
-            if (sIdentity.EndsWith("(size), FeatureTable"))
+            if (sIdentity.EndsWith("(size), FeatureTable") ||
+                sIdentity.Contains("(cv") ||
+                sIdentity.Contains("(ss0") || // avoid matching "ssty"
+                sIdentity.Contains("(ss1") ||
+                sIdentity.Contains("(ss2"))
             {
-                // The "size" feature is special in having non-null FeatureParams
+                // The "size", "cvNN" and "ssNN" features are special in having non-null FeatureParams
 
                 // TODO
             }
