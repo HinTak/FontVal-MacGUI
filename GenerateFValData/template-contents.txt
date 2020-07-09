@@ -1,5 +1,0 @@
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="##HELPID##   ##TABLENAME##   ##SHORTDESC##">
-			<param name="Local" value="##HELPID##.htm">
-			</OBJECT>
-

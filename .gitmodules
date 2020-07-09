@@ -1,9 +1,0 @@
-[submodule "mono-webbrowser"]
-	path = mono-webbrowser
-	url = git://github.com/HinTak/mono-webbrowser.git
-[submodule "SharpFont"]
-	path = SharpFont
-	url = git://github.com/HinTak/SharpFont.git
-[submodule "freetype-py"]
-	path = freetype-py
-	url = git://github.com/HinTak/freetype-py.git
