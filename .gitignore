@@ -1,27 +1,3 @@
-# Visual Studio's temp files:
-FValidator.sdf
-FValidator.sln.cache
-OTFontFileVal/OTFontFileVal.sdf
-WinVerifyTrustAPI/WinVerifyTrustAPI.sdf
-*/obj/
-*/bin/
-*.pdb
-*.v12.suo
-OTFontFileVal/OTFontFileVal.ValStrings.resx
-OTFontFileVal/atoms.cs
-NewHelp/*
-bin/*.XML
-bin/*.pdb
-# Mono's
-bin/*.mdb
-*.exe
-bin/Compat.dll
-bin/Glyph.dll
-bin/GMath.dll
-bin/OTFontFile.dll
-bin/OTFontFileVal.dll
-bin/ValCommon.dll
-
 # Mac
 .DS_Store
 
